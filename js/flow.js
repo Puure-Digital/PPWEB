@@ -17,8 +17,8 @@ const KINDS = {
 
 const isLight = (el) => el.classList.contains('light');
 // Phones and tablets: a section there runs several screens, so holding its last screenful under
-// the next one reads as one section stuck on another. There the section before scrolls away as
-// normal, and the next only rises with its corners flattening as it lands.
+// the next one reads as one section stuck on another. There the sections simply scroll, edge to
+// edge and square, so nothing shows at the corners of the one coming up.
 const ROLL = window.matchMedia('(max-width: 1023px)');
 
 export function initFlow() {
@@ -95,7 +95,7 @@ export function initFlow() {
       f.veil.style.opacity = v.toFixed(3);
     }
     if (k.under && body.style.backgroundColor !== f.base) body.style.backgroundColor = f.base;
-    if (k.round) {
+    if (k.round && !ROLL.matches) {
       // The corners stay round for most of the rise and flatten as the sheet lands.
       const R = clamp(vh * 0.05, 20, 44) * (1 - p * p);
       if (k.widen) {
