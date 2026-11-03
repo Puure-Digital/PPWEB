@@ -247,6 +247,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 h1, h2, h3 { margin: 0; font-family: var(--head); font-weight: var(--w-title); color: inherit; text-wrap: balance; }
 h1, h2 { font-weight: var(--w-head); font-stretch: var(--wide); }
 h2 { font-size: var(--fs-h2); letter-spacing: var(--tr-head); line-height: 1.12; }
+/* Laptops: a section headline's lines sit in a column about two fifths of the screen wide, so up to
+   about 1,300 px the size follows the screen and each line fits whole. */
+@media (min-width: 1024px) { h2 { font-size: min(var(--fs-h2), 3.35vw); } }
 h3 { font-size: var(--fs-h3); font-stretch: var(--semi); font-weight: var(--w-title); letter-spacing: -0.02em; line-height: 1.3; }
 strong { font-weight: 600; }
 /* Headlines are set like the hero's: two lines, the first light and lit mint into white, the second

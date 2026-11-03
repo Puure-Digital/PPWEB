@@ -1,5 +1,6 @@
 // Smooth scroll (Lenis) driven by the GSAP ticker, plus in-page anchor handling.
-// Anchor jumps ride the critically damped spring and take 0.8–1.4 s by distance.
+// Anchor jumps ride the critically damped spring and take 0.8–1.4 s by distance. Beyond three
+// screens, the section comes up over the page as a sheet (the move between pages) instead.
 import { RM } from './util.js';
 import { springSoft } from './motion.js';
 
@@ -27,12 +28,23 @@ export function initScroll() {
     if (!target) return;
     e.preventDefault();
     const y = id === '#top' ? 0 : spot(target);
-    const duration = Math.min(1.4, 0.8 + Math.abs(y - window.scrollY) / 8000);
-    if (lenis) lenis.scrollTo(y, { duration, easing: springSoft });
-    else window.scrollTo({ top: y, behavior: RM ? 'auto' : 'smooth' });
+    const dist = Math.abs(y - window.scrollY);
     history.replaceState(null, '', id);
     if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
-    setTimeout(() => target.focus({ preventScroll: true }), RM ? 0 : duration * 1000);
+    const arrive = () => target.focus({ preventScroll: true });
+    if (!RM && dist > window.innerHeight * 3 && document.startViewTransition) {
+      const root = document.documentElement;
+      if (y < window.scrollY) root.setAttribute('data-vt', 'back');
+      const vt = document.startViewTransition(() => jump(y));
+      const end = () => root.removeAttribute('data-vt');
+      vt.updateCallbackDone.then(arrive, arrive);
+      vt.finished.then(end, end);
+      return;
+    }
+    const duration = Math.min(1.4, 0.8 + dist / 8000);
+    if (lenis) lenis.scrollTo(y, { duration, easing: springSoft });
+    else window.scrollTo({ top: y, behavior: RM ? 'auto' : 'smooth' });
+    setTimeout(arrive, RM ? 0 : duration * 1000);
   });
 }
 
@@ -44,7 +56,7 @@ function spot(el) {
   const margin = el.tagName === 'SECTION' ? 0 : parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
   return Math.max(0, box.getBoundingClientRect().top + window.scrollY - margin);
 }
-const jump = (y) => (lenis ? lenis.scrollTo(y, { immediate: true, force: true }) : window.scrollTo(0, y));
+const jump = (y) => (lenis ? lenis.scrollTo(y, { immediate: true, force: true }) : window.scrollTo({ top: y, behavior: 'instant' }));
 
 // The browser goes to an address's #section, or back to where a reload left off, before the
 // pinned scenes above it have added their length, so it lands short. Once ScrollTrigger has

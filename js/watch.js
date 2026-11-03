@@ -117,7 +117,18 @@ export function initWatch() {
       const on = cc.getAttribute('aria-pressed') !== 'true';
       cc.setAttribute('aria-pressed', String(on));
       screen.classList.toggle('is-cc', on);
+      line.classList.toggle('is-on', on);
     });
+    // Phones: the film's own words fill the foot of so small a frame, so captions sit under the
+    // player instead, and go back inside it for full screen.
+    const under = window.matchMedia('(max-width: 767px)');
+    const place = () => {
+      if (under.matches && document.fullscreenElement !== screen) { if (line.previousElementSibling !== screen.parentNode) screen.parentNode.after(line); }
+      else if (line.parentNode !== screen) video.after(line);
+    };
+    under.addEventListener('change', place);
+    document.addEventListener('fullscreenchange', place);
+    place();
     video.addEventListener('webkitbeginfullscreen', () => { captions.mode = screen.classList.contains('is-cc') ? 'showing' : 'hidden'; });
     video.addEventListener('webkitendfullscreen', () => { captions.mode = 'hidden'; });
   } else cc.hidden = true;

@@ -25,12 +25,14 @@ export function initGap() {
   const amt = qs('#z-amt');
   const zx = qs('#z-x');
 
+  // A narrow ruler has no room for 1,800 h beside the fixed 1,840 h at its end.
+  const marks = window.innerWidth < 480 ? TICKS.filter(([h]) => h !== 1800) : TICKS;
   ruler.classList.add('is-scaled');
-  ruler.innerHTML = '<div class="ruler__scale">' + TICKS.map(([h, a]) =>
+  ruler.innerHTML = '<div class="ruler__scale">' + marks.map(([h, a]) =>
     '<span class="rt rt--' + a + '" style="--x:' + (h / CLAIMED).toFixed(5) + '"><span>' + h.toLocaleString('en-GB') + ' h</span></span>').join('') + '</div>' +
     '<span class="rt-end">' + CLAIMED.toLocaleString('en-GB') + ' h</span>';
   const rscale = qs('.ruler__scale', ruler);
-  const ticks = qsa('.rt', ruler).map((el, i) => ({ el, x: TICKS[i][0] / CLAIMED, a: TICKS[i][1] }));
+  const ticks = qsa('.rt', ruler).map((el, i) => ({ el, x: marks[i][0] / CLAIMED, a: marks[i][1] }));
 
   function apply(s) {
     const S = 'scaleX(' + s.toFixed(4) + ')';

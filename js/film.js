@@ -6,7 +6,9 @@
 // large or retina screen, 1920 otherwise, and on a portrait phone a 4:5 crop of the full frame at
 // its own resolution. Frames load only as the section approaches (never with the page): both ends
 // first, then the whole film coarse to fine, the frames just ahead of the playhead jumping the
-// queue. Reduced motion: the last frame, the last caption and the finished gauge, nothing moving.
+// queue. Phones and tablets take every second frame (the blend between neighbours keeps it moving
+// smoothly) and every fourth when the reader saves data, about a half or a quarter of the download.
+// Reduced motion: the last frame, the last caption and the finished gauge, nothing moving.
 import { RM, qs, qsa, clamp } from './util.js';
 import { springSoft } from './motion.js';
 import { frameSeq } from './frames.js';
@@ -21,7 +23,10 @@ function film(sec) {
   const marker = qs('.film__marker', sec), alt = qs('[data-alt]', sec), link = qs('[data-link]', sec);
   const gauge = qs('.film__gauge', sec);
   const ds = sec.dataset;
-  const total = parseInt(ds.frames, 10);
+  const net = navigator.connection || {};
+  const stride = window.matchMedia('(max-width: 1023px)').matches ? (net.saveData || /2g/.test(net.effectiveType || '') ? 4 : 2) : 1;
+  const all = parseInt(ds.frames, 10);
+  const total = Math.ceil((all - 1) / stride) + 1;
   const portrait = window.matchMedia('(max-width: 1023px) and (max-aspect-ratio: 4/5)').matches;
   const big = Math.min(window.devicePixelRatio || 1, 2) * Math.max(window.innerWidth, window.innerHeight * 16 / 9) > 2000;
   const dir = portrait && ds.dirMobile ? ds.dirMobile : big && ds.dirLarge ? ds.dirLarge : ds.dir;
@@ -61,7 +66,7 @@ function film(sec) {
   }
 
   const ctx = canvas.getContext('2d', { alpha: false });
-  const seq = frameSeq((i) => dir + '/frame_' + String(i + 1).padStart(4, '0') + '.' + ds.ext, onDecode, () => [dw, dh]);
+  const seq = frameSeq((i) => dir + '/frame_' + String(Math.min(all - 1, i * stride) + 1).padStart(4, '0') + '.' + ds.ext, onDecode, () => [dw, dh]);
   let started = false, drawn = -1, progress = 0, cur = 0, sized = false;
   let dpr = 1, dw = 0, dh = 0, dx = 0, dy = 0;
 
@@ -150,10 +155,10 @@ function film(sec) {
     if (started) return;
     started = true;
     // Both ends, then every 32nd frame, every 16th, and so on down to every one, so wherever the
-    // reader scrolls a frame is close by; six at a time.
+    // reader scrolls a frame is close by; six at a time, once the first (at the playhead) is in.
     const queue = [0, total - 1], asked = new Set();
     for (let step = 32; step >= 1; step >>= 1) for (let k = step; k < total - 1; k += step) if (!queue.includes(k)) queue.push(k);
-    let inflight = 0;
+    let inflight = 0, opened = false;
     const pick = () => {
       // The frames just ahead of the playhead jump the queue.
       const here = Math.max(0, Math.floor(cur));
@@ -162,13 +167,14 @@ function film(sec) {
       return -1;
     };
     (function next() {
-      while (inflight < 6) {
+      while (inflight < (opened ? 6 : 1)) {
         const k = pick();
         if (k < 0) return;
         asked.add(k);
         inflight++;
         seq.load(k).then(() => {
           inflight--;
+          opened = true;
           if (drawn < 0 || Math.abs(k - cur) < 2) render(progress, true);
           next();
         });

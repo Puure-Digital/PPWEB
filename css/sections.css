@@ -506,6 +506,9 @@ button.hx-pill:focus-visible { border-radius: 999px; }
 .watch__cc { position: absolute; left: 50%; bottom: clamp(12px, 2.4vw, 22px); z-index: 1; width: max-content; max-width: min(86%, 32em); margin: 0; padding: 0.28em 0.7em 0.34em; border-radius: 8px; background: rgba(8, 9, 10, 0.8); color: #fff; font: 500 clamp(0.875rem, 0.66rem + 0.7vw, 1.25rem)/1.35 var(--font); letter-spacing: 0.01em; text-align: center; text-wrap: balance; opacity: 0; transform: translateX(-50%); pointer-events: none; transition: transform 0.45s var(--spring), opacity 0.2s var(--spring-soft); }
 .is-cc .watch__cc:not(:empty) { opacity: 1; }
 .is-started:not(.is-idle):not(.is-ended) .watch__cc { transform: translateX(-50%) translateY(-48px); }
+/* Phones: under the player (js/watch.js), two lines of room while captions are on. */
+.watch__frame + .watch__cc { position: static; display: none; width: auto; max-width: none; min-height: calc(2.7em + 0.62em); margin: 10px 0 0; border-radius: 12px; font-size: 0.9375rem; opacity: 1; transform: none; transition: none; }
+.watch__frame + .watch__cc.is-on { display: block; }
 .watch__wait { position: absolute; left: 50%; top: 50%; z-index: 1; width: 28px; height: 28px; margin: -14px 0 0 -14px; border-color: rgba(255, 255, 255, 0.25); border-top-color: #fff; opacity: 0; transition: opacity 0.2s var(--spring-soft); pointer-events: none; }
 .is-waiting .watch__wait { opacity: 1; transition-delay: 0.3s; }
 
@@ -1324,17 +1327,15 @@ button.hx-pill:focus-visible { border-radius: 999px; }
 .sat__lab { position: absolute; transform: translateX(-50%); font: 500 0.59375rem/1 var(--mono); white-space: nowrap; color: var(--ink-3); }
 /* The dish label sits left of the dish, where the beam never passes. */
 .sat__lab--end { transform: translateX(-100%); }
-.sat__read { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 14px 0 0; }
+/* The link status gets the room it needs to stay on one line ("Offline, recording"), so the card
+   never changes height as the status changes. */
+.sat__read { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 8px; margin: 14px 0 0; }
 .sat__read > div { padding: 11px 13px; border-radius: 12px; background: rgba(255, 255, 255, 0.035); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.09); }
 .sat__read dt { margin-bottom: 8px; font-size: 0.75rem; line-height: 1; color: var(--ink-3); }
-.sat__read dd { margin: 0; font-size: 0.875rem; line-height: 1.2; color: var(--ink); }
+.sat__read dd { margin: 0; font-size: 0.875rem; line-height: 1.2; white-space: nowrap; color: var(--ink); }
 .sat__read dd.is-ok { color: var(--lime-ink); }
 .sat__read dd.is-warn { color: var(--amber-ink); }
-/* On a phone the link status gets the room it needs to stay on one line. */
-@media (max-width: 559px) {
-  .sat__read { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); }
-  .sat__read dd { font-size: 0.8125rem; white-space: nowrap; }
-}
+@media (max-width: 559px) { .sat__read dd { font-size: 0.8125rem; } }
 .sat__cap { display: none; margin: 0; padding: 20px clamp(18px, 2.4vw, 26px) 22px; border-top: 1px solid var(--hair); font-size: 1rem; line-height: 1.5; color: var(--ink); }
 .sat__cap-n { flex: none; font-size: 0.6875rem; color: var(--ink-3); }
 
@@ -1460,6 +1461,8 @@ button.hx-pill:focus-visible { border-radius: 999px; }
   /* The globe fills the stage's right side (js/globe.js moves it into the stage); text stays clickable. */
   .sat-sec.has-globe.is-scene .sat__pin { pointer-events: none; }
   .sat-sec.has-globe.is-scene .sat__copy, .sat-sec.has-globe.is-scene .sat__hud { pointer-events: auto; }
+  /* Over the globe the caption sits on dark glass, like the readouts, so it reads wherever the dots run. */
+  .sat-sec.has-globe.is-scene .sat__hud .sat__cap { margin-top: 10px; padding: 14px 16px; border-radius: 12px; background: rgba(1, 1, 1, 0.58); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.09); }
   .sat-sec.is-scene .sat-globe { align-self: start; }
   /* Faded in from the left, and falling away at the foot, so the eye goes to the horizon. */
   .sat-sec.is-scene .sat-globe__box { position: absolute; top: 0; right: 0; bottom: 0; width: auto; margin: 0; cursor: grab; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 22%), linear-gradient(180deg, #000 50%, rgba(0, 0, 0, 0.18) 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0%, #000 22%), linear-gradient(180deg, #000 50%, rgba(0, 0, 0, 0.18) 100%); mask-composite: intersect; }
@@ -1476,6 +1479,7 @@ button.hx-pill:focus-visible { border-radius: 999px; }
 .ipage__grid { display: grid; gap: 48px; align-items: center; }
 @media (min-width: 1024px) { .ipage__grid { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: 72px; } }
 .ipage__title { margin: 0 0 0.45em; font-size: clamp(1.875rem, 0.95rem + 2.7vw, 3rem); letter-spacing: var(--tr-head); line-height: 1.12; }
+@media (min-width: 1024px) { .ipage__title { font-size: min(clamp(1.875rem, 0.95rem + 2.7vw, 3rem), 3.6vw); } }
 .ipage__head .lead { margin: 0 0 24px; }
 .ipage__head .sat__brand { margin: 0 0 32px; padding-top: 20px; }
 
@@ -1745,6 +1749,8 @@ button.hx-pill:focus-visible { border-radius: 999px; }
   .bk__sum { order: 2; margin-top: 24px; }
 }
 .bk__title { margin: 0 0 0.4em; font-size: clamp(1.875rem, 0.95rem + 2.9vw, 3.25rem); letter-spacing: var(--tr-head); line-height: 1.12; color: #fff; }
+/* The calculator's closing call sits in a narrower column: each of its lines fits whole. */
+@media (min-width: 1024px) { .bk--end .bk__title { font-size: min(clamp(1.875rem, 0.95rem + 2.9vw, 3.25rem), 3.3vw); } }
 .bk__copy .lead { margin: 0 0 32px; max-width: 32rem; }
 
 /* The estimate, at the spend passed from the home page calculator: a glass card. */
