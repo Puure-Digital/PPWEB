@@ -1,0 +1,1288 @@
+<!doctype html>
+<html lang="en-GB" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    document.documentElement.className = 'js';
+    // Back to this page through history, the page transition runs the other way (base.css).
+    addEventListener('pagereveal', function (e) { if (!e.viewTransition || !window.navigation || !navigation.activation) return; var r = document.documentElement; if (navigation.activation.navigationType === 'traverse') { r.setAttribute('data-vt', 'back'); e.viewTransition.finished.finally(function () { r.removeAttribute('data-vt'); }); } });
+    // The preloader (top of the body, css/sections.css) plays on a first arrival only: once per
+    // browser session, and never coming from another page of the site, coming back, straight to a
+    // section, or with reduced motion.
+    (function () {
+      try {
+        var root = document.documentElement, nav = performance.getEntriesByType('navigation')[0];
+        var internal = document.referrer && new URL(document.referrer).origin === location.origin;
+        var calm = matchMedia('(prefers-reduced-motion: reduce)').matches || /[?&]motion=reduce\b/.test(location.search);
+        var deep = location.hash.length > 1 && location.hash !== '#top';
+        if (!calm && !internal && !deep && !(nav && nav.type === 'back_forward') && !sessionStorage.getItem('pp-intro')) {
+          root.classList.add('pl-on');
+          sessionStorage.setItem('pp-intro', '1');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <title>Construction payroll verification and fraud checks | PayRoll Protect</title>
+  <meta name="description" content="Every subcontractor labour claim checked against biometric site attendance before payroll runs. Our average site saves £9,000 a week. Book a 90-day pilot.">
+  <meta name="theme-color" content="#010101">
+  <link rel="canonical" href="https://payrollprotect.co.uk/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PayRoll Protect">
+  <meta property="og:title" content="PayRoll Protect | Don’t Approve What You Can’t Prove.">
+  <meta property="og:description" content="Biometric site attendance matched line by line against subcontractor labour invoices. Our average site saves £9,000 a week.">
+  <meta property="og:url" content="https://payrollprotect.co.uk/">
+  <meta property="og:image" content="https://payrollprotect.co.uk/assets/img/og-gate.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A PayRoll Protect terminal at a construction site entrance at dusk, showing a green tick.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PayRoll Protect | Don’t Approve What You Can’t Prove.">
+  <meta name="twitter:description" content="Biometric site attendance matched line by line against subcontractor labour invoices. Our average site saves £9,000 a week.">
+  <meta name="twitter:image" content="https://payrollprotect.co.uk/assets/img/og-gate.jpg">
+
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:image:alt" content="A PayRoll Protect terminal at a construction site entrance at dusk, showing a green tick.">
+  <meta name="robots" content="max-image-preview:large">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/brand/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/brand/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+
+  <link rel="preload" href="assets/fonts/mona-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/brand/mark-540.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/img/hero-still-815.webp" as="image" type="image/webp" media="(min-width: 768px)" fetchpriority="low">
+  <link rel="preload" href="assets/img/hero-still-600.webp" as="image" type="image/webp" media="(max-width: 767px)" fetchpriority="low">
+  <script type="importmap">
+  {
+    "imports": {
+      "./js/booking.js": "./js/booking.js?v=51b11d01",
+      "./js/boot.js": "./js/boot.js?v=eeedfd8c",
+      "./js/calc.js": "./js/calc.js?v=4974c263",
+      "./js/calculator.js": "./js/calculator.js?v=2d032435",
+      "./js/charts.js": "./js/charts.js?v=379ebebf",
+      "./js/cursor.js": "./js/cursor.js?v=780e7ce6",
+      "./js/engine.js": "./js/engine.js?v=3d1c673f",
+      "./js/facts.js": "./js/facts.js?v=dea8f4ef",
+      "./js/faq.js": "./js/faq.js?v=b2bfcb19",
+      "./js/film.js": "./js/film.js?v=1a7205d3",
+      "./js/flow.js": "./js/flow.js?v=5b76031a",
+      "./js/foot.js": "./js/foot.js?v=276532ca",
+      "./js/frames.js": "./js/frames.js?v=7059c69b",
+      "./js/fx.js": "./js/fx.js?v=9294d68d",
+      "./js/gap.js": "./js/gap.js?v=57aca1e5",
+      "./js/globe.js": "./js/globe.js?v=3479e3d2",
+      "./js/hero.js": "./js/hero.js?v=479cd15e",
+      "./js/how.js": "./js/how.js?v=5741ce87",
+      "./js/installation.js": "./js/installation.js?v=e8db4fa0",
+      "./js/leaks.js": "./js/leaks.js?v=7b808e19",
+      "./js/main.js": "./js/main.js?v=565fd13f",
+      "./js/match.js": "./js/match.js?v=4ebf8fe5",
+      "./js/motion.js": "./js/motion.js?v=88e6303a",
+      "./js/nav.js": "./js/nav.js?v=e2ade9bf",
+      "./js/notfound.js": "./js/notfound.js?v=4d2f4a2e",
+      "./js/odometer.js": "./js/odometer.js?v=7fbd282c",
+      "./js/pilot.js": "./js/pilot.js?v=8d6a80b3",
+      "./js/reveal.js": "./js/reveal.js?v=3385143c",
+      "./js/risk.js": "./js/risk.js?v=cc01ed51",
+      "./js/sat.js": "./js/sat.js?v=fd45992a",
+      "./js/scroll.js": "./js/scroll.js?v=baa43c71",
+      "./js/scrubs.js": "./js/scrubs.js?v=c6ed5f1e",
+      "./js/util.js": "./js/util.js?v=bf53687b",
+      "./js/watch.js": "./js/watch.js?v=9cfb6e39"
+    }
+  }
+  </script>
+  <link rel="modulepreload" href="./js/boot.js?v=eeedfd8c">
+  <link rel="modulepreload" href="./js/calc.js?v=4974c263">
+  <link rel="modulepreload" href="./js/charts.js?v=379ebebf">
+  <link rel="modulepreload" href="./js/cursor.js?v=780e7ce6">
+  <link rel="modulepreload" href="./js/engine.js?v=3d1c673f">
+  <link rel="modulepreload" href="./js/facts.js?v=dea8f4ef">
+  <link rel="modulepreload" href="./js/faq.js?v=b2bfcb19">
+  <link rel="modulepreload" href="./js/film.js?v=1a7205d3">
+  <link rel="modulepreload" href="./js/flow.js?v=5b76031a">
+  <link rel="modulepreload" href="./js/foot.js?v=276532ca">
+  <link rel="modulepreload" href="./js/frames.js?v=7059c69b">
+  <link rel="modulepreload" href="./js/fx.js?v=9294d68d">
+  <link rel="modulepreload" href="./js/gap.js?v=57aca1e5">
+  <link rel="modulepreload" href="./js/globe.js?v=3479e3d2">
+  <link rel="modulepreload" href="./js/hero.js?v=479cd15e">
+  <link rel="modulepreload" href="./js/how.js?v=5741ce87">
+  <link rel="modulepreload" href="./js/leaks.js?v=7b808e19">
+  <link rel="modulepreload" href="./js/match.js?v=4ebf8fe5">
+  <link rel="modulepreload" href="./js/motion.js?v=88e6303a">
+  <link rel="modulepreload" href="./js/nav.js?v=e2ade9bf">
+  <link rel="modulepreload" href="./js/odometer.js?v=7fbd282c">
+  <link rel="modulepreload" href="./js/pilot.js?v=8d6a80b3">
+  <link rel="modulepreload" href="./js/reveal.js?v=3385143c">
+  <link rel="modulepreload" href="./js/risk.js?v=cc01ed51">
+  <link rel="modulepreload" href="./js/sat.js?v=fd45992a">
+  <link rel="modulepreload" href="./js/scroll.js?v=baa43c71">
+  <link rel="modulepreload" href="./js/scrubs.js?v=c6ed5f1e">
+  <link rel="modulepreload" href="./js/util.js?v=bf53687b">
+  <link rel="modulepreload" href="./js/watch.js?v=9cfb6e39">
+  <link rel="stylesheet" href="css/base.css?v=261e5ccb">
+  <link rel="stylesheet" href="css/sections.css?v=4066b92d">
+  <script>
+    // The hero's load reveal (css/sections.css) starts once its fonts are in, so nothing fades up in
+    // a stand-in face; never later than 800 ms. Under the preloader it starts as the preloader lifts
+    // (its script, top of the body), and at 7 s whatever happens.
+    (function () {
+      var root = document.documentElement, go = function () { root.classList.add('is-ready'); };
+      if (root.classList.contains('pl-on')) { setTimeout(function () { go(); root.classList.remove('pl-on'); }, 5000); return; }
+      setTimeout(go, 800);
+      try { Promise.all([document.fonts.load('360 1em Unbounded'), document.fonts.load('400 1em "Mona Sans"')]).then(go, go); } catch (e) { go(); }
+    })();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://payrollprotect.co.uk/#organization",
+        "name": "PayRoll Protect",
+        "url": "https://payrollprotect.co.uk/",
+        "logo": "https://payrollprotect.co.uk/assets/brand/icon-512.png",
+        "email": "hello@payrollprotect.co.uk",
+        "telephone": "+44 7940 007881",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Romford",
+          "addressRegion": "London",
+          "addressCountry": "GB"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "United Kingdom"
+        },
+        "description": "Construction payroll verification. Biometric site attendance matched against subcontractor labour invoices before payment."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://payrollprotect.co.uk/#website",
+        "url": "https://payrollprotect.co.uk/",
+        "name": "PayRoll Protect",
+        "inLanguage": "en-GB",
+        "publisher": {
+          "@id": "https://payrollprotect.co.uk/#organization"
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://payrollprotect.co.uk/#service",
+        "name": "Construction payroll verification",
+        "serviceType": "Construction payroll verification",
+        "description": "Biometric attendance at the terminal, matched line by line to every subcontractor invoice. Only verified labour gets paid.",
+        "provider": {
+          "@id": "https://payrollprotect.co.uk/#organization"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "United Kingdom"
+        },
+        "audience": {
+          "@type": "BusinessAudience",
+          "audienceType": "UK construction contractors"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://payrollprotect.co.uk/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How is attendance evidence collected?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A fixed device at site entry records each arrival and departure against a registered biometric profile, face or fingerprint. No paper registers, swipe cards or proxy sign-ins."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it replace our payroll or timekeeping system?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It sits alongside them as a verification layer. Attendance data exports and reconciles with what you already run."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can it check subcontractor timesheets?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The hours on each subcontractor timesheet or labour invoice are matched, worker by worker, against the biometric terminal record. Anything without a record behind it is held for query before payroll runs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is biometric data stored?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Templates are encrypted and held on UK-based servers, never shared with third parties, and deleted on request or at contract end. Workers give consent at onboarding and a Data Processing Agreement is available."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How quickly can we deploy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most sites go live within about two weeks. Hardware arrives pre-configured and workers enrol on arrival."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if a subcontractor refuses to use it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Compliance is set at contract level, usually as a condition of site access. A worker who does not check in is not counted as present, and is not invoiced for."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do workers need a smartphone or an app?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Check-in happens at a fixed device. Workers install nothing."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- The preloader (css/sections.css): a terminal check on the PayRoll Protect mark, on a first arrival
+       only (the head decides). Four brackets close in on the mark as the page loads, a scan draws it
+       in light from the top down, and the count runs to 100 as the steps read off the product's own:
+       the terminal, the invoice, the pay run. Verified, the brackets lock in emerald and the scan passes
+       down the screen, lifting the curtain as the hero fades up behind it. -->
+  <div class="pl" id="pl" aria-hidden="true">
+    <div class="pl__bg">
+      <p class="pl__count"><span class="pl__n">000</span><span class="pl__pc">%</span></p>
+      <p class="pl__step"><span class="pl__spark">✦</span><span class="pl__t">Checking the terminal</span></p>
+      <i class="pl__bar"></i>
+    </div>
+    <svg class="pl__mark" viewBox="0 0 734 900" focusable="false">
+      <defs>
+        <mask id="pl-draw" maskUnits="userSpaceOnUse" x="-60" y="-60" width="854" height="1020">
+          <path class="pl__ln pl__ln--a" pathLength="1" d="M329.6 834.7 L341.0 831.0 L351.6 847.3 L371.0 853.3 L381.0 853.3 L405.0 845.9 L463.9 807.6 L506.1 777.6 L560.4 734.1 L601.6 695.6 L627.3 667.0 L647.6 640.7 L667.6 609.0 L678.4 586.1 L687.9 561.9 L696.1 529.0 L701.0 469.0 L701.0 177.0 L697.9 167.9 L691.0 164.1 L602.4 145.6 L542.1 125.9 L479.6 100.4 L441.0 81.6 L395.0 55.9 L373.0 50.1 L365.0 49.9 L337.0 57.0 L301.0 77.6 L257.0 99.6 L211.0 119.0 L123.6 147.6 L41.0 164.4 L35.0 167.9 L33.0 175.0 L33.0 267.0 L37.3 274.1 L417.0 275.0 L439.0 277.0 L473.0 283.0 L499.0 295.6 L511.0 304.1 L525.6 318.7 L539.9 344.1 L545.6 367.0 L549.0 391.0 L543.6 425.0 L537.3 443.0 L527.6 459.9 L521.6 467.6 L509.0 478.4 L492.4 489.0 L461.0 498.1 L437.0 501.0 L387.0 501.0 L327.9 509.9 L309.9 517.9 L301.0 523.9 L287.0 537.0 L278.4 548.1 L268.4 573.0 L261.0 615.0 L261.0 743.0 L255.9 761.0 L282.4 823.0 L291.0 837.0 L293.0 883.0"/>
+          <path class="pl__ln pl__ln--b" pathLength="1" d="M26.8 351.5 L33.0 391.0 L33.0 491.0 L36.4 523.0 L40.1 543.9 L47.6 567.0 L55.3 587.0 L67.0 609.0 L85.3 636.7 L108.4 665.6 L128.4 685.6 L171.0 721.9 L201.6 743.3 L247.0 755.3 L253.9 759.6 L285.3 829.0 L291.0 837.0 L324.7 868.4"/>
+        </mask>
+      </defs>
+      <image href="assets/brand/mark-540.webp" width="734" height="900" mask="url(#pl-draw)"/>
+    </svg>
+  </div>
+  <script>
+    // The PayRoll Protect shield draws itself as the page loads: the artwork itself, revealed along
+    // its own line (nothing recoloured or redrawn). One line runs from the shield's foot up its
+    // right side, over the top, down the left and into the P; a second runs round the lower left at
+    // the same pace; they meet at the stem's foot. The drawing follows what the first screen needs
+    // (the document and its fonts; nothing heavier, so it never holds back the page's first paint),
+    // never finishes before 0.8 s so it reads, and never holds the page past 2 s. Verified, the
+    // shield flies into its place in the logo while the curtain lifts and the hero comes up; the
+    // page behind stays put.
+    (function () {
+      var root = document.documentElement, pl = document.getElementById('pl');
+      if (!pl) return;
+      if (!root.classList.contains('pl-on')) { pl.remove(); return; }
+      var MIN = 800, MAX = 2000, start = performance.now(), last = start, parts = 2, ready = 0, shown = 0, step = -1;
+      var n = pl.querySelector('.pl__n'), t = pl.querySelector('.pl__t'), mark = pl.querySelector('.pl__mark');
+      var la = pl.querySelector('.pl__ln--a'), lb = pl.querySelector('.pl__ln--b');
+      var STEPS = ['Checking the terminal', 'Matching the invoice', 'Releasing the pay run', 'Verified'];
+      // The second line runs while the first goes from half way (down the left side) to 71.6%.
+      var B0 = 0.5, B1 = 0.716;
+      var done = function () { ready++; };
+      if (document.readyState !== 'loading') done(); else document.addEventListener('DOMContentLoaded', done, { once: true });
+      try { Promise.all([document.fonts.load('300 1em Unbounded'), document.fonts.load('400 1em "Mona Sans"')]).then(done, done); } catch (e) { done(); }
+      var hold = function (e) { e.preventDefault(); e.stopPropagation(); };
+      pl.addEventListener('wheel', hold, { passive: false });
+      pl.addEventListener('touchmove', hold, { passive: false });
+      function draw(p) {
+        la.style.strokeDashoffset = (1 - p).toFixed(4);
+        lb.style.strokeDashoffset = (1 - Math.min(1, Math.max(0, (p - B0) / (B1 - B0)))).toFixed(4);
+      }
+      function frame(now) {
+        // On time to 60% while the document and fonts arrive; the rest once they have.
+        var elapsed = now - start, target = elapsed >= MAX ? 1 : Math.min(elapsed / MIN, 0.6 + 0.4 * ready / parts);
+        shown += (target - shown) * (1 - Math.exp(-(now - last) / 100));
+        last = now;
+        if (target === 1 && shown > 0.97) shown = 1;
+        pl.style.setProperty('--p', shown.toFixed(4));
+        draw(shown);
+        n.textContent = ('00' + Math.round(shown * 100)).slice(-3);
+        var s = shown >= 1 ? 3 : shown < 0.4 ? 0 : shown < 0.8 ? 1 : 2;
+        if (s !== step) { step = s; t.textContent = STEPS[s]; t.classList.remove('is-in'); void t.offsetWidth; t.classList.add('is-in'); }
+        if (shown < 1) requestAnimationFrame(frame); else lift();
+      }
+      // The shield's place in the wordmark image (432 by 138 px): from x 323.4 to 427, y 5 to 132.
+      function fly() {
+        var logo = document.querySelector(matchMedia('(min-width: 1024px)').matches ? '.hx-brand img' : '#nav .logo__light');
+        var a = mark.getBoundingClientRect(), b = logo && logo.getBoundingClientRect();
+        if (!b || !b.width || !a.width) return false;
+        var s = b.width * 0.2397 / a.width;
+        mark.style.transform = 'translate(' + (b.left + b.width * 0.7486 - a.left).toFixed(1) + 'px,' + (b.top + b.height * 0.0362 - a.top).toFixed(1) + 'px) scale(' + s.toFixed(4) + ')';
+        return true;
+      }
+      function lift() {
+        // The drawing is complete: the artwork shows exactly as it is.
+        mark.querySelector('image').removeAttribute('mask');
+        pl.classList.add('pl--done');
+        setTimeout(function () {
+          root.classList.add('is-ready');
+          pl.classList.add('pl--out');
+          var flew = fly();
+          setTimeout(function () { pl.classList.add('pl--landed'); }, flew ? 900 : 0);
+          setTimeout(function () { root.classList.remove('pl-on'); root.classList.add('pl-done'); pl.remove(); }, 1200);
+        }, 150);
+      }
+      draw(0);
+      requestAnimationFrame(frame);
+    })();
+  </script>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-face" viewBox="0 0 16 16"><path d="M2 5.25v-1.5C2 2.78 2.78 2 3.75 2h1.5M10.75 2h1.5c.97 0 1.75.78 1.75 1.75v1.5M14 10.75v1.5c0 .97-.78 1.75-1.75 1.75h-1.5M5.25 14h-1.5C2.78 14 2 13.22 2 12.25v-1.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="8" cy="6.9" r="1.9" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M5.1 11.2a3.2 3.2 0 0 1 5.8 0" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-tick" viewBox="0 0 24 24"><path d="M6 12.5l4 4L18 8.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 16 16"><rect x="5.5" y="5.5" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 3.5v-.25A1.75 1.75 0 0 0 8.75 1.5h-5.5A1.75 1.75 0 0 0 1.5 3.25v5.5c0 .97.78 1.75 1.75 1.75h.25" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-play" viewBox="0 0 16 16"><path d="M5 3.3v9.4a.7.7 0 0 0 1.07.6l7.4-4.7a.7.7 0 0 0 0-1.2l-7.4-4.7A.7.7 0 0 0 5 3.3z" fill="currentColor"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 16 16"><rect x="4" y="3" width="2.7" height="10" rx="0.9" fill="currentColor"/><rect x="9.3" y="3" width="2.7" height="10" rx="0.9" fill="currentColor"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 16 16"><path d="M2.5 6h2.2L8 3.4v9.2L4.7 10H2.5z" fill="currentColor"/><path d="M10.6 5.6a3.4 3.4 0 0 1 0 4.8M12.6 3.6a6.2 6.2 0 0 1 0 8.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-muted" viewBox="0 0 16 16"><path d="M2.5 6h2.2L8 3.4v9.2L4.7 10H2.5z" fill="currentColor"/><path d="M10.5 6.2l3.6 3.6M14.1 6.2l-3.6 3.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-cc" viewBox="0 0 16 16"><rect x="1.75" y="3.25" width="12.5" height="9.5" rx="2.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7.1 6.7a1.5 1.5 0 1 0 0 2.6M11.3 6.7a1.5 1.5 0 1 0 0 2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-full" viewBox="0 0 16 16"><path d="M2.75 6V2.75H6M10 2.75h3.25V6M13.25 10v3.25H10M6 13.25H2.75V10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-part" viewBox="0 0 24 24"><path d="M8 12h8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M3 8h9.5M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <header class="nav is-tucked" id="nav">
+    <div class="nav__progress" aria-hidden="true"></div>
+    <div class="nav__in">
+      <a class="logo" href="#top" aria-label="PayRoll Protect home">
+        <img class="logo__light" src="assets/brand/logo-light.png" width="144" height="46" alt="PayRoll Protect">
+        <img class="logo__dark" src="assets/brand/logo-dark.png" width="144" height="46" alt="" decoding="async">
+      </a>
+      <nav class="nav__links" id="nav-links" aria-label="Primary">
+        <ul>
+          <li><a href="#top" data-nav>Home</a></li>
+          <li><a href="#how" data-nav>How it works</a></li>
+          <li><a href="#numbers" data-nav>The numbers</a></li>
+          <li><a href="#pilot" data-nav>Pilot</a></li>
+          <li><a href="#faq" data-nav>FAQ</a></li>
+        </ul>
+        <span class="nav__ind" aria-hidden="true"></span>
+        <div class="nav__menu-acts">
+          <a class="nav__contact" href="mailto:hello@payrollprotect.co.uk">Contact</a>
+          <a class="btn btn--deep" href="book.html">Book a pilot</a>
+        </div>
+      </nav>
+      <div class="nav__end">
+        <a class="nav__contact" href="mailto:hello@payrollprotect.co.uk">Contact</a>
+        <a class="btn btn--deep" href="book.html">Book a pilot</a>
+        <button class="nav__burger" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================== HERO ============================== -->
+    <!-- The hero (css/sections.css, js/hero.js): the Meridial layout in PayRoll Protect's dress. The
+         left column carries the hero's own masthead (from 1024 px; under that the site's nav is the
+         masthead), the headline and a band of the trades it is built for; the right a panel of slow
+         emerald film with two glass cards. Each part fades up once on load, in a set order (its
+         --rv-delay and --rv-dur). -->
+    <section class="hero" id="top" aria-labelledby="hero-h">
+      <div class="hx-grid">
+        <div class="hx-content">
+          <div class="hx-mast" data-reveal style="--rv-delay: 70ms; --rv-dur: 615ms">
+            <a class="hx-brand" href="#top" aria-label="PayRoll Protect home"><img src="assets/brand/logo-light.png" width="144" height="46" alt="PayRoll Protect"></a>
+            <nav class="hx-nav" aria-label="Sections">
+              <a href="#how">How it works</a>
+              <a href="#numbers">The numbers</a>
+              <a href="#pilot">Pilot</a>
+              <a href="#faq">FAQ</a>
+            </nav>
+            <a class="btn btn--deep hx-cta" href="book.html">Book a pilot</a>
+          </div>
+
+          <div class="hx-body">
+            <div class="hx-head">
+              <button class="hx-pill" type="button" data-risk-open data-reveal style="--rv-delay: 1017ms; --rv-dur: 50ms"><span class="hx-spark" aria-hidden="true">✦</span>Take the <span style="white-space:nowrap">60-second</span> payroll risk check<svg class="hx-pill__a" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+              <h1 class="hx-title" id="hero-h">
+                <span class="hx-line" data-reveal style="--rv-delay: 267ms; --rv-dur: 483ms">Verify Every </span>
+                <span class="hx-line" data-reveal style="--rv-delay: 417ms; --rv-dur: 450ms">Labour Claim Before </span>
+                <span class="hx-line" data-reveal style="--rv-delay: 567ms; --rv-dur: 467ms">Payroll Runs.</span>
+              </h1>
+            </div>
+            <p class="hx-sub" data-reveal style="--rv-delay: 450ms; --rv-dur: 450ms">Biometric site attendance at the terminal, matched line by line to every subcontractor invoice. Only verified labour gets paid.</p>
+            <div class="hx-acts" data-reveal style="--rv-delay: 540ms; --rv-dur: 450ms">
+              <a class="btn btn--primary hx-btn" href="book.html" data-magnetic>Book a 90-day pilot<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn--ghost hx-btn" href="#watch">Watch the film</a>
+            </div>
+            <ul class="hx-proof" aria-label="PayRoll Protect in figures">
+              <li><strong class="hx-fig" data-to="£9,000" data-reveal style="--rv-delay: 690ms; --rv-dur: 450ms">£9,000</strong><span data-reveal style="--rv-delay: 750ms; --rv-dur: 450ms">saved a week on our average site</span></li>
+              <li><strong class="hx-fig" data-to="5%" data-reveal style="--rv-delay: 760ms; --rv-dur: 450ms">5%</strong><span data-reveal style="--rv-delay: 820ms; --rv-dur: 450ms">of labour spend saved</span></li>
+              <li><strong class="hx-fig" data-to="14 days" data-reveal style="--rv-delay: 830ms; --rv-dur: 450ms">14 days</strong><span data-reveal style="--rv-delay: 890ms; --rv-dur: 450ms">from delivery to live</span></li>
+            </ul>
+          </div>
+
+          <div class="hx-trades" data-reveal style="--rv-delay: 850ms; --rv-dur: 600ms">
+            <p class="hx-trades__label">Built for every trade on site</p>
+            <div class="hx-marquee">
+              <div class="hx-track">
+                <ul><li>Groundworks</li><li>Steel frame</li><li>Drylining</li><li>Scaffolding</li><li>Brickwork</li><li>M&amp;E</li><li>Roofing</li><li>Civils</li></ul>
+                <ul aria-hidden="true"><li>Groundworks</li><li>Steel frame</li><li>Drylining</li><li>Scaffolding</li><li>Brickwork</li><li>M&amp;E</li><li>Roofing</li><li>Civils</li></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hx-side">
+          <div class="hx-glow" data-reveal style="--rv-delay: 90ms; --rv-dur: 970ms" aria-hidden="true">
+            <i class="hx-scan"></i>
+            <video class="hx-video" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback data-poster="assets/img/hero-still-815.webp" data-poster-m="assets/img/hero-still-600.webp"><source src="assets/video/hero-540.mp4" type="video/mp4" media="(max-width: 767px)"><source src="assets/video/hero-720.mp4" type="video/mp4"></video>
+          </div>
+
+          <!-- One invoice line and the week's pay run, as the page tells them further down (example
+               data): W-0877 claims 48.0 h against 45.5 h at the terminal, so £1,365 is approved and £75
+               held; the week 42 run approves £8,952 and holds £1,039 for query. -->
+          <div class="hx-panel" role="group" aria-label="Product preview, example data">
+            <div class="hx-feed" aria-hidden="true">
+              <div class="hx-toast">
+                <span class="hx-toast__i"><svg viewBox="0 0 24 24" focusable="false"><path class="hx-toast__ok" d="M6.5 12.5l3.5 3.5 7.5-8"/><path class="hx-toast__hold" d="M12 7v6.5M12 16.6v.4"/></svg></span>
+                <p class="hx-toast__t">W-0412 verified</p>
+                <p class="hx-toast__s">Groundworks · Terminal 2 · 07:41</p>
+              </div>
+            </div>
+            <article class="hx-card hx-card--check" data-reveal style="--rv-delay: 1783ms; --rv-dur: 350ms" aria-label="Invoice line W-0877: 48.0 hours claimed, 45.5 at the terminal. Hold needed: 2.5 hours over the terminal record, £75 held, £1,365 approved. Pay run on Friday; next check in week 43.">
+              <div aria-hidden="true">
+                <i class="hx-item hx-dot hx-dot--on" data-reveal style="--x: 28; --y: 29; --rv-delay: 2000ms; --rv-dur: 300ms"></i>
+                <p class="hx-item hx-label" data-reveal style="--x: 63; --y: 34; --rv-delay: 2000ms; --rv-dur: 300ms">Invoice line · W-0877</p>
+                <i class="hx-item hx-tl" data-reveal style="--x: 38.5; --y: 55; --len: 185; --rv-delay: 2133ms; --rv-dur: 333ms"></i>
+                <p class="hx-item hx-stat" data-reveal style="--x: 63; --y: 78; --rv-delay: 2383ms; --rv-dur: 100ms">48.0</p>
+                <p class="hx-item hx-stat hx-stat--sep" data-reveal style="--x: 161; --y: 78; --rv-delay: 2383ms; --rv-dur: 100ms">/</p>
+                <p class="hx-item hx-stat hx-stat--gate" data-reveal style="--x: 200; --y: 78; --rv-delay: 2383ms; --rv-dur: 100ms">45.5</p>
+                <p class="hx-item hx-unit" data-reveal style="--x: 63; --y: 120; --rv-delay: 2467ms; --rv-dur: 50ms">hours claimed</p>
+                <p class="hx-item hx-unit" data-reveal style="--x: 200; --y: 120; --rv-delay: 2467ms; --rv-dur: 50ms">at the terminal</p>
+                <p class="hx-item hx-tag" data-reveal style="--x: 63; --y: 166; --rv-delay: 2550ms; --rv-dur: 50ms">Hold needed</p>
+                <p class="hx-item hx-note" data-reveal style="--x: 63; --y: 203; --rv-delay: 2683ms; --rv-dur: 183ms">2.5 h over the terminal · £75 held</p>
+                <i class="hx-item hx-dot hx-dot--on" data-reveal style="--x: 28; --y: 247; --rv-delay: 2117ms; --rv-dur: 417ms"></i>
+                <p class="hx-item hx-label hx-label--ok" data-reveal style="--x: 63; --y: 252; --rv-delay: 2117ms; --rv-dur: 417ms">£1,365 approved</p>
+                <i class="hx-item hx-tl hx-tl--dim" data-reveal style="--x: 38.5; --y: 274; --len: 12; --rv-delay: 2367ms; --rv-dur: 417ms"></i>
+                <i class="hx-item hx-dot hx-dot--off" data-reveal style="--x: 28; --y: 290; --rv-delay: 2367ms; --rv-dur: 417ms"></i>
+                <p class="hx-item hx-label hx-label--dim" data-reveal style="--x: 63; --y: 295; --rv-delay: 2367ms; --rv-dur: 417ms">Pay run: Friday</p>
+                <i class="hx-item hx-tl hx-tl--dim" data-reveal style="--x: 38.5; --y: 316; --len: 12; --rv-delay: 2600ms; --rv-dur: 383ms"></i>
+                <i class="hx-item hx-dot hx-dot--off" data-reveal style="--x: 28; --y: 333; --rv-delay: 2600ms; --rv-dur: 383ms"></i>
+                <p class="hx-item hx-label hx-label--dim" data-reveal style="--x: 63; --y: 338; --rv-delay: 2600ms; --rv-dur: 383ms">Next check: week 43</p>
+              </div>
+            </article>
+            <article class="hx-card hx-card--run" data-reveal style="--rv-delay: 1867ms; --rv-dur: 350ms" aria-label="Pay run, week 42: £8,952 approved, £1,039 held for query.">
+              <div aria-hidden="true">
+                <p class="hx-item hx-label" data-reveal style="--x: 28; --y: 29; --rv-delay: 2317ms; --rv-dur: 350ms">Pay run · Week 42</p>
+                <p class="hx-item hx-value" data-reveal style="--x: 28; --y: 70; --rv-delay: 2533ms; --rv-dur: 350ms">£8,952</p>
+                <p class="hx-item hx-delta" data-reveal style="--x: 172; --y: 86; --rv-delay: 2533ms; --rv-dur: 350ms">£1,039 held</p>
+                <svg class="hx-item hx-lines" data-reveal style="--x: 28; --y: 121; --rv-delay: 2667ms; --rv-dur: 367ms" viewBox="0 0 274 120" preserveAspectRatio="none" focusable="false"><g stroke="#FFFFFF" stroke-width="0.5" stroke-dasharray="1 5" stroke-opacity="0.3"><line x1="0.25" y1="0" x2="0.25" y2="120"/><line x1="21.25" y1="0" x2="21.25" y2="120"/><line x1="42.25" y1="0" x2="42.25" y2="120"/><line x1="63.25" y1="0" x2="63.25" y2="120"/><line x1="84.25" y1="0" x2="84.25" y2="120"/><line x1="105.25" y1="0" x2="105.25" y2="120"/><line x1="126.25" y1="0" x2="126.25" y2="120"/><line x1="147.25" y1="0" x2="147.25" y2="120"/><line x1="168.25" y1="0" x2="168.25" y2="120"/><line x1="189.25" y1="0" x2="189.25" y2="120"/><line x1="210.25" y1="0" x2="210.25" y2="120"/><line x1="231.25" y1="0" x2="231.25" y2="120"/><line x1="252.25" y1="0" x2="252.25" y2="120"/><line x1="273.25" y1="0" x2="273.25" y2="120"/></g></svg>
+                <svg class="hx-item hx-chart" data-reveal style="--x: 19; --y: 132; --rv-delay: 2667ms; --rv-dur: 367ms" viewBox="0 0 290 117" focusable="false"><defs><linearGradient id="hx-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0FD76A" stop-opacity="0.28"/><stop offset="1" stop-color="#0FD76A" stop-opacity="0"/></linearGradient></defs><path class="hx-chart__area" d="M 0 88 C 4.33 85 17.33 71.33 26 70 C 34.67 68.67 43.17 83 52 80 C 60.83 77 70.17 54.67 79 52 C 87.83 49.33 96.17 66.33 105 64 C 113.83 61.67 123.17 39 132 38 C 140.83 37 149.17 57 158 58 C 166.83 59 176.17 42 185 44 C 193.83 46 202.33 72.33 211 70 C 219.67 67.67 228.17 34 237 30 C 245.83 26 255.17 47.33 264 46 C 272.83 44.67 285.67 26 290 22 L 290 117 L 0 117 Z" fill="url(#hx-fill)"/><path class="hx-chart__line" pathLength="1" d="M 0 88 C 4.33 85 17.33 71.33 26 70 C 34.67 68.67 43.17 83 52 80 C 60.83 77 70.17 54.67 79 52 C 87.83 49.33 96.17 66.33 105 64 C 113.83 61.67 123.17 39 132 38 C 140.83 37 149.17 57 158 58 C 166.83 59 176.17 42 185 44 C 193.83 46 202.33 72.33 211 70 C 219.67 67.67 228.17 34 237 30 C 245.83 26 255.17 47.33 264 46 C 272.83 44.67 285.67 26 290 22" fill="none" stroke="#2CDC7C" stroke-opacity="0.9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle class="hx-chart__ping" cx="290" cy="22" r="4"/><circle class="hx-chart__dot" cx="290" cy="22" r="3.5"/></svg>
+              </div>
+            </article>
+            <div class="hx-foot" data-reveal style="--rv-delay: 1675ms; --rv-dur: 760ms">
+              <p class="hx-foot__title">Real-time claim checking</p>
+              <p class="hx-foot__cap">From the terminal scan to the pay run, matched automatically</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== FACTS ============================== -->
+    <!-- Scrolled into (js/facts.js): the line lights word by word, and each card rises into place
+         with its figure counting in. -->
+    <section class="facts light" aria-label="PayRoll Protect at a glance">
+      <div class="wrap facts__in">
+        <p class="facts__tag" data-split><span class="hl-1">Don’t Approve What</span> <span class="hl-1">You Can’t Prove.</span></p>
+        <ul class="facts__nums">
+          <li class="facts__ours"><strong><span class="od" data-od="9000" data-prefix="£" data-static>£9,000</span><sup>1</sup></strong><span>Saved a week on our average site</span></li>
+          <li><strong><span class="od" data-od="1.4" data-decimals="1" data-prefix="£" data-suffix="bn" data-static>£1.4bn</span><sup>2</sup></strong><span>Estimated UK exposure a year</span></li>
+          <li><strong><span class="od" data-od="14" data-static>14</span> days</strong><span>Typical time to go live</span></li>
+        </ul>
+        <p class="facts__src"><sup>1</sup> Average across PayRoll Protect sites: £180,000 of labour a week, 40 workers. <sup>2</sup> An estimate: £82bn of UK construction payroll at a 1.7% fraud rate. Sources include ONS, CIPP and HMRC.</p>
+      </div>
+    </section>
+
+    <!-- ============================== FILM: THE EXPLAINER ============================== -->
+    <!-- The explainer film (js/watch.js), in chapters by what it covers; chapter starts (data-t, in
+         seconds) are where the narrator starts each topic. Each chapter links to the part of the page that shows it: going
+         there pauses the film, and a pill (#watch-back) brings the visitor back to where it left off. -->
+    <section class="section tone watch gx light" id="watch" aria-labelledby="watch-h" data-duration="91.86" data-live>
+      <div class="wrap">
+        <div class="head head--center">
+          <p class="label"><span class="label__spark" aria-hidden="true">✦</span>Watch · 1:32</p>
+          <h2 id="watch-h" data-split><span class="hl-1">PayRoll Protect,</span> <span class="hl-2">Explained.</span></h2>
+          <p class="lead rv">A minute and a half on how it works. Each chapter can take you to the part of the page that shows it, then back to the film.</p>
+        </div>
+        <div class="watch__grid">
+          <div class="watch__player rv">
+            <div class="watch__frame hud">
+              <div class="watch__screen" data-cursor="Play">
+                <video class="watch__video" playsinline preload="none" data-poster="assets/img/hero-poster-1600.webp" width="1920" height="1080" aria-label="PayRoll Protect explainer film">
+                  <source src="assets/video/explainer-720.mp4" type="video/mp4" media="(max-width: 767px)">
+                  <source src="assets/video/explainer-1080.mp4" type="video/mp4">
+                  <track kind="captions" src="assets/video/explainer.en.vtt" srclang="en" label="English">
+                </video>
+                <p class="watch__cc" aria-hidden="true"></p>
+                <button class="watch__big" type="button"><span class="watch__big-i" aria-hidden="true"><svg><use href="#i-play"/></svg></span><span class="watch__big-l">Play the film</span><span class="watch__big-t mono">1:32</span></button>
+                <div class="watch__bar">
+                  <button class="watch__ctl" type="button" data-act="play" aria-label="Play"><svg class="is-a" aria-hidden="true"><use href="#i-play"/></svg><svg class="is-b" aria-hidden="true"><use href="#i-pause"/></svg></button>
+                  <span class="watch__time mono"><span data-now="time">0:00</span> / 1:32</span>
+                  <div class="watch__track" role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0" aria-valuemax="92" aria-valuenow="0" aria-valuetext="0:00 of 1:32"><span class="watch__tip" aria-hidden="true"></span></div>
+                  <button class="watch__ctl" type="button" data-act="cc" aria-label="Captions" aria-pressed="false"><svg aria-hidden="true"><use href="#i-cc"/></svg></button>
+                  <button class="watch__ctl" type="button" data-act="mute" aria-label="Mute" aria-pressed="false"><svg class="is-a" aria-hidden="true"><use href="#i-sound"/></svg><svg class="is-b" aria-hidden="true"><use href="#i-muted"/></svg></button>
+                  <button class="watch__ctl" type="button" data-act="full" aria-label="Full screen"><svg aria-hidden="true"><use href="#i-full"/></svg></button>
+                </div>
+              </div>
+            </div>
+            <div class="watch__now">
+              <p class="watch__now-t"><span class="watch__now-i mono" data-now="i">01</span><span data-now="name">The £1.4bn problem</span></p>
+              <a class="btn btn--primary btn--sm watch__go" href="#numbers" data-now="go"><span data-now="label">See the numbers</span><svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </div>
+          <ol class="watch__ch rv" aria-label="Chapters">
+            <li><button type="button" data-t="0" data-to="#numbers" data-go="See the numbers"><span class="watch__i">01</span><span class="watch__n">The £1.4bn problem</span><span class="watch__s mono">0:00</span><i class="watch__p" aria-hidden="true"></i></button></li>
+            <li><button type="button" data-t="15.8" data-to="#gap" data-go="See the gap"><span class="watch__i">02</span><span class="watch__n">Every invoice is a claim</span><span class="watch__s mono">0:15</span><i class="watch__p" aria-hidden="true"></i></button></li>
+            <li><button type="button" data-t="27.9" data-to="#leaks" data-go="See the leaks"><span class="watch__i">03</span><span class="watch__n">Three ways labour leaks</span><span class="watch__s mono">0:27</span><i class="watch__p" aria-hidden="true"></i></button></li>
+            <li><button type="button" data-t="38.5" data-to="#how" data-go="See how it works"><span class="watch__i">04</span><span class="watch__n">A face scan at the terminal</span><span class="watch__s mono">0:38</span><i class="watch__p" aria-hidden="true"></i></button></li>
+            <li><button type="button" data-t="48.6" data-to="#install" data-go="See installation"><span class="watch__i">05</span><span class="watch__n">Simple to set up</span><span class="watch__s mono">0:48</span><i class="watch__p" aria-hidden="true"></i></button></li>
+            <li><button type="button" data-t="70.1" data-to="#match" data-go="See the matching"><span class="watch__i">06</span><span class="watch__n">Every line matched</span><span class="watch__s mono">1:10</span><i class="watch__p" aria-hidden="true"></i></button></li>
+            <li><button type="button" data-t="79.8" data-to="#pilot" data-go="See the pilot"><span class="watch__i">07</span><span class="watch__n">Verify, match, pay</span><span class="watch__s mono">1:19</span><i class="watch__p" aria-hidden="true"></i></button></li>
+          </ol>
+        </div>
+        <details class="watch__tx">
+          <summary><span>Read the transcript</span><i aria-hidden="true"></i></summary>
+          <div class="watch__tx-body">
+            <p>An estimated £1.4 billion every year in the UK construction market falls to fraudulent financial activity. PayRoll Protect is here to stop it, by verifying 100% of your workforce, daily.</p>
+            <p>Because every subcontractor invoice is a claim. Most are checked against paper registers and spreadsheets, if they’re checked at all. And at summary level, the numbers always look right.</p>
+            <p>Ghost workers who never scan at the terminal. Hours that outrun the shift. One person clocking in for another. Each one hides inside a total that looks right.</p>
+            <p>PayRoll Protect puts a face-scanning terminal on site. Every worker clocks in and out with their face. No cards, no apps, no proxy sign-ins.</p>
+            <p>Setup is simple. The terminal arrives pre-configured and mounts at site entry. We install a Starlink dish so the terminal never relies on site Wi-Fi or mobile signal. Workers enrol on their first day with nothing to download, and most sites are live within two weeks. And if the link ever drops, scans queue on the terminal and sync the moment it’s back.</p>
+            <p>Then every line of every labour invoice is matched against the terminal record. Anything without a scan behind it is held for query before payroll runs.</p>
+            <p>Verify, match, pay. PayRoll Protect. Don’t approve what you can’t prove. Book your 90-day pilot today.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============================== 01 GAP ============================== -->
+    <section class="gap gx light" id="gap" data-live>
+      <div class="gap__pin">
+        <div class="wrap gap__grid">
+          <div class="gap__head">
+            <p class="label"><span class="label__spark" aria-hidden="true">✦</span>The gap</p>
+            <h2 data-split><span class="hl-1">Every Subcontractor</span> <span class="hl-2">Invoice Is a Claim.</span></h2>
+            <p class="lead rv">Most are checked against paper registers and spreadsheets, if they are checked at all. At summary level, the numbers always look right.</p>
+          </div>
+
+          <div class="zoom card hud" id="zoom">
+            <div class="zoom__panel">
+              <div class="zoom__top mono">
+                <div class="zoom__cap" aria-live="polite">
+                  <span class="zoom__cap-a">One site · one week · summary view</span>
+                  <span class="zoom__cap-b">Zoomed to the last 5% of hours</span>
+                </div>
+                <span class="zoom__x" id="z-x" aria-hidden="true">&#215;1.0</span>
+              </div>
+              <div class="zoom__rows">
+                <div class="zrow">
+                  <span class="zrow__k">Claimed</span>
+                  <div class="zrow__track"><div class="zrow__scale"><i class="zrow__fill zrow__fill--claimed"></i></div></div>
+                  <span class="zrow__v mono">1,840.0&#8239;h</span>
+                </div>
+                <div class="zrow">
+                  <span class="zrow__k">At the terminal</span>
+                  <div class="zrow__track"><div class="zrow__scale"><i class="zrow__fill zrow__fill--gate"></i><i class="zrow__gap"><b class="zrow__stripes"></b></i><i class="zrow__edge"></i></div></div>
+                  <span class="zrow__v mono">1,808.5&#8239;h</span>
+                </div>
+              </div>
+              <div class="zoom__ruler mono" aria-hidden="true"><span id="z-l">0 h</span><span id="z-m">920 h</span><span id="z-r">1,840 h</span></div>
+            </div>
+            <div class="zoom__result">
+              <div class="zoom__state zoom__state--a" aria-hidden="true">
+                <div class="zoom__fig"><span class="zoom__pct">98.3%</span><span class="zoom__per mono">matched</span></div>
+                <p>Claimed hours and the terminal record agree to within 2%. At this view, the invoice gets approved.</p>
+              </div>
+              <div class="zoom__state zoom__state--b">
+                <div class="zoom__fig"><span class="od" id="z-amt" data-od="1008" data-prefix="£" data-static>£1,008</span><span class="zoom__per mono">this week</span></div>
+                <p>31.5 hours with no terminal record behind them. About £52,000 a year, on one site.</p>
+              </div>
+            </div>
+          </div>
+          <p class="note gap__note">Illustrative: 46 workers, five days, £32 an hour, 1.7% of claimed hours unverified, which is the sector estimate.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 02 MATCH ============================== -->
+    <section class="match dark" id="match" data-live>
+      <div class="match__pin">
+        <div class="match__stage" aria-hidden="true"></div>
+        <div class="wrap match__grid">
+          <div class="match__copy">
+            <p class="label"><span class="label__spark" aria-hidden="true">✦</span>Line-by-line matching</p>
+            <h2 class="match__title" id="match-title"><span class="hl-1">Every Line, Matched</span> <span class="hl-2">to the Terminal.</span></h2>
+            <p class="match__lead">One subcontractor’s weekly invoice, checked worker by worker against the terminal record.</p>
+            <div class="mq__tots">
+              <div class="mq__tot"><span>Verified</span><strong class="od" id="m-ver" data-od="8952" data-prefix="£" data-static>£8,952</strong></div>
+              <div class="mq__tot"><span>Held for query</span><strong class="od" id="m-held" data-od="1039" data-prefix="£" data-static>£1,039</strong></div>
+              <div class="mq__split" aria-hidden="true"><i class="mq__v"></i><i class="mq__x"></i></div>
+              <p class="mq__count"><span class="mq__n">8</span> of 8 lines checked · £9,991 claimed</p>
+            </div>
+          </div>
+
+          <div class="mq" id="mq">
+            <div class="mq__sheet">
+              <i class="mq__floor" aria-hidden="true"></i>
+              <div class="mq__head mono" aria-hidden="true"><span>Invoice · week 42</span><span>8 lines</span></div>
+              <div class="mq__window">
+                <ol class="mq__rows" aria-label="Invoice lines and their terminal records">
+                  <li class="mq__row is-ok" data-v="1134" data-h="0" style="--c:0.8077;--g:0.8077"><span class="mq__who"><strong>W-0412</strong><span class="mq__sub"><span class="mq__trade">Groundworks · 42.0&#8239;h</span></span></span><span class="mq__bar" aria-hidden="true"><i class="mq__gate"></i><i class="mq__claim"></i></span><span class="mq__res"><svg class="mq__tick" aria-hidden="true"><use href="#i-tick"/></svg>Verified</span></li>
+                  <li class="mq__row is-held" data-v="1365" data-h="75" style="--c:0.9231;--g:0.875"><span class="mq__who"><strong>W-0877</strong><span class="mq__sub"><span class="mq__trade">Brickwork · 48.0&#8239;h</span><span class="mq__why">2.5&#8239;h over the terminal</span></span></span><span class="mq__bar" aria-hidden="true"><i class="mq__gate"></i><i class="mq__gap"></i><i class="mq__claim"></i></span><span class="mq__res">£75 held</span></li>
+                  <li class="mq__row is-ok" data-v="1440" data-h="0" style="--c:0.7692;--g:0.7692"><span class="mq__who"><strong>W-1034</strong><span class="mq__sub"><span class="mq__trade">M&amp;E · 40.0&#8239;h</span></span></span><span class="mq__bar" aria-hidden="true"><i class="mq__gate"></i><i class="mq__claim"></i></span><span class="mq__res"><svg class="mq__tick" aria-hidden="true"><use href="#i-tick"/></svg>Verified</span></li>
+                  <li class="mq__row is-held" data-v="0" data-h="880" style="--c:0.7692;--g:0"><span class="mq__who"><strong>W-1188</strong><span class="mq__sub"><span class="mq__trade">Labourer · 40.0&#8239;h</span><span class="mq__why">No terminal scan all week</span></span></span><span class="mq__bar" aria-hidden="true"><i class="mq__gate"></i><i class="mq__gap"></i><i class="mq__claim"></i></span><span class="mq__res">£880 held</span></li>
+                  <li class="mq__row is-ok" data-v="1395" data-h="0" style="--c:0.8654;--g:0.8654"><span class="mq__who"><strong>W-0655</strong><span class="mq__sub"><span class="mq__trade">Scaffolding · 45.0&#8239;h</span></span></span><span class="mq__bar" aria-hidden="true"><i class="mq__gate"></i><i class="mq__claim"></i></span><span class="mq__res"><svg class="mq__tick" aria-hidden="true"><use href="#i-tick"/></svg>Verified</span></li>
+                  <li class="mq__row is-ok" data-v="1276" data-h="0" style="--c:0.8462;--g:0.8462"><span class="mq__who"><strong>W-0903</strong><span class="mq__sub"><span class="mq__trade">Carpentry · 44.0&#8239;h</span></span></span><span class="mq__bar" aria-hidden="true"><i class="mq__gate"></i><i class="mq__claim"></i></span><span class="mq__res"><svg class="mq__tick" aria-hidden="true"><use href="#i-tick"/></svg>Verified</span></li>
+                  <li class="mq__row is-held" data-v="1316" data-h="84" style="--c:0.9615;--g:0.9038"><span class="mq__who"><strong>W-0348</strong><span class="mq__sub"><span class="mq__trade">Plastering · 50.0&#8239;h</span><span class="mq__why">Left 15:00 on Friday</span></span></span><span class="mq__bar" aria-hidden="true"><i class="mq__gate"></i><i class="mq__gap"></i><i class="mq__claim"></i></span><span class="mq__res">£84 held</span></li>
+                  <li class="mq__row is-ok" data-v="1026" data-h="0" style="--c:0.7308;--g:0.7308"><span class="mq__who"><strong>W-1120</strong><span class="mq__sub"><span class="mq__trade">Dry lining · 38.0&#8239;h</span></span></span><span class="mq__bar" aria-hidden="true"><i class="mq__gate"></i><i class="mq__claim"></i></span><span class="mq__res"><svg class="mq__tick" aria-hidden="true"><use href="#i-tick"/></svg>Verified</span></li>
+                </ol>
+              </div>
+              <i class="mq__scan" aria-hidden="true"></i>
+            </div>
+            <p class="mq__note">Illustrative invoice. Rates and hours are examples.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 03 LEAKS ============================== -->
+    <section class="section tone leaks gx light" id="leaks" data-live>
+      <div class="leaks__pin">
+      <div class="wrap leaks__scene">
+        <div class="leaks__copy">
+        <div class="head">
+          <p class="label"><span class="label__spark" aria-hidden="true">✦</span>Where money goes</p>
+          <h2 data-split><span class="hl-1">Three Leaks.</span> <span class="hl-2">One Record Closes Them.</span></h2>
+          <p class="lead rv">Each one hides inside a total that looks right. Each one fails the same test: no terminal record, no payment.</p>
+        </div>
+        <ol class="leaks__steps" aria-hidden="true"><li class="is-on"><span class="mono">01</span>Ghost Workers<i></i></li><li><span class="mono">02</span>Inflated Hours<i></i></li><li><span class="mono">03</span>Proxy Clocking<i></i></li></ol>
+        <p class="leaks__go"><button class="rk-go" type="button" data-risk-open><i aria-hidden="true"><svg aria-hidden="true"><use href="#i-arrow"/></svg></i><span>Which are open on your sites? Take the <span style="white-space:nowrap">60-second</span> check</span></button></p>
+        </div>
+        <div class="leaks__grid">
+          <article class="leak card spot" data-leak="ghost" aria-labelledby="lk-1">
+            <div class="lv lv--ghost" aria-hidden="true">
+              <div class="lv__top"><span>W-1188 · Labourer</span><span>40.0&#8239;h claimed</span></div>
+              <div class="lv__fig"><div class="gw"><i class="gw__base"></i><ol class="gw__days"><li><i class="gw__ring"></i><i class="gw__miss"></i><span>Mon</span></li><li><i class="gw__ring"></i><i class="gw__miss"></i><span>Tue</span></li><li><i class="gw__ring"></i><i class="gw__miss"></i><span>Wed</span></li><li><i class="gw__ring"></i><i class="gw__miss"></i><span>Thu</span></li><li><i class="gw__ring"></i><i class="gw__miss"></i><span>Fri</span></li></ol><i class="gw__beam"></i></div></div>
+              <div class="lv__out"><span class="flag"></span>No terminal scan all week · £880 held</div>
+            </div>
+            <div class="leak__body">
+              <span class="leak__n mono">01</span>
+              <h3 id="lk-1">Ghost Workers</h3>
+              <p>Names on the invoice that never scanned at the terminal: fake, absent or duplicated.</p>
+              <p class="leak__caught"><span>Caught by</span> no scan on the billed day.</p>
+            </div>
+            <i class="leak__veil" aria-hidden="true"></i>
+          </article>
+
+          <article class="leak card spot" data-leak="hours" aria-labelledby="lk-2">
+            <div class="lv lv--hours" aria-hidden="true">
+              <div class="lv__top"><span>One shift · Tuesday</span><span>Claim vs terminal</span></div>
+              <div class="lv__fig"><div class="sh">
+                <div class="sh__lane"><span class="sh__k">Claim</span><div class="sh__track"><i class="sh__line sh__claim" style="--a:0.0833;--b:1"></i><i class="sh__over" style="--a:0.0833;--b:0.1639"></i><i class="sh__over" style="--a:0.875;--b:1"></i><span class="sh__t" style="--x:0.0833">07:00</span><span class="sh__t" style="--x:1">18:00</span></div></div>
+                <div class="sh__lane"><span class="sh__k">Terminal</span><div class="sh__track"><i class="sh__line sh__gate" style="--a:0.1639;--b:0.875"></i><span class="sh__t sh__t--gate" style="--x:0.1639">07:58</span><span class="sh__t sh__t--gate" style="--x:0.875">16:30</span></div></div>
+                <i class="sh__guide" style="--x:0.1639"></i><i class="sh__guide" style="--x:0.875"></i>
+              </div></div>
+              <div class="lv__out"><span class="flag"></span>+2.5&#8239;h a day over the terminal record</div>
+            </div>
+            <div class="leak__body">
+              <span class="leak__n mono">02</span>
+              <h3 id="lk-2">Inflated Hours</h3>
+              <p>Claims that outrun the shift: extended hours, padded overtime, wrong start times.</p>
+              <p class="leak__caught"><span>Caught by</span> clock-out records that contradict the claim.</p>
+            </div>
+            <i class="leak__veil" aria-hidden="true"></i>
+          </article>
+
+          <article class="leak card spot" data-leak="proxy" aria-labelledby="lk-3">
+            <div class="lv lv--proxy" aria-hidden="true">
+              <div class="lv__top"><span>W-0219 · one identity</span><span>Two terminals</span></div>
+              <div class="lv__fig"><div class="px">
+                <i class="px__line"></i>
+                <i class="px__dot"></i>
+                <div class="px__gap"><i></i><span>1&#8239;s apart</span></div>
+                <div class="px__gate px__gate--a"><span class="px__k">Terminal 1</span><i class="px__ring"></i><i class="px__ping"></i><span class="px__t">07:44:12</span></div>
+                <div class="px__gate px__gate--b"><span class="px__k">Terminal 2</span><i class="px__ring"></i><i class="px__ping"></i><span class="px__t">07:44:13</span></div>
+              </div></div>
+              <div class="lv__out"><span class="flag"></span>One identity at two terminals, 1&#8239;s apart</div>
+            </div>
+            <div class="leak__body">
+              <span class="leak__n mono">03</span>
+              <h3 id="lk-3">Proxy Clocking</h3>
+              <p>One person signing in for another: buddy clocking, shared cards, unsupervised check-ins.</p>
+              <p class="leak__caught"><span>Caught by</span> two scans for one identity at the same moment.</p>
+            </div>
+            <i class="leak__veil" aria-hidden="true"></i>
+          </article>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- ============================== 04 NUMBERS ============================== -->
+    <section class="section numbers dark dots" id="numbers" data-live>
+      <div class="wrap">
+        <div>
+          <div class="head">
+            <p class="label"><span class="label__spark" aria-hidden="true">✦</span>The numbers</p>
+            <h2 data-split><span class="hl-1">The Cost of Trusting</span> <span class="hl-2">the Invoice.</span></h2>
+            <p class="lead rv">On an average PayRoll Protect site we save £9,000 a week, in labour claims with no record behind them. Across the UK, an estimated £1.4bn of construction payroll is exposed to fraud every year.</p>
+          </div>
+          <div class="ours" role="group" aria-labelledby="ours-k">
+            <div class="ours__lead">
+              <div class="ours__top"><p class="ours__k" id="ours-k">Our average site</p><span class="tag tag--lime">Measured</span></div>
+              <p class="ours__fig"><strong class="od" data-od="9000" data-prefix="£" data-static>£9,000</strong><span>saved every week</span></p>
+              <dl class="ours__basis">
+                <div><dt>Weekly labour spend</dt><dd>£180,000</dd></div>
+                <div><dt>Workers on site</dt><dd>40</dd></div>
+                <div><dt>Saved a year</dt><dd>£468,000</dd></div>
+              </dl>
+            </div>
+            <div class="ours__cmp">
+              <p class="ours__k">Share of weekly labour spend</p>
+              <div class="vsbar vsbar--ours"><span class="vsbar__k">Saved on our sites</span><span class="vsbar__v">5%</span><span class="vsbar__track" aria-hidden="true"><i style="--w: 1"></i></span></div>
+              <div class="vsbar"><span class="vsbar__k">UK fraud estimate</span><span class="vsbar__v">1.7%</span><span class="vsbar__track" aria-hidden="true"><i style="--w: 0.34"></i></span></div>
+              <p class="ours__vs">Nearly three times the national estimate.</p>
+            </div>
+          </div>
+          <p class="stats__k">Across the UK</p>
+          <dl class="stats">
+            <div class="stat"><dt>UK construction payroll</dt><dd class="od" data-od="82" data-prefix="£" data-suffix="bn" data-static>£82bn</dd></div>
+            <div class="stat"><dt>Estimated payroll fraud rate</dt><dd class="od" data-od="1.7" data-decimals="1" data-suffix="%" data-static>1.7%</dd></div>
+            <div class="stat"><dt>Exposed every year</dt><dd class="od" data-od="1.4" data-decimals="1" data-prefix="£" data-suffix="bn" data-static>£1.4bn</dd></div>
+          </dl>
+
+          <div class="calc" id="calc">
+            <div class="calc__copy">
+              <h3>What Is Your Exposure?</h3>
+              <p>Set your weekly subcontract labour spend. We apply 5%, what our sites save on average.</p>
+              <p class="note">Estimates only. The UK sector estimate is 1.7% (sources include ONS, CIPP, HMRC and UK construction crime reporting); the full calculator lets you compare.</p>
+              <p class="calc__more"><a class="btn btn--ghost" href="calculator.html?spend=180000" data-calc-full>Open the full calculator<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+              <p class="calc__risk"><button class="rk-go" type="button" data-risk-open><i aria-hidden="true"><svg aria-hidden="true"><use href="#i-arrow"/></svg></i><span>Not sure of your figures? Take the <span style="white-space:nowrap">60-second</span> risk check</span></button></p>
+            </div>
+            <div class="calc__ui hud">
+              <div class="calc__spend"><label class="calc__k" for="c-range">Weekly labour spend</label><span class="calc__val od" id="c-weekly" data-od="180000" data-prefix="£" data-static>£180,000</span></div>
+              <input class="range" id="c-range" type="range" min="0" max="1000" step="1" value="465" aria-valuetext="£180,000 a week">
+              <div class="calc__presets" role="group" aria-label="Quick values">
+                <span class="calc__pill" aria-hidden="true"></span>
+                <button type="button" data-v="50000">£50k</button>
+                <button type="button" data-v="180000" aria-pressed="true">£180k</button>
+                <button type="button" data-v="1000000">£1m</button>
+                <button type="button" data-v="2500000">£2.5m</button>
+              </div>
+              <div class="calc__out">
+                <div><span class="calc__k">Every month</span><strong class="od" id="c-month" data-od="39000" data-prefix="£" data-static>£39,000</strong></div>
+                <div><span class="calc__k">Every year</span><strong class="od" id="c-year" data-od="468000" data-prefix="£" data-static>£468,000</strong></div>
+              </div>
+              <p class="calc__day mono" id="c-day" aria-live="polite">That is £1,800 every working day.</p>
+              <div class="calc__share"><button class="copybtn" type="button" id="c-share"><span class="copybtn-i" aria-hidden="true"><svg class="is-a"><use href="#i-copy"/></svg><svg class="is-b"><use href="#i-tick"/></svg></span><span class="copybtn-l">Share this estimate</span></button><span class="sr" role="status" id="c-share-said"></span></div>
+            </div>
+            <div class="numbers__cta"><a class="btn btn--primary btn--lg" href="book.html" data-magnetic>See your real number in a pilot<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 05 HOW ============================== -->
+    <section class="section how gx light" id="how" data-live>
+      <div class="wrap how__grid">
+        <div class="how__left">
+          <div class="head">
+            <p class="label"><span class="label__spark" aria-hidden="true">✦</span>How it works</p>
+            <h2 data-split><span class="hl-1">From Terminal Scan</span> <span class="hl-2">to Approved Payment.</span></h2>
+          </div>
+          <ol class="steps" id="steps">
+            <li class="step is-on" data-s="0"><span class="step__n mono">01</span><div><h3>Worker Verified</h3><p>Identity confirmed at a fixed device on site entry: face or fingerprint, with GPS location. No cards, PINs or proxy sign-ins.</p></div></li>
+            <li class="step" data-s="1"><span class="step__n mono">02</span><div><h3>Hours Captured</h3><p>In and out times recorded per worker, per day. Works offline and syncs when the connection returns.</p></div></li>
+            <li class="step" data-s="2"><span class="step__n mono">03</span><div><h3>Invoice Checked</h3><p>Every claimed line is compared against the verified attendance record.</p></div></li>
+            <li class="step" data-s="3"><span class="step__n mono">04</span><div><h3>Exceptions Raised</h3><p>Anything without a matching record is flagged before payroll, grouped by type.</p></div></li>
+            <li class="step" data-s="4"><span class="step__n mono">05</span><div><h3>Payment Released</h3><p>Only verified labour is paid. Every payment carries its evidence.</p></div></li>
+          </ol>
+          <p class="aside rv">Sits alongside your existing payroll and timekeeping. Export, reconcile, keep what works.</p>
+        </div>
+
+        <div class="how__right hud">
+          <div class="stage card" id="stage">
+            <div class="stage__bar"><span class="mono" aria-hidden="true">PayRoll Protect</span><span class="stage__dots" aria-hidden="true"><i class="is-on" style="--x:0px;--s:1"></i><i style="--x:33px"></i><i style="--x:54px"></i><i style="--x:75px"></i><i style="--x:96px"></i></span><button class="stage__pause" type="button">Pause</button></div>
+            <div class="stage__view" aria-hidden="true">
+              <div class="sv sv--scan is-on" data-s="0">
+                <div class="term" aria-hidden="true">
+                  <i class="term__post"></i>
+                  <div class="term__rig"><div class="term__tilt">
+                    <i class="term__shade"></i>
+                    <i class="term__ex" style="--z:1"></i><i class="term__ex" style="--z:2"></i><i class="term__ex" style="--z:3"></i><i class="term__ex" style="--z:4"></i><i class="term__ex" style="--z:5"></i><i class="term__ex" style="--z:6"></i>
+                    <div class="term__face">
+                      <span class="term__cams"><i></i><i></i><i></i></span>
+                      <i class="term__led"></i>
+                      <div class="term__screen">
+                        <i class="term__wake"></i>
+                        <svg class="term__ui" viewBox="0 0 100 140">
+                          <g class="term__bk"><path d="M22 36v-8h8M70 28h8v8M78 84v8h-8M30 92h-8v-8"/></g>
+                          <path class="term__mesh" d="M30 50 29 62 32 74 39 84 50 89 61 84 68 74 71 62 70 50M39 55h6M55 55h6M50 63v6M43 76 50 78 57 76"/>
+                          <g class="term__pts">
+                            <circle cx="36" cy="40" r="1.1" style="--i:0"/><circle cx="50" cy="36" r="1.1" style="--i:1"/><circle cx="64" cy="40" r="1.1" style="--i:2"/>
+                            <circle cx="39" cy="55" r="1.1" style="--i:3"/><circle cx="45" cy="55" r="1.1" style="--i:4"/><circle cx="55" cy="55" r="1.1" style="--i:5"/><circle cx="61" cy="55" r="1.1" style="--i:6"/>
+                            <circle cx="50" cy="63" r="1.1" style="--i:7"/><circle cx="50" cy="69" r="1.1" style="--i:8"/>
+                            <circle cx="43" cy="76" r="1.1" style="--i:9"/><circle cx="50" cy="78" r="1.1" style="--i:10"/><circle cx="57" cy="76" r="1.1" style="--i:11"/>
+                            <circle cx="30" cy="50" r="1.1" style="--i:12"/><circle cx="29" cy="62" r="1.1" style="--i:13"/><circle cx="32" cy="74" r="1.1" style="--i:14"/><circle cx="39" cy="84" r="1.1" style="--i:15"/>
+                            <circle cx="50" cy="89" r="1.1" style="--i:16"/><circle cx="61" cy="84" r="1.1" style="--i:17"/><circle cx="68" cy="74" r="1.1" style="--i:18"/><circle cx="71" cy="62" r="1.1" style="--i:19"/><circle cx="70" cy="50" r="1.1" style="--i:20"/>
+                          </g>
+                        </svg>
+                        <i class="term__scan"></i>
+                        <span class="term__hint">Hold still</span>
+                        <div class="term__ok"><svg class="term__tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Verified</span></div>
+                      </div>
+                      <i class="term__fp"></i>
+                      <i class="term__glare"></i>
+                    </div>
+                  </div></div>
+                </div>
+                <dl class="sv__read mono"><div><dt>Identity</dt><dd>Face match</dd></div><div><dt>Location</dt><dd>GPS · Terminal 2</dd></div><div><dt>Time</dt><dd class="sv__time">07:41:08</dd></div><div class="sv__line"><dt>Invoice line</dt><dd><span class="sv__wait">Waiting for the scan</span><span class="sv__done">W-0412 · 42.0&#8239;h approved</span></dd></div></dl>
+              </div>
+              <div class="sv sv--sheet" data-s="1">
+                <div class="sv__title"><strong class="mono">W-0412</strong><span>Groundworks · Week 42</span></div>
+                <ol class="sheet">
+                  <li style="--a:0.081;--b:0.735"><span class="mono">Mon</span><span class="sheet__track"><i></i></span><span class="mono">07:03–15:33</span></li>
+                  <li style="--a:0.078;--b:0.732"><span class="mono">Tue</span><span class="sheet__track"><i></i></span><span class="mono">07:01–15:31</span></li>
+                  <li style="--a:0.083;--b:0.737"><span class="mono">Wed</span><span class="sheet__track"><i></i></span><span class="mono">07:05–15:35</span></li>
+                  <li style="--a:0.079;--b:0.733"><span class="mono">Thu</span><span class="sheet__track"><i></i></span><span class="mono">07:02–15:32</span></li>
+                  <li style="--a:0.077;--b:0.692"><span class="mono">Fri</span><span class="sheet__track"><i></i></span><span class="mono">07:00–15:00</span></li>
+                </ol>
+                <div class="sheet__axis mono"><span style="--x:0">06:00</span><span style="--x:0.4615">12:00</span><span style="--x:1">19:00</span></div>
+                <div class="sv__sum"><span>Verified this week</span><strong class="mono">42.0&#8239;h</strong></div>
+              </div>
+              <div class="sv sv--check" data-s="2">
+                <div class="sv__title"><strong class="mono">W-0877</strong><span>Invoice line vs terminal record</span></div>
+                <div class="cmp" style="--g:0.9479">
+                  <div class="cmp__lane"><span class="cmp__k mono">Invoice</span><span class="cmp__track"><i class="cmp__claim"></i><i class="cmp__over"></i></span><strong class="mono">48.0&#8239;h</strong></div>
+                  <div class="cmp__lane"><span class="cmp__k mono">Terminal</span><span class="cmp__track"><i class="cmp__gate"></i></span><strong class="mono">45.5&#8239;h</strong></div>
+                  <i class="cmp__guide"></i>
+                </div>
+                <div class="cmp__diff"><span class="flag"></span><span>2.5&#8239;h over the record · £75 held</span></div>
+              </div>
+              <div class="sv sv--exc" data-s="3">
+                <div class="sv__title"><strong class="mono">Exceptions</strong><span>Week 42 · grouped by type</span></div>
+                <ul class="exc">
+                  <li style="--v:1"><span>Unverified worker</span><span class="mono">1</span><strong class="mono">£880</strong><i></i></li>
+                  <li style="--v:0.0852"><span>Inflated hours</span><span class="mono">1</span><strong class="mono">£75</strong><i></i></li>
+                  <li style="--v:0.0955"><span>Early finish</span><span class="mono">1</span><strong class="mono">£84</strong><i></i></li>
+                  <li style="--v:0"><span>No-show</span><span class="mono">0</span><strong class="mono">£0</strong><i></i></li>
+                </ul>
+                <div class="sv__sum"><span>Held for query</span><strong class="mono">£1,039</strong></div>
+              </div>
+              <div class="sv sv--pay" data-s="4">
+                <div class="sv__title"><strong class="mono">Payment run</strong><span>Week 42</span></div>
+                <div class="pay__split" style="--v:0.896"><i class="pay__ok"></i><i class="pay__held"></i></div>
+                <div class="pay">
+                  <div class="pay__row pay__row--ok"><svg class="tick"><use href="#i-tick"/></svg><span>Approved for payment</span><strong class="mono">£8,952</strong></div>
+                  <div class="pay__row"><span class="flag"></span><span>Held for query</span><strong class="mono">£1,039</strong></div>
+                  <p class="pay__ev mono">Evidence attached · 7 workers · 35 attendance records</p>
+                </div>
+              </div>
+            </div>
+            <button class="stage__try" type="button"><span class="stage__ring" aria-hidden="true"><svg viewBox="0 0 36 36" focusable="false"><circle cx="18" cy="18" r="15"/><circle class="stage__fill" cx="18" cy="18" r="15" pathLength="100"/></svg><svg class="stage__face" viewBox="0 0 24 24" focusable="false"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16M9 10h.01M15 10h.01M9.5 15a3.5 3.5 0 0 0 5 0"/></svg></span><span class="stage__try-t">Hold to scan</span></button>
+            <span class="sr" aria-live="polite" data-said></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== FILM: TO ORBIT ============================== -->
+    <section class="film dark" id="orbit" aria-label="From the terminal to orbit" data-live
+             data-frames="192" data-ext="webp" data-dir="assets/film-orbit" data-dir-large="assets/film-orbit-2k"
+             data-dir-mobile="assets/film-orbit-m" data-crop-mobile="0.3949 0 0.45 1"
+             data-focal-x="0.5" data-focal-x-mobile="0.7">
+      <div class="film__stage">
+        <canvas class="film__canvas" aria-hidden="true"></canvas>
+        <img class="film__poster" src="assets/img/orbit-poster-1600.webp" srcset="assets/img/orbit-poster-800.webp 800w, assets/img/orbit-poster-1600.webp 1600w, assets/img/orbit-poster-2560.webp 2560w" sizes="100vw" width="1600" height="900" loading="lazy" alt="The dusk sky above a construction site entrance, a tower crane in silhouette.">
+        <div class="film__shade" aria-hidden="true"></div>
+        <div class="film__sky" aria-hidden="true">
+          <i class="film__beam"></i>
+          <i class="film__sat"></i><i class="film__sat"></i><i class="film__sat"></i><i class="film__sat"></i><i class="film__sat is-lead"></i><i class="film__sat"></i><i class="film__sat"></i><i class="film__sat"></i><i class="film__sat"></i>
+        </div>
+        <div class="film__gauge mono" aria-hidden="true">
+          <div class="film__rail">
+            <span class="film__tick film__tick--top" style="--y:1">≈ 550 km</span>
+            <span class="film__tick" style="--y:0.32">30 m</span>
+            <span class="film__tick" style="--y:0">0 m</span>
+            <i class="film__marker"><span data-alt>2 m</span></i>
+          </div>
+          <p class="film__link">Link<strong data-link>Terminal 2</strong></p>
+        </div>
+        <div class="wrap film__content">
+          <p class="film__line" data-line="1">Every scan leaves the terminal…</p>
+          <p class="film__line" data-line="2">…straight up to orbit.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 06 INSTALLATION ============================== -->
+    <section class="section sat-sec dark" id="install" data-live>
+      <div class="sat__stage" aria-hidden="true"></div>
+      <div class="sat__pin">
+      <div class="wrap sat__scene">
+        <div class="sat__copy">
+          <div class="head">
+            <p class="label"><span class="label__spark" aria-hidden="true">✦</span>Installation</p>
+            <h2 data-split><span class="hl-1">Any Terminal.</span> <span class="hl-2">Online by Satellite.</span></h2>
+            <p class="lead rv">Every terminal connects over Starlink satellite internet, so it never depends on site Wi-Fi or a mobile signal.</p>
+            <p class="sat__brand rv"><span>Connected by</span><img src="assets/brand/starlink-white.png" width="612" height="101" alt="Starlink" loading="lazy" decoding="async"></p>
+          </div>
+          <ol class="sat__steps">
+            <li><span class="mono">01</span><div><strong>Mounted at Site Entry</strong><p>Arrives pre-configured, ready to fix where every worker passes.</p></div><i aria-hidden="true"></i></li>
+            <li><span class="mono">02</span><div><strong>Online by Starlink</strong><p>The dish gives the terminal its own connection, independent of the site office.</p></div><i aria-hidden="true"></i></li>
+            <li><span class="mono">03</span><div><strong>Every Scan, Sent</strong><p>Each check-in goes straight to UK-based servers, ready to match against the invoice.</p></div><i aria-hidden="true"></i></li>
+            <li><span class="mono">04</span><div><strong>Offline, Still Recording</strong><p>If the link drops, scans queue on the terminal and sync when it returns.</p></div><i aria-hidden="true"></i></li>
+          </ol>
+          <a class="btn btn--ghost sat__more" href="installation.html">How installation works<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+        <figure class="sat-globe" data-globe aria-hidden="true">
+          <div class="sat__hud">
+            <div class="sat__top mono"><span>Terminal 2 · North</span><span>Satellite link</span></div>
+            <dl class="sat__read mono">
+              <div><dt>Link</dt><dd data-r="link" class="is-ok">Online</dd></div>
+              <div><dt>Sent</dt><dd data-r="sent">5</dd></div>
+              <div><dt>Queued</dt><dd data-r="queue">0</dd></div>
+            </dl>
+            <p class="sat__cap"><span class="sat__cap-n mono">04</span><span class="sat__cap-t">If the link drops, scans queue on the terminal and sync when it returns.</span></p>
+          </div>
+          <div class="sat-globe__box">
+            <canvas class="sat-globe__earth"></canvas>
+            <canvas class="sat-globe__over"></canvas>
+            <span class="sat-globe__lab" data-l="gate">Terminal 2<span class="sat-globe__at"> · North</span></span>
+            <span class="sat-globe__lab" data-l="srv">UK servers</span>
+            <span class="sat-globe__note mono">Illustrative places. Passes sped up.</span>
+          </div>
+        </figure>
+      </div>
+      </div>
+    </section>
+
+    <!-- ============================== 07 PILOT ============================== -->
+    <section class="section tone pilot gx light" id="pilot" data-live>
+      <div class="wrap">
+        <div class="pilot__top">
+          <div class="pilot__intro">
+            <div class="head">
+              <p class="label"><span class="label__spark" aria-hidden="true">✦</span>The pilot</p>
+              <h2 data-split><span class="hl-1">Start With 90 Days.</span> <span class="hl-2">No Commitment.</span></h2>
+              <p class="lead rv">Pre-configured hardware, full onboarding and expert support. You see live-site results before you decide anything.</p>
+            </div>
+            <div class="pilot__cta rv"><a class="btn btn--primary btn--lg" href="book.html" data-magnetic>Book a 90-day pilot<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+          </div>
+          <figure class="chart pchart card" id="pchart" aria-labelledby="pchart-cap">
+            <div class="pchart__panel">
+              <div class="pchart__top">
+                <figcaption class="chart__cap" id="pchart-cap">Held for query during a <span style="white-space:nowrap">90-day pilot</span></figcaption>
+                <span class="tag">Estimate</span>
+              </div>
+              <div class="pchart__read" aria-hidden="true"><strong class="pchart__val">£97,714</strong><span class="pchart__when">by day 90</span></div>
+              <div class="pchart__plot" aria-hidden="true" data-cursor="Drag">
+                <i class="pchart__grid" style="--y:0"></i>
+                <i class="pchart__grid" style="--y:0.5"><span class="pchart__tick" data-pc="mid">£50k</span></i>
+                <i class="pchart__grid" style="--y:1"><span class="pchart__tick" data-pc="max">£100k</span></i>
+                <i class="pchart__guide"></i>
+                <svg class="pchart__svg" viewBox="0 0 90 100" preserveAspectRatio="none">
+                  <defs>
+                    <clipPath id="pchart-clip"><rect class="pchart__clip" x="-1" y="-20" width="92" height="140"/></clipPath>
+                    <linearGradient id="pchart-wash" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E8A200" stop-opacity="0.2"/><stop offset="1" stop-color="#E8A200" stop-opacity="0"/></linearGradient>
+                  </defs>
+                  <g clip-path="url(#pchart-clip)"><g class="pchart__data" transform="matrix(1 0 0 0.97714 0 2.286)">
+                    <path class="pchart__area" d="M0,100 L14,100 L90,0 L90,100 Z"/>
+                    <path class="pchart__line" d="M0,100 L14,100 L90,0"/>
+                  </g></g>
+                </svg>
+                <i class="pchart__live"></i><i class="pchart__ping"></i>
+                <i class="pchart__ph"></i>
+                <i class="pchart__dot"></i>
+                <i class="pchart__xh"></i><i class="pchart__xd"></i>
+              </div>
+              <div class="pchart__x" aria-hidden="true"><span>Day 0</span><span class="pchart__x14">Day 14 · live</span><span>Day 90</span></div>
+            </div>
+            <p class="chart__note">At <span data-pc="spend">£180,000</span> a week of labour spend and the 5% our sites save on average, from go-live on day 14. <a href="#calc">Change the spend</a></p>
+            <p class="sr" data-pc="summary">Estimate: nothing is held until the site goes live on day 14. From then about £9,000 a week is held for query, reaching about £97,714 by day 90.</p>
+          </figure>
+        </div>
+        <div class="tl" id="tl">
+          <div class="tl__rail" aria-hidden="true"><i class="tl__fill"></i></div>
+          <ol class="tl__list">
+            <li class="tl__m"><span class="tl__dot" aria-hidden="true"></span><span class="tl__day mono">Day 0</span><strong>Hardware Arrives</strong><p>Pre-configured and ready to mount at site entry.</p></li>
+            <li class="tl__m"><span class="tl__dot" aria-hidden="true"></span><span class="tl__day mono">Day 1</span><strong>Workers Enrol</strong><p>At the terminal, on arrival. Nothing to install.</p></li>
+            <li class="tl__m"><span class="tl__dot" aria-hidden="true"></span><span class="tl__day mono">Day 14</span><strong>Live on Site</strong><p>Most sites are live within two weeks.</p></li>
+            <li class="tl__m"><span class="tl__dot" aria-hidden="true"></span><span class="tl__day mono">Days 14–90</span><strong>Evidence Builds</strong><p>Live-site results, with every saving documented and costed.</p></li>
+            <li class="tl__m tl__m--end"><span class="tl__dot" aria-hidden="true"></span><span class="tl__day mono">Day 90</span><strong>Decide on the Evidence</strong><p>Keep it if the numbers make the case. No commitment.</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 08 GOVERNANCE ============================== -->
+    <section class="section gov dark dots" id="governance" data-live>
+      <div class="wrap">
+        <div class="gov__panel">
+          <div class="head gov__head">
+            <p class="label"><span class="label__spark" aria-hidden="true">✦</span>Governance</p>
+            <h2 data-split><span class="hl-1">Biometric Data,</span> <span class="hl-2">Handled Properly.</span></h2>
+            <p class="lead rv">Attendance evidence is only worth something if it is collected lawfully and kept safe.</p>
+          </div>
+          <figure class="chart gchart" id="gchart" aria-labelledby="gchart-cap">
+            <div class="gchart__panel">
+              <div class="gchart__top">
+                <figcaption class="chart__cap" id="gchart-cap">Biometric data across one contract</figcaption>
+                <span class="gchart__state mono" aria-hidden="true"><span>Onboarding</span><span>Held · encrypted</span><span>Deleted</span></span>
+              </div>
+              <div class="gchart__rows">
+                <div class="gchart__row">
+                  <span class="gchart__k">Consent</span>
+                  <div class="gchart__track" aria-hidden="true"><i class="gchart__base"></i><i class="gchart__pt"></i><i class="gchart__ping"></i><i class="gchart__ph"></i></div>
+                  <span class="gchart__lab">Given at onboarding. A Data Processing Agreement is provided.</span>
+                </div>
+                <div class="gchart__row">
+                  <span class="gchart__k">Biometric template</span>
+                  <div class="gchart__track" aria-hidden="true"><i class="gchart__base"></i><i class="gchart__bar"></i><span class="gchart__del"><svg class="tick"><use href="#i-tick"/></svg></span><i class="gchart__ph"></i></div>
+                  <span class="gchart__lab">Encrypted and stored on UK-based servers</span>
+                  <span class="gchart__end">Deleted at contract end</span>
+                </div>
+                <div class="gchart__row">
+                  <span class="gchart__k">Third parties</span>
+                  <div class="gchart__track" aria-hidden="true"><i class="gchart__base gchart__base--void"></i><i class="gchart__stop"></i><i class="gchart__ph"></i></div>
+                  <span class="gchart__lab">Never shared</span>
+                </div>
+              </div>
+              <div class="gchart__axis" aria-hidden="true"><i class="gchart__ticks"></i><span>Contract starts</span><span>Contract ends</span></div>
+            </div>
+            <p class="chart__note">Or deleted earlier on request, at any point.</p>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 09 FAQ ============================== -->
+    <section class="section faq gx light" id="faq" data-live>
+      <div class="wrap faq__grid">
+        <div class="head">
+          <p class="label"><span class="label__spark" aria-hidden="true">✦</span>FAQ</p>
+          <h2 data-split><span class="hl-1">Questions Finance</span> <span class="hl-2">Teams Ask First.</span></h2>
+        </div>
+        <div class="qa-list rv">
+          <div class="qa is-open">
+            <h3 class="qa__h"><button class="qa__q" id="qa-1-q" type="button" aria-expanded="true" aria-controls="qa-1">How is attendance evidence collected?<i aria-hidden="true"></i></button></h3>
+            <div class="qa__a" id="qa-1" role="region" aria-labelledby="qa-1-q"><p>A fixed device at site entry records each arrival and departure against a registered biometric profile, face or fingerprint. No paper registers, swipe cards or proxy sign-ins.</p></div>
+          </div>
+          <div class="qa">
+            <h3 class="qa__h"><button class="qa__q" id="qa-2-q" type="button" aria-expanded="false" aria-controls="qa-2">Does it replace our payroll or timekeeping system?<i aria-hidden="true"></i></button></h3>
+            <div class="qa__a" id="qa-2" role="region" aria-labelledby="qa-2-q" hidden><p>No. It sits alongside them as a verification layer. Attendance data exports and reconciles with what you already run.</p></div>
+          </div>
+          <div class="qa">
+            <h3 class="qa__h"><button class="qa__q" id="qa-3-q" type="button" aria-expanded="false" aria-controls="qa-3">Can it check subcontractor timesheets?<i aria-hidden="true"></i></button></h3>
+            <div class="qa__a" id="qa-3" role="region" aria-labelledby="qa-3-q" hidden><p>Yes. The hours on each subcontractor timesheet or labour invoice are matched, worker by worker, against the biometric terminal record. Anything without a record behind it is held for query before payroll runs.</p></div>
+          </div>
+          <div class="qa">
+            <h3 class="qa__h"><button class="qa__q" id="qa-4-q" type="button" aria-expanded="false" aria-controls="qa-4">How is biometric data stored?<i aria-hidden="true"></i></button></h3>
+            <div class="qa__a" id="qa-4" role="region" aria-labelledby="qa-4-q" hidden><p>Templates are encrypted and held on UK-based servers, never shared with third parties, and deleted on request or at contract end. Workers give consent at onboarding and a Data Processing Agreement is available.</p></div>
+          </div>
+          <div class="qa">
+            <h3 class="qa__h"><button class="qa__q" id="qa-5-q" type="button" aria-expanded="false" aria-controls="qa-5">How quickly can we deploy?<i aria-hidden="true"></i></button></h3>
+            <div class="qa__a" id="qa-5" role="region" aria-labelledby="qa-5-q" hidden><p>Most sites go live within about two weeks. Hardware arrives pre-configured and workers enrol on arrival.</p></div>
+          </div>
+          <div class="qa">
+            <h3 class="qa__h"><button class="qa__q" id="qa-6-q" type="button" aria-expanded="false" aria-controls="qa-6">What if a subcontractor refuses to use it?<i aria-hidden="true"></i></button></h3>
+            <div class="qa__a" id="qa-6" role="region" aria-labelledby="qa-6-q" hidden><p>Compliance is set at contract level, usually as a condition of site access. A worker who does not check in is not counted as present, and is not invoiced for.</p></div>
+          </div>
+          <div class="qa">
+            <h3 class="qa__h"><button class="qa__q" id="qa-7-q" type="button" aria-expanded="false" aria-controls="qa-7">Do workers need a smartphone or an app?<i aria-hidden="true"></i></button></h3>
+            <div class="qa__a" id="qa-7" role="region" aria-labelledby="qa-7-q" hidden><p>No. Check-in happens at a fixed device. Workers install nothing.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- The way back to the film after a chapter link, or once it has left the screen mid-play. -->
+    <div class="wback" id="watch-back" inert>
+      <button class="wback__go" type="button"><span class="wback__i" aria-hidden="true"><svg><use href="#i-play"/></svg></span>Back to the film<span class="wback__t mono">0:00</span></button>
+      <button class="wback__x" type="button" aria-label="Dismiss"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+  </main>
+
+  <footer class="foot" data-live>
+    <canvas class="foot__field" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="foot__end">
+        <p class="foot__line" data-split><span class="hl-1">Don’t Approve What</span> <span class="hl-2">You Can’t&nbsp;Prove.</span></p>
+        <div class="foot__cta">
+          <a class="btn btn--primary btn--lg" href="book.html" data-magnetic>Book a 90-day pilot<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <span class="foot__note"><i aria-hidden="true"></i>90 days · No commitment</span>
+        </div>
+      </div>
+      <div class="foot__grid">
+        <div class="foot__brand">
+          <img src="assets/brand/logo-light.png" width="150" height="48" alt="PayRoll Protect" loading="lazy">
+          <p>Construction payroll verification. Every labour claim checked against the terminal record before payroll runs.</p>
+        </div>
+        <nav class="foot__cols" aria-label="Footer">
+          <div>
+            <p class="foot__k">Product</p>
+            <ul class="foot__list">
+              <li><a href="#gap"><span class="t">The gap</span><svg class="a" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="#match"><span class="t">Matching</span><svg class="a" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="#how"><span class="t">How it works</span><svg class="a" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="installation.html"><span class="t">Installation</span><svg class="a" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="#risk-check" data-risk-open><span class="t">Risk check</span><svg class="a" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="foot__k">Proof</p>
+            <ul class="foot__list">
+              <li><a href="#numbers"><span class="t">The numbers</span><svg class="a" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="calculator.html"><span class="t">Calculator</span><svg class="a" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="#governance"><span class="t">Governance</span><svg class="a" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="#pilot"><span class="t">Pilot</span><svg class="a" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="#faq"><span class="t">FAQ</span><svg class="a" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="foot__k">Contact</p>
+            <address class="foot__list">
+              <span class="foot__row"><a href="mailto:hello@payrollprotect.co.uk"><span class="t">hello@payrollprotect.co.uk</span><svg class="a" aria-hidden="true"><use href="#i-arrow"/></svg></a><button class="copybtn copybtn--icon" type="button" data-copy="hello@payrollprotect.co.uk" aria-label="Copy email address"><span class="copybtn-i" aria-hidden="true"><svg class="is-a"><use href="#i-copy"/></svg><svg class="is-b"><use href="#i-tick"/></svg></span></button><span class="sr" role="status"></span></span>
+              <a href="tel:+447940007881"><span class="t">+44 7940 007881</span><svg class="a" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <span class="foot__place">Romford, London</span>
+            </address>
+          </div>
+        </nav>
+      </div>
+      <div class="foot__bar">
+        <span>© 2026 PayRoll Protect</span>
+        <span class="foot__clock"><i aria-hidden="true"></i>London <time data-clock>--:--:--</time></span>
+        <span class="foot__geo">51.577° N, 0.180° E</span>
+        <span class="foot__legal"><a href="privacy.html">Privacy</a><a href="privacy.html#cookies">Cookies</a></span>
+        <a class="foot__top" href="#top" aria-label="Back to top">
+          <svg class="foot__ring" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20.5"/><circle class="foot__ring-fg" cx="22" cy="22" r="20.5" pathLength="1"/></svg>
+          <svg class="foot__up" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="foot__mark" aria-hidden="true">
+      <span class="foot__seal">
+        <img class="foot__icon" src="assets/brand/mark-900.webp" width="734" height="900" loading="lazy" alt="">
+        <i class="foot__scan"></i>
+      </span>
+      <span class="foot__tag"><svg class="tick"><use href="#i-tick"/></svg>Verified</span>
+    </div>
+  </footer>
+
+  <!-- ============================== RISK CHECK ============================== -->
+  <!-- The 60-second payroll risk check (js/risk.js): five taps, one question at a time, then which
+       of the three leaks, and paying before checking, the answers leave open, what that could cost
+       one site, and the pilot. Opened from the hero's badge, the leaks, the numbers and the footer,
+       or by arriving at #risk-check. Worked out in the browser; nothing is sent. -->
+  <dialog class="rk" id="risk-check" aria-labelledby="rk-k" data-lenis-prevent>
+    <div class="rk__top">
+      <p class="rk__k" id="rk-k"><i class="rk__dot" aria-hidden="true"></i>Payroll risk check</p>
+      <p class="rk__n mono" aria-hidden="true"><span data-rk="at">1</span> of 5</p>
+      <button class="rk__x" type="button" data-rk="close" aria-label="Close the risk check"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="rk__bar" aria-hidden="true"><i></i></div>
+    <div class="rk__body">
+      <section class="rk__step" data-q="method" aria-labelledby="rk-q1">
+        <h2 class="rk__q" id="rk-q1" tabindex="-1">How do your sites record who’s on site?</h2>
+        <div class="rk__opts" role="group" aria-labelledby="rk-q1">
+          <button type="button" data-v="paper" aria-pressed="false">Paper register</button>
+          <button type="button" data-v="app" aria-pressed="false">Sign-in app</button>
+          <button type="button" data-v="card" aria-pressed="false">Access cards</button>
+          <button type="button" data-v="bio" aria-pressed="false">Biometric clocking</button>
+          <button type="button" data-v="none" aria-pressed="false">No formal check</button>
+        </div>
+      </section>
+      <section class="rk__step" data-q="billing" aria-labelledby="rk-q2" hidden>
+        <h2 class="rk__q" id="rk-q2" tabindex="-1">How do subcontractors bill their labour?</h2>
+        <div class="rk__opts" role="group" aria-labelledby="rk-q2">
+          <button type="button" data-v="hours" aria-pressed="false">By the hour, on timesheets</button>
+          <button type="button" data-v="days" aria-pressed="false">By the day, per worker</button>
+          <button type="button" data-v="price" aria-pressed="false">Price work, a fixed sum</button>
+          <button type="button" data-v="mix" aria-pressed="false">A mix of these</button>
+        </div>
+      </section>
+      <section class="rk__step" data-q="check" aria-labelledby="rk-q3" hidden>
+        <h2 class="rk__q" id="rk-q3" tabindex="-1">Before payroll runs, is each invoice checked against attendance?</h2>
+        <div class="rk__opts" role="group" aria-labelledby="rk-q3">
+          <button type="button" data-v="every" aria-pressed="false">Every line, every week</button>
+          <button type="button" data-v="spot" aria-pressed="false">Spot checks</button>
+          <button type="button" data-v="flag" aria-pressed="false">Only when something looks wrong</button>
+          <button type="button" data-v="none" aria-pressed="false">Not really</button>
+        </div>
+      </section>
+      <section class="rk__step" data-q="ways" aria-labelledby="rk-q4" hidden>
+        <h2 class="rk__q" id="rk-q4" tabindex="-1">How many ways onto a typical site?</h2>
+        <div class="rk__opts" role="group" aria-labelledby="rk-q4">
+          <button type="button" data-v="one" aria-pressed="false">One entrance</button>
+          <button type="button" data-v="few" aria-pressed="false">Two or three</button>
+          <button type="button" data-v="many" aria-pressed="false">Four or more</button>
+          <button type="button" data-v="open" aria-pressed="false">An open site, no set entrance</button>
+        </div>
+      </section>
+      <section class="rk__step" data-q="spend" aria-labelledby="rk-q5" hidden>
+        <h2 class="rk__q" id="rk-q5" tabindex="-1">Weekly subcontract labour on a typical site?</h2>
+        <div class="rk__opts rk__opts--grid" role="group" aria-labelledby="rk-q5">
+          <button type="button" data-v="50000" aria-pressed="false">£50k</button>
+          <button type="button" data-v="100000" aria-pressed="false">£100k</button>
+          <button type="button" data-v="180000" aria-pressed="false">£180k<small>Our average site</small></button>
+          <button type="button" data-v="300000" aria-pressed="false">£300k</button>
+          <button type="button" data-v="500000" aria-pressed="false">£500k</button>
+          <button type="button" data-v="1000000" aria-pressed="false">£1m</button>
+        </div>
+      </section>
+      <section class="rk__res" aria-labelledby="rk-res-h" hidden>
+        <p class="rk__level"><span class="tag" data-rk="level">High risk</span></p>
+        <h2 class="rk__res-h" id="rk-res-h" tabindex="-1" data-rk="head">4 of 4 checks are open on your sites.</h2>
+        <p class="rk__res-sub" data-rk="sub">Most of what gets claimed is paid on trust.</p>
+        <ul class="rk__checks" data-rk="checks"></ul>
+        <p class="rk__fk" data-rk="figs-k">What that could cost on one site</p>
+        <div class="rk__figs">
+          <div class="rk__fig rk__fig--ours"><span>At our 5% site average</span><strong data-rk="ours">£9,000</strong><span data-rk="ours-y">a week · £468,000 a year</span></div>
+          <div class="rk__fig"><span>At the 1.7% UK estimate</span><strong data-rk="uk">£3,060</strong><span data-rk="uk-y">a week · £159,120 a year</span></div>
+        </div>
+        <p class="rk__pilot">A 90-day pilot on this site would hold about <strong data-rk="pilot">£97,714</strong> for query.</p>
+        <div class="rk__acts">
+          <a class="btn btn--ghost" data-rk="calc" href="calculator.html">Open the full calculator</a>
+        </div>
+      </section>
+    </div>
+    <div class="rk__foot">
+      <button class="rk__back" type="button" data-rk="back"><svg aria-hidden="true"><use href="#i-arrow"/></svg><span>Back</span></button>
+      <button class="rk__back" type="button" data-rk="again" hidden><svg aria-hidden="true"><use href="#i-arrow"/></svg><span>Start again</span></button>
+      <p class="rk__note">Worked out in your browser. Nothing is sent.</p>
+      <a class="btn btn--primary rk__book" data-rk="book" href="book.html" hidden>Book a 90-day pilot<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </dialog>
+
+  <script src="assets/vendor/gsap.min.js?v=9396f256" defer></script>
+  <script src="assets/vendor/ScrollTrigger.min.js?v=05ca5ad8" defer></script>
+  <script src="assets/vendor/lenis.min.js?v=daec1872" defer></script>
+  <script type="module" src="js/main.js?v=565fd13f"></script>
+</body>
+</html>

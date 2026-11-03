@@ -1,0 +1,14 @@
+{
+  "name": "PayRoll Protect",
+  "short_name": "PayRoll Protect",
+  "description": "Construction payroll verification.",
+  "lang": "en-GB",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#010101",
+  "theme_color": "#010101",
+  "icons": [
+    { "src": "/assets/brand/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/brand/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

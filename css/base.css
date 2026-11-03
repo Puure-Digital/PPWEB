@@ -1,0 +1,633 @@
+/* ==========================================================================
+   PayRoll Protect · base.css (v4, Emerald)
+   Tokens, type, layout primitives and shared components.
+   Near-black canvas lit from above by emerald · glass surfaces · emerald only for
+   verification and action, amber only for what is held.
+   Motion: one spring (stiffness 180, damping 22). Transform and opacity only.
+   ========================================================================== */
+
+@font-face { font-family: "Mona Sans"; src: url("../assets/fonts/mona-sans-latin.woff2") format("woff2"); font-weight: 300 600; font-stretch: 100% 125%; font-style: normal; font-display: swap; }
+@font-face { font-family: "Unbounded"; src: url("../assets/fonts/unbounded-latin.woff2") format("woff2"); font-weight: 200 900; font-style: normal; font-display: swap; }
+
+:root {
+  /* The nav's unit: one pixel of a 1458 × 985 reference canvas (the hero's has its own, --u in
+     sections.css). */
+  --hp: min(calc(100vw / 1458), max(calc(100dvh / 985), 0.62px));
+
+  --canvas: #010101;
+  --canvas-2: #010101;
+  --surface: #0C0F0D;
+  --surface-2: #090C0A;
+  --gun: #010101;
+  --gun-2: #0B0E0C;
+  --gun-3: #131715;
+  --gun-4: #1E2420;
+
+  --ink: #FFFFFF;
+  --ink-2: #B3B3B3;
+  --ink-3: #8D928F;   /* 6:1 on the canvas, so small labels pass WCAG AA */
+  --ink-4: #5C615E;
+  --on-dark: #FFFFFF;
+  --on-dark-2: rgba(255, 255, 255, 0.72);
+  --on-dark-3: rgba(255, 255, 255, 0.54);
+  --on-dark-4: rgba(255, 255, 255, 0.3);
+
+  --hair: rgba(255, 255, 255, 0.08);
+  --hair-2: rgba(255, 255, 255, 0.14);
+  --hair-dark: rgba(255, 255, 255, 0.08);
+  --hair-dark-2: rgba(255, 255, 255, 0.16);
+
+  /* The brand green (#0FD76A, its hover #0BBE5D): --em-1 to --em-2 for fills, --mint (a touch
+     lighter) for small green text on dark, the deep greens for quiet fills. */
+  --em-1: #0BBE5D;
+  --em-2: #0FD76A;
+  --mint: #2CDC7C;
+  --mint-link: #B3D0C2;
+  --deep-1: #1D4E33;
+  --deep-2: #0E3A21;
+  --lime: #0FD76A;
+  --lime-ink: #2CDC7C;
+  --lime-soft: rgba(15, 215, 106, 0.14);
+  --lime-glow: rgba(15, 215, 106, 0.45);
+  --amber: #E8A200;
+  --amber-ink: #F4B840;
+  --amber-soft: rgba(232, 162, 0, 0.16);
+
+  /* Glass: the hero's widget material, for every card on the site. */
+  --glass: linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.015));
+  --glass-line: rgba(255, 255, 255, 0.1);
+  --glass-hi: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  /* The foreground as channels, for the faint lines, tracks and fills drawn in it
+     (rgba(var(--fg), a)): white on the dark sections, ink on the light ones. */
+  --fg: 255, 255, 255;
+  /* The solid face of a card, where something must cover what is behind it (rings on a line, the
+     FAQ rows). */
+  --card-solid: #0B0E0C;
+  --amber-line: #E8A200;
+  /* Pills: the section labels, the tags, the ghost button. */
+  --pill-bg: rgba(255, 255, 255, 0.04);
+  --pill-ring: rgba(255, 255, 255, 0.14);
+  --pill-hi: rgba(255, 255, 255, 0.06);
+  --pill-ink: #E6E6E6;
+  --tag-bg: rgba(255, 255, 255, 0.07);
+  --tag-ring: rgba(255, 255, 255, 0.16);
+  --tag-ink: #DCDCDC;
+  --ghost-ink: #fff;
+  --ghost-ring: rgba(255, 255, 255, 0.55);
+  --ghost-fill: rgba(255, 255, 255, 0.06);
+  --veil: rgba(0, 0, 0, 0.42);
+  /* The hero headline's light: mint, then white, then a soft grey. */
+  /* The hero headline's two lines: the first mint into white into a soft grey, the second white
+     into a pale grey. Every headline on the site is set the same way (js/reveal.js). */
+  --grad-l1: linear-gradient(90deg, #2CDC7C 0%, #FFFFFF 52%, #BDBDBD 100%);
+  --grad-l2: linear-gradient(90deg, #FFFFFF 30%, #D6D6D6 100%);
+
+  /* Two voices. Unbounded, wide and geometric, sets the headings (--head) and everything you scan
+     or press (--mono, the old mono token, kept by name): every headline, section label, tag, key,
+     amount, button and nav link, in sentence case. Mona Sans carries the reading: body copy, leads
+     and descriptions. Digits are tabular everywhere (body), so figures that tick never jitter. */
+  --font: "Mona Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: "Unbounded", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: var(--display);
+  --mono-live: var(--display);
+  --head: var(--display);
+  --fs-micro: 0.8125rem;   /* small labels, 13 px, the hero's widget labels */
+
+  /* Display voice: Unbounded, light, like the hero. It has no width axis, so the old
+     expanded/semi-expanded stretches resolve to normal. It runs wide, so the heading sizes sit a
+     step lower and the tracking stays close to its own. */
+  --wide: 100%;
+  --semi: 100%;
+  --w-display: 300;
+  --w-head: 340;
+  --w-title: 450;
+  --w-figure: 400;   /* figures in widgets, as the hero's amounts */
+  --tr-display: -0.03em;
+  --tr-head: -0.025em;
+
+  --fs-display: clamp(2.5rem, 1.3rem + 5vw, 5.25rem);
+  --fs-h2: clamp(1.75rem, 1.05rem + 2.1vw, 2.75rem);
+  --fs-h3: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+
+  --fs-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --fs-sm: 0.875rem;
+  --fs-xs: 0.8125rem;
+  --fs-label: 0.75rem;
+
+  /* Four corners: bars and ticks, inner rows and fields, cards, and the pill (buttons, tags). */
+  --r-sm: 4px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+
+  /* Wide enough that section content lines up with the hero's column at 1440 px. */
+  --wrap: 1348px;
+  --gutter: 20px;
+  --section: 96px;
+  --nav-h: 64px;
+  /* One split for every two-column section (from 1024 px): the left column is the one heading
+     measure, wide enough that every section heading sets in two or three lines. */
+  --split: minmax(0, 6fr) minmax(0, 7fr);
+  --split-gap: 72px;
+  --head-w: calc((min(100vw, var(--wrap)) - 2 * var(--gutter) - var(--split-gap)) * 6 / 13);
+
+  /* On black a shadow cannot darken anything, so depth comes from the glass edge and its top light. */
+  --shadow-1: inset 0 0 0 1px var(--glass-line), var(--glass-hi), 0 30px 60px -30px rgba(0, 0, 0, 0.8);
+  --shadow-2: inset 0 0 0 1px rgba(255, 255, 255, 0.12), var(--glass-hi), 0 40px 80px -36px rgba(0, 0, 0, 0.9);
+
+  /* Motion, after Apple's fluid-interface guidance: everything settles critically damped (no
+     overshoot); bounce belongs only to a gesture that carried momentum. --spring and
+     --spring-soft are one curve: stiffness 180, critically damped, settling in about 0.7 s
+     (the 1% overshoot of the old damping 22 is retired). --harmonic: undamped oscillation, for
+     ambient loops only. js/motion.js has the same curves for GSAP. The cubic-bezier is the
+     fallback for browsers without linear(). */
+  --spring-soft: cubic-bezier(0.25, 0.9, 0.35, 1);
+  --spring: var(--spring-soft);
+  --harmonic: cubic-bezier(0.37, 0, 0.63, 1);
+  --t-micro: 0.22s;
+  /* springSoft mirrored: exits that accelerate away (js/motion.js springIn). */
+  --spring-in: cubic-bezier(0.65, 0, 0.75, 0.1);
+}
+@supports (animation-timing-function: linear(0, 1)) {
+  :root {
+    --spring-soft: linear(0, 0.0164 2.08%, 0.0578 4.17%, 0.115 6.25%, 0.1812 8.33%, 0.2514 10.42%, 0.3222 12.5%, 0.3912 14.58%, 0.4569 16.67%, 0.5183 18.75%, 0.5749 20.83%, 0.6265 22.92%, 0.6731 25%, 0.7149 27.08%, 0.7521 29.17%, 0.785 31.25%, 0.8141 33.33%, 0.8396 35.42%, 0.8619 37.5%, 0.8814 39.58%, 0.8983 41.67%, 0.9129 43.75%, 0.9256 45.83%, 0.9365 47.92%, 0.9459 50%, 0.954 52.08%, 0.961 54.17%, 0.967 56.25%, 0.972 58.33%, 0.9764 60.42%, 0.9801 62.5%, 0.9833 64.58%, 0.986 66.67%, 0.9883 68.75%, 0.9902 70.83%, 0.9919 72.92%, 0.9933 75%, 0.9945 77.08%, 0.9955 79.17%, 0.9964 81.25%, 0.9971 83.33%, 0.9977 85.42%, 0.9982 87.5%, 0.9987 89.58%, 0.999 91.67%, 0.9993 93.75%, 0.9996 95.83%, 0.9998 97.92%, 1);
+  }
+}
+/* Tablets and phones: the nav scales by width, so its type stays readable. */
+@media (max-width: 1024px) { :root { --hp: max(calc(100vw / 1024), 0.75px); } }
+@media (min-width: 768px) { :root { --gutter: 40px; --section: 112px; --nav-h: 72px; } }
+@media (min-width: 1200px) { :root { --gutter: 56px; --section: 128px; } }
+/* Increase contrast (system setting): secondary text and hairlines step up a level, and glass
+   surfaces turn solid (see .nav, .bkf, the floating pills). */
+@media (prefers-contrast: more) {
+  :root {
+    --ink-2: #D6D6D6; --ink-3: #B4B9B6; --ink-4: #8A908C;
+    --hair: rgba(255, 255, 255, 0.22); --hair-2: rgba(255, 255, 255, 0.36);
+    --on-dark-2: rgba(255, 255, 255, 0.9); --on-dark-3: rgba(255, 255, 255, 0.78); --on-dark-4: rgba(255, 255, 255, 0.56);
+    --hair-dark: rgba(255, 255, 255, 0.22); --hair-dark-2: rgba(255, 255, 255, 0.36);
+    --glass-line: rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* ---------- Light sections ---------- */
+/* After each dark opening stage the story runs on light sections (.light): the light grey canvas
+   of the original site, white cards, near-black ink. Everything reads these tokens, so a section
+   turns light by its class alone. Green and amber deepen where they are text (AA on every light
+   surface); fills keep the brand green. The dark bands, the films and the footer stay dark. */
+.light {
+  --canvas: #F3F4F4;
+  --canvas-2: #E9EBEB;
+  --surface: #FFFFFF;
+  --surface-2: #F7F8F8;
+  --ink: #111513;
+  --ink-2: #4A514D;
+  --ink-3: #5A615D;   /* 5.3:1 or more on every light surface */
+  --ink-4: #A3AAA6;
+  --hair: rgba(17, 21, 19, 0.08);
+  --hair-2: rgba(17, 21, 19, 0.14);
+  --fg: 17, 21, 19;
+  --card-solid: #FFFFFF;
+  --mint: #067A3D;
+  --lime-ink: #067A3D;
+  --amber-ink: #8A5B00;
+  --amber-line: #B47B00;
+  --glass: linear-gradient(180deg, #FFFFFF, rgba(255, 255, 255, 0));
+  --glass-line: rgba(17, 21, 19, 0.08);
+  --glass-hi: inset 0 1px 0 #FFFFFF;
+  --grad-l1: linear-gradient(90deg, #078A44 0%, #111513 46%, #111513 100%);
+  --grad-l2: linear-gradient(90deg, #111513, #111513);
+  /* On light, a card at rest is held by its hairline alone; only what is raised (in use, under the
+     pointer) casts a shadow. */
+  --shadow-1: 0 0 0 1px rgba(17, 21, 19, 0.08), 0 1px 2px rgba(17, 21, 19, 0.03);
+  --shadow-2: 0 0 0 1px rgba(17, 21, 19, 0.08), 0 1px 2px rgba(17, 21, 19, 0.06), 0 18px 40px -24px rgba(17, 21, 19, 0.25);
+  --pill-bg: rgba(255, 255, 255, 0.75);
+  --pill-ring: rgba(17, 21, 19, 0.1);
+  --pill-hi: #FFFFFF;
+  --pill-ink: #3B423E;
+  --tag-bg: rgba(17, 21, 19, 0.05);
+  --tag-ring: rgba(17, 21, 19, 0.1);
+  --tag-ink: var(--ink-2);
+  --ghost-ink: var(--ink);
+  --ghost-ring: rgba(17, 21, 19, 0.3);
+  --ghost-fill: rgba(17, 21, 19, 0.05);
+  --veil: rgba(17, 21, 19, 0.1);
+  --sec-bg: var(--canvas);
+  background-color: var(--sec-bg);
+  color: var(--ink);
+}
+.light.tone { --sec-bg: var(--canvas-2); }
+@media (prefers-contrast: more) {
+  .light { --ink-2: #353B37; --ink-3: #3F4642; --ink-4: #6E7571; --hair: rgba(17, 21, 19, 0.2); --hair-2: rgba(17, 21, 19, 0.34); --glass-line: rgba(17, 21, 19, 0.3); }
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scrollbar-gutter: stable; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font: 400 1rem/1.6 var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
+}
+body.no-scroll { overflow: hidden; }
+img, svg, canvas, video { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+p { margin: 0 0 1em; max-width: 62ch; text-wrap: pretty; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3 { margin: 0; font-family: var(--head); font-weight: var(--w-title); color: inherit; text-wrap: balance; }
+h1, h2 { font-weight: var(--w-head); font-stretch: var(--wide); }
+h2 { font-size: var(--fs-h2); letter-spacing: var(--tr-head); line-height: 1.12; }
+h3 { font-size: var(--fs-h3); font-stretch: var(--semi); font-weight: var(--w-title); letter-spacing: -0.02em; line-height: 1.3; }
+strong { font-weight: 600; }
+/* Headlines are set like the hero's: two lines, the first light and lit mint into white, the second
+   white. Each line is a span (.hl-1, .hl-2) of its own; js/reveal.js splits it into words and gives
+   each word its slice of that line's gradient, so the light runs across the line as a whole while
+   each word still lights up on its own. */
+.hl-1, .hl-2 { display: block; }
+/* Phones: the closing line runs as one sentence, so it can balance (no word left alone). */
+@media (max-width: 639px) { .foot__line .hl-1, .foot__line .hl-2 { display: inline; } }
+.hl-1 { font-weight: 300; }
+.hl-2 { font-weight: 360; }
+[data-split] .w, .match__title .w { background-image: var(--grad-l1); background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+.hl-2 .w { background-image: var(--grad-l2); }
+::selection { background: var(--em-2); color: var(--gun); }
+:focus-visible { outline: 2px solid var(--em-2); outline-offset: 3px; border-radius: 4px; }
+[hidden] { display: none !important; }
+
+.sr { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip { position: absolute; top: -100px; left: 16px; z-index: 1000; padding: 10px 14px; background: var(--gun); color: #fff; border-radius: var(--r-md); font-family: var(--mono); font-weight: 600; }
+.skip:focus { top: 12px; }
+
+/* ---------- Layout ---------- */
+.wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+.section { position: relative; padding-block: var(--section); }
+.tone { background: var(--canvas-2); }
+.dark { background: var(--gun); color: var(--on-dark); }
+[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
+
+/* ---------- Type roles ---------- */
+/* Section labels are an index: a hairline across the head, then the section's number in the
+   verified green and its name in the quiet ink, as a ledger would set them. The numbers count the
+   page's sections in order (main resets the count). The old spark is retired. */
+main { counter-reset: sec; }
+.label {
+  display: flex; align-items: baseline; gap: 14px;
+  width: 100%; max-width: none;
+  margin: 0 0 20px; padding: 16px 0 0;
+  border-top: 1px solid var(--hair-2);
+  font: 500 0.75rem/1.3 var(--mono);
+  letter-spacing: 0.02em;
+  color: var(--ink-3);
+}
+.label::before { content: counter(sec, decimal-leading-zero); counter-increment: sec; color: var(--lime-ink); font-variant-numeric: tabular-nums; }
+.label__spark { display: none; }
+
+.head { max-width: 760px; margin-bottom: 64px; }
+@media (max-width: 767px) { .head { margin-bottom: 40px; } }
+.head h2 { margin-bottom: 0.5em; }
+.head .lead { margin-bottom: 0; }
+.head--center { margin-inline: auto; text-align: center; }
+.head--center .label { justify-content: center; }
+.head--center .lead { margin-inline: auto; }
+
+.lead { font-size: var(--fs-lead); line-height: 1.6; color: var(--ink-2); max-width: 36rem; }
+.dark .lead { color: var(--on-dark-2); }
+.note { font: 400 var(--fs-xs)/1.55 var(--font); letter-spacing: 0; color: var(--ink-3); }
+.dark .note { color: var(--on-dark-3); }
+.mono { font-family: var(--mono); letter-spacing: 0; font-variant-numeric: tabular-nums; }
+.num { font-variant-numeric: tabular-nums lining-nums; }
+
+/* ---------- Buttons & links ---------- */
+/* Hover has weight: a 1px lift, a slight scale, and the glow gaining definition. */
+.btn {
+  --h: 48px;
+  position: relative; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  height: var(--h); padding: 0 24px;
+  border: 0; border-radius: 999px;
+  font: 500 0.875rem/1 var(--mono); font-stretch: var(--semi); letter-spacing: 0;
+  text-decoration: none; white-space: nowrap; cursor: pointer;
+  transition: transform var(--t-micro) var(--spring);
+}
+.btn::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity var(--t-micro) var(--spring-soft); }
+/* Primary: the hero's emerald pill, a gradient fill inside an emerald ring, dark type (8:1). */
+.btn--primary {
+  background: linear-gradient(180deg, var(--em-2) 0%, var(--em-1) 100%);
+  color: #03170D;
+  box-shadow: 0 0 0 4px rgba(11, 190, 93, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 10px 36px -8px rgba(11, 190, 93, 0.4);
+}
+.btn--primary::before { box-shadow: 0 0 0 7px rgba(11, 190, 93, 0.16), 0 14px 46px -6px rgba(11, 190, 93, 0.55); }
+@media (hover: hover) { .btn--primary:hover { transform: translateY(-1px) scale(1.015); } }
+/* On light the emerald is flat, with a lit top edge; the glow belongs to the dark. */
+.light .btn--primary { background: var(--em-1); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35); }
+.light .btn--primary::before { box-shadow: 0 12px 26px -14px rgba(11, 190, 93, 0.7); }
+@media (hover: hover) { .light .btn--primary:hover { background: var(--em-2); } }
+@media (hover: hover) { .btn--primary:hover::before { opacity: 1; } }
+.btn--primary:active { transform: scale(0.985); transition-duration: 0.1s; }
+/* Ghost: a thin white ring. */
+.btn--ghost { color: var(--ghost-ink); box-shadow: inset 0 0 0 1px var(--ghost-ring); }
+.btn--ghost::before { background: var(--ghost-fill); }
+@media (hover: hover) { .btn--ghost:hover { transform: translateY(-1px); } .btn--ghost:hover::before { opacity: 1; } }
+.btn--ghost:active { transform: scale(0.985); transition-duration: 0.1s; }
+/* Deep: the nav's Book a pilot, a deep green fill inside a thin emerald line. */
+.btn--deep {
+  color: #fff;
+  background: linear-gradient(180deg, var(--deep-1), var(--deep-2));
+  box-shadow: inset 0 0 0 1px rgba(15, 215, 106, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 0 24px rgba(11, 190, 93, 0.18);
+}
+.btn--deep::before { box-shadow: inset 0 0 0 1px var(--em-2), 0 0 30px rgba(11, 190, 93, 0.32); }
+@media (hover: hover) { .btn--deep:hover::before { opacity: 1; } }
+.btn--deep:active { transform: scale(0.985); transition-duration: 0.1s; }
+.btn--sm { --h: 40px; padding: 0 18px; font-size: 0.8125rem; }
+@media (pointer: coarse) { .btn--sm::after { content: ""; position: absolute; inset: -3px 0; } }
+.btn--lg { --h: 54px; padding: 0 28px; font-size: 0.9375rem; }
+@media (max-width: 400px) { .btn--lg { padding: 0 22px; font-size: 0.875rem; } }
+/* The narrowest phones: a long label wraps onto a second line rather than run off the screen. */
+@media (max-width: 400px) {
+  .btn { max-width: 100%; height: auto; min-height: var(--h); padding-block: 10px; white-space: normal; text-align: center; line-height: 1.3; }
+}
+.btn__arrow { flex: none; width: 14px; height: 14px; transition: transform var(--t-micro) var(--spring); }
+@media (hover: hover) { .btn:hover .btn__arrow { transform: translateX(3px); } }
+.mag { display: inline-flex; }
+
+.link { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 12px 0; font-family: var(--mono); font-weight: 500; text-decoration: none; }
+/* Underline: a faint resting line. On hover a full line sweeps in from the left; on leaving it
+   carries on out to the right. */
+.link::before, .link::after { content: ""; position: absolute; left: 0; right: 0; bottom: 8px; height: 1px; background: currentColor; pointer-events: none; }
+.link::before { opacity: 0.3; }
+.link::after { transform: scaleX(0); transform-origin: right center; transition: transform 0.45s var(--spring); }
+.link:focus-visible::after { transform: scaleX(1); transform-origin: left center; }
+@media (hover: hover) { .link:hover::after { transform: scaleX(1); transform-origin: left center; } }
+/* Touch-down response: a press shows the moment the pointer goes down and eases back on release.
+   The system tap highlight gives way to it. */
+html { -webkit-tap-highlight-color: transparent; }
+a:not(.btn):active, .qa__q:active, .stage__pause:active { opacity: 0.6; transition-duration: 0s; }
+
+/* Tags: the hero's chip (its card's "Face match"). */
+.tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 12px; border-radius: 999px;
+  background: var(--tag-bg);
+  box-shadow: inset 0 0 0 1px var(--tag-ring);
+  font: 400 0.75rem/1.3 var(--mono);
+  color: var(--tag-ink);
+}
+.tag--lime { background: var(--lime-soft); color: var(--lime-ink); }
+.tag--amber { background: var(--amber-soft); color: var(--amber-ink); }
+
+/* ---------- Surfaces ---------- */
+/* Glass, as in the hero's widgets: a faint white gradient over black, a 1px light edge and a
+   lit top line. */
+.card { position: relative; background: var(--glass), var(--surface); border-radius: var(--r-lg); box-shadow: var(--shadow-1); }
+/* Pointer spotlight: a fixed-size soft light that follows the pointer by transform. */
+.spot__l { position: absolute; inset: 0; z-index: 3; overflow: hidden; border-radius: inherit; pointer-events: none; }
+.spot__l i { position: absolute; left: -280px; top: -280px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(closest-side, rgba(44, 220, 124, 0.07), rgba(44, 220, 124, 0)); opacity: 0; transition: opacity var(--t-micro) var(--spring-soft); }
+@media (hover: hover) { .spot:hover .spot__l i { opacity: 1; } }
+
+/* ---------- The hero's grid ---------- */
+/* Behind a section, the hero's faint grid: 94 px squares of 1 px lines in the foreground colour,
+   fading out from the middle of the section. Sections marked .gx or .dots carry it (their old guide lines, crosshairs
+   and dot matrix are retired). */
+.gx, .dots { position: relative; isolation: isolate; }
+.dots { overflow: hidden; overflow: clip; }
+.gx::before, .dots::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(var(--fg), 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--fg), 0.055) 1px, transparent 1px);
+  background-size: 94px 94px;
+  background-position: center top;
+  -webkit-mask-image: radial-gradient(ellipse 52% 58% at 50% 42%, #000 18%, transparent 100%);
+  mask-image: radial-gradient(ellipse 52% 58% at 50% 42%, #000 18%, transparent 100%);
+}
+/* Product surfaces carry no viewfinder now (the hero's widgets have none); the class stays as a
+   hook for the scripts. */
+.hud { position: relative; }
+
+/* ---------- Between pages ---------- */
+/* Moving to another page of the site, the next page comes up over this one as a sheet, its top
+   corners flattening as it lands, while this one settles back and dims: the same move as the
+   sections (js/flow.js). Going back through history it runs the other way (data-vt, set in each
+   page's head). The bar stays put above it all. Browsers without cross-page view transitions just
+   load the page, and so does reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+.nav { view-transition-name: site-nav; }
+::view-transition-old(root), ::view-transition-new(root) { mix-blend-mode: normal; animation-duration: 0.85s; animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1); animation-fill-mode: both; }
+::view-transition-old(root) { animation-name: vt-settle; }
+::view-transition-new(root) { animation-name: vt-sheet; }
+html[data-vt="back"]::view-transition-old(root) { z-index: 1; animation-name: vt-drop; }
+html[data-vt="back"]::view-transition-new(root) { animation-name: vt-rise; }
+@keyframes vt-settle { to { transform: scale(0.94); opacity: 0.35; } }
+@keyframes vt-sheet { from { transform: translate3d(0, 100%, 0); clip-path: inset(0 round 44px 44px 0 0); } to { transform: none; clip-path: inset(0 round 0); } }
+@keyframes vt-drop { from { clip-path: inset(0 round 0); } to { transform: translate3d(0, 100%, 0); clip-path: inset(0 round 44px 44px 0 0); } }
+@keyframes vt-rise { from { transform: scale(0.94); opacity: 0.35; } }
+::view-transition-group(site-nav), ::view-transition-old(site-nav), ::view-transition-new(site-nav) { animation-duration: 0.3s; }
+
+/* ---------- The cursor's ring (js/cursor.js) ---------- */
+/* An emerald ring trailing a fine pointer (the system cursor stays): open and lightly filled over
+   anything pressable, wider over a card, a pill with a word where an element names its action,
+   gone over fields and forms. Transform and opacity, and the pill's size. */
+.cur { position: fixed; left: 0; top: 0; z-index: 2000; pointer-events: none; opacity: 0; transition: opacity 0.2s var(--spring-soft); will-change: transform; }
+.cur.is-on { opacity: 1; }
+.cur__ring {
+  position: absolute; left: -17px; top: -17px;
+  display: grid; place-items: center;
+  width: 34px; height: 34px; padding: 0;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1.5px rgba(15, 215, 106, 0.9);
+  transition: transform 0.4s var(--spring-soft), left 0.4s var(--spring-soft), top 0.4s var(--spring-soft), width 0.4s var(--spring-soft), height 0.4s var(--spring-soft), background-color 0.25s var(--spring-soft), box-shadow 0.25s var(--spring-soft), opacity 0.2s var(--spring-soft);
+}
+.cur__t { font: 500 0.75rem/1 var(--mono); white-space: nowrap; color: #03170D; opacity: 0; transition: opacity 0.2s var(--spring-soft); }
+.cur[data-state="press"] .cur__ring { transform: scale(1.65); background-color: rgba(15, 215, 106, 0.12); box-shadow: inset 0 0 0 1px rgba(15, 215, 106, 0.55); }
+.cur[data-state="card"] .cur__ring { transform: scale(1.4); box-shadow: inset 0 0 0 1px rgba(15, 215, 106, 0.6); }
+.cur[data-state="quiet"] .cur__ring { transform: scale(0.3); opacity: 0; }
+.cur[data-state="say"] .cur__ring { left: 14px; top: 14px; width: 76px; height: 30px; background-color: var(--em-2); box-shadow: 0 8px 24px -8px rgba(11, 190, 93, 0.5); }
+.cur[data-state="say"] .cur__t { opacity: 1; transition-delay: 0.12s; }
+.cur.is-down .cur__ring { transform: scale(0.8); }
+.cur.is-down[data-state="press"] .cur__ring { transform: scale(1.4); }
+
+/* ---------- Handovers (js/flow.js) ---------- */
+/* As the next section comes up over it, a section dims under a veil of its own ink. The veil runs a
+   screen past its foot, so the sheet's corners and the strips beside a widening band dim with it. */
+.flow-veil { position: absolute; left: 0; right: 0; top: 0; bottom: -100vh; z-index: 999; pointer-events: none; background: #000; opacity: 0; visibility: hidden; }
+.light > .flow-veil { background: #111513; }
+
+/* ---------- Status glyphs ---------- */
+.tick { width: 22px; height: 22px; padding: 4px; flex: none; border-radius: 50%; background: var(--lime-soft); color: var(--em-2); }
+.tk { transform: scale(0.6); opacity: 0; transition: transform 0.45s var(--spring), opacity var(--t-micro) var(--spring-soft); }
+.on > .tk, .on .tk { transform: none; opacity: 1; }
+.flag { position: relative; width: 10px; height: 10px; flex: none; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 5px var(--amber-soft); }
+/* Working indicator: turns with an eased sweep, never at constant speed. */
+.spin { display: inline-block; width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid var(--hair-2); border-top-color: currentColor; animation: spin 1.2s var(--harmonic) infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+/* Ambient helpers. */
+@keyframes lum { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+@keyframes ring { 0% { transform: scale(1); opacity: 0.55; } 34%, 100% { transform: scale(2.4); opacity: 0; } }
+
+/* ---------- Odometer ---------- */
+/* Digits start left to right (--k), each decelerating into place. */
+.od { display: inline-flex; align-items: baseline; white-space: nowrap; font-variant-numeric: tabular-nums; line-height: 1; }
+.od__d { display: inline-block; height: 1em; overflow: hidden; vertical-align: baseline; }
+.od__s { display: block; transform: translateY(calc(var(--d, 0) * -1em)); transition: transform var(--od-dur, 0.9s) var(--spring-soft) calc(var(--od-delay, 0s) + var(--k, 0) * var(--od-step, 0.05s)); }
+/* The 0–9 strip and the symbols are generated content, so they are not part of the page's text. */
+.od__s::before { content: "0\A 1\A 2\A 3\A 4\A 5\A 6\A 7\A 8\A 9"; display: block; white-space: pre; line-height: 1; text-align: center; }
+.od [data-c]::before { content: attr(data-c); }
+.od--now .od__s { transition: none !important; }
+
+/* ---------- Fields ---------- */
+.field { display: block; }
+.field__label { display: block; margin-bottom: 8px; font: 500 var(--fs-xs)/1.3 var(--mono); color: var(--ink-2); }
+.field input, .field textarea { width: 100%; padding: 13px 14px; border: 0; border-radius: var(--r-md); font: inherit; color: var(--ink); background: rgba(var(--fg), 0.035); box-shadow: inset 0 0 0 1px rgba(var(--fg), 0.1); }
+.field input:focus, .field textarea:focus { outline: none; box-shadow: inset 0 0 0 1px var(--em-2), 0 0 0 4px rgba(11, 190, 93, 0.18); }
+.field textarea { resize: vertical; min-height: 112px; }
+
+/* ---------- Navigation ---------- */
+/* The site's nav, kept on screen: the logo on the left, the links centred in pale mint (the
+   current one white), Contact and Book a pilot on the right. Over a page's opening stage it sits
+   clear, a little low; once the page scrolls under it, a glass bar fades in behind it and it rises
+   into that bar. From 1024 px the home page's hero has a masthead of its own (sections.css), so
+   there the bar starts out of sight (.is-tucked) and slides down, solid, once that masthead has
+   gone (js/nav.js). Its surfaces are pseudo layers that fade, so nothing but opacity and transform
+   ever animates. */
+.nav { position: fixed; inset: 0 0 auto; z-index: 100; height: var(--nav-h); color: #fff; transition: color 0.3s var(--spring-soft); }
+@media (min-width: 1024px) {
+  .nav { transition: transform 0.6s var(--spring-soft), visibility 0s, color 0.3s var(--spring-soft); }
+  .nav.is-tucked:not(.menu-open) { transform: translateY(calc(-100% - 12px)); visibility: hidden; transition: transform 0.3s var(--spring-in), visibility 0s 0.3s, color 0.3s var(--spring-soft); }
+}
+.nav::before, .nav::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 0.3s var(--spring-soft); }
+.nav::before { background: rgba(1, 2, 2, 0.72); box-shadow: 0 1px 0 var(--hair); -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4); }
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) { .nav::before { background: #050706; -webkit-backdrop-filter: none; backdrop-filter: none; } }
+/* Phones: frosted glass re-blurs everything that scrolls under it on every frame, which costs
+   frames on mid-range handsets. A near-opaque tint reads the same at this size. */
+@media (max-width: 1023px) { .nav::before { background: rgba(3, 5, 4, 0.95); -webkit-backdrop-filter: none; backdrop-filter: none; } }
+.nav.is-solid::before { opacity: 1; }
+/* Over a light section (js/nav.js) the solid bar turns light: frosted canvas, ink type and the
+   dark logo. The two materials cross-fade; with the phone menu open the bar stays dark. */
+.nav::after { background: rgba(243, 244, 244, 0.84); box-shadow: 0 1px 0 rgba(17, 21, 19, 0.08); -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4); }
+@media (max-width: 1023px) { .nav::after { background: rgba(243, 244, 244, 0.985); -webkit-backdrop-filter: none; backdrop-filter: none; } }
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) { .nav::after { background: #F3F4F4; -webkit-backdrop-filter: none; backdrop-filter: none; } }
+.nav.is-solid.is-light:not(.menu-open) { color: #111513; }
+.nav.is-solid.is-light:not(.menu-open)::before { opacity: 0; }
+.nav.is-solid.is-light:not(.menu-open)::after { opacity: 1; }
+.nav__progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 1.5px; background: linear-gradient(90deg, var(--em-1), var(--em-2)); box-shadow: 0 0 10px var(--lime-glow); transform: scaleX(0); transform-origin: left; opacity: 0; transition: opacity 0.3s var(--spring-soft); }
+.nav.is-solid .nav__progress { opacity: 1; }
+/* Over the hero the bar's contents drop to the hero's own nav line (56 of its 985 units). */
+.nav__in {
+  --drop: 0px;
+  position: relative;
+  width: min(100%, calc(1458 * var(--hp)));
+  height: 100%;
+  margin-inline: auto;
+  padding: 0 calc(93 * var(--hp)) 0 calc(98 * var(--hp));
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  transform: translateY(var(--drop));
+  transition: transform 0.5s var(--spring);
+}
+.nav:not(.is-solid) .nav__in { --drop: max(0px, calc(56 * var(--hp) - var(--nav-h) / 2)); }
+.logo { display: inline-grid; align-items: center; padding-block: 1px; margin-block: -1px; }
+.logo img { grid-area: 1 / 1; width: max(112px, calc(134 * var(--hp))); height: auto; transition: opacity 0.3s var(--spring-soft); }
+.logo__dark { opacity: 0; }
+.nav.is-solid.is-light:not(.menu-open) .logo__light { opacity: 0; }
+.nav.is-solid.is-light:not(.menu-open) .logo__dark { opacity: 1; }
+/* Centred on the bar at their own width (an absolute box would otherwise get half the bar). */
+.nav__links { position: absolute; left: 50%; top: 50%; width: max-content; transform: translate(-50%, -50%); }
+.nav__links ul { display: flex; gap: calc(40 * var(--hp)); }
+.nav__links a[data-nav] { display: block; padding: 8px 2px; font: 400 max(12px, calc(14 * var(--hp)))/1 var(--mono); white-space: nowrap; text-decoration: none; color: var(--mint-link); transition: color var(--t-micro) var(--spring-soft); }
+.nav__links a[data-nav].is-active { color: #fff; }
+@media (hover: hover) { .nav__links a[data-nav]:hover { color: #fff; } }
+.nav.is-solid.is-light:not(.menu-open) .nav__links a[data-nav] { color: #4A514D; }
+.nav.is-solid.is-light:not(.menu-open) .nav__links a[data-nav].is-active { color: #111513; }
+@media (hover: hover) { .nav.is-solid.is-light:not(.menu-open) .nav__links a[data-nav]:hover { color: #111513; } }
+/* Active-section indicator: a fixed 100px bar, positioned and sized by transform. It shows only
+   once the bar is solid; over the hero, Home in white says it. */
+.nav__ind { position: absolute; left: 0; bottom: -10px; height: 2px; width: 100px; border-radius: 1px; background: var(--em-2); box-shadow: 0 0 10px var(--lime-glow); opacity: 0; transform-origin: left center; transform: translateX(0) scaleX(0.1); transition: opacity var(--t-micro) var(--spring-soft); pointer-events: none; }
+.nav:not(.is-solid) .nav__ind { visibility: hidden; }
+.nav__end { display: flex; align-items: center; gap: calc(26 * var(--hp)); font-size: max(12px, calc(14 * var(--hp))); }
+.nav__contact { font-family: var(--mono); text-decoration: none; transition: color var(--t-micro) var(--spring-soft); }
+@media (hover: hover) { .nav__contact:hover { color: var(--em-2); } }
+.nav__end .btn--deep { --h: max(40px, calc(44 * var(--hp))); padding: 0 calc(24 * var(--hp)); font-size: inherit; font-weight: 400; }
+.nav__menu-acts { display: none; }
+.nav__burger { display: none; flex-direction: column; justify-content: center; gap: 6px; width: 44px; height: 44px; margin-right: -8px; padding: 11px; border: 0; border-radius: 12px; background: transparent; cursor: pointer; color: inherit; transition: transform var(--t-micro) var(--spring); }
+.nav__burger:active { transform: scale(0.92); transition-duration: 0.1s; }
+.nav__burger span { display: block; height: 1.5px; width: 100%; background: currentColor; transition: transform 0.3s var(--spring); }
+.nav__burger[aria-expanded="true"] span:first-child { transform: translateY(3.75px) rotate(45deg); }
+.nav__burger[aria-expanded="true"] span:last-child { transform: translateY(-3.75px) rotate(-45deg); }
+/* Tablets: the column turns fluid, as the hero's does. The links keep the room they need, so
+   Contact steps out of the bar (it is in the footer, and in the phone menu). */
+@media (max-width: 1024px) {
+  .nav__in { width: 100%; padding-inline: max(16px, calc(40 * var(--hp))); }
+  .nav__end .nav__contact { display: none; }
+}
+/* Small tablets: the links close up a little, so the pill keeps its distance. */
+@media (min-width: 768px) and (max-width: 860px) {
+  .nav__links ul { gap: calc(32 * var(--hp)); }
+}
+/* Phones and small tablets (under 768 px, where the five links no longer fit between the logo and
+   the pill): the burger, and the menu as a glass panel under the bar. Escape, a tap outside or a
+   link closes it (js/nav.js). */
+@media (max-width: 767px) {
+  .nav__links { display: none; }
+  .nav__end .btn--deep { display: none; }
+  .nav__burger { display: inline-flex; }
+  .nav.menu-open .nav__links {
+    display: block;
+    top: calc(100% - 6px); left: max(16px, calc(40 * var(--hp))); right: max(16px, calc(40 * var(--hp)));
+    width: auto;
+    transform: none;
+    max-height: calc(100dvh - var(--nav-h) - 24px); overflow: auto;
+    padding: 12px;
+    border-radius: 20px;
+    background: rgba(8, 14, 11, 0.94);
+    box-shadow: inset 0 0 0 1px var(--hair), 0 24px 60px rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  }
+  .nav.menu-open .nav__links ul { flex-direction: column; gap: 0; }
+  .nav.menu-open .nav__links a[data-nav] { padding: 13px 14px; border-radius: 12px; font-size: 1rem; }
+  @media (hover: hover) { .nav.menu-open .nav__links a[data-nav]:hover { background: rgba(255, 255, 255, 0.05); } }
+  .nav.menu-open .nav__ind { display: none; }
+  .nav.menu-open .nav__menu-acts { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; padding-top: 8px; box-shadow: 0 -1px 0 var(--hair); }
+  .nav__menu-acts .nav__contact { padding: 13px 14px; font-size: 1rem; }
+  .nav__menu-acts .btn { --h: 48px; font-size: 1rem; font-weight: 400; }
+}
+
+/* ---------- Footer ---------- */
+
+/* ---------- Entry states (js/engine.js plays them in) ---------- */
+.js .rv { opacity: 0; transform: translateY(16px); }
+.js .label { opacity: 0; }
+.js [data-split] { visibility: hidden; }
+.js [data-split].is-split { visibility: visible; }
+/* Character decode: each glyph fades in behind a soft block caret. */
+.dc { position: relative; }
+.dc .ch { opacity: 0; transition: opacity 0.16s var(--spring-soft); }
+.dc .ch.on { opacity: 1; }
+.dc__caret { position: absolute; left: 0; top: -0.2em; bottom: -0.2em; width: 0.62em; background: currentColor; opacity: 0; pointer-events: none; }
+/* Ambient motion runs only while its section is on screen. */
+.js [data-live]:not(.is-live) *, .js [data-live]:not(.is-live) *::before, .js [data-live]:not(.is-live) *::after,
+.js [data-live]:not(.is-live)::before, .js [data-live]:not(.is-live)::after { animation-play-state: paused !important; }
+
+/* ---------- Reduced motion: the finished state, immediately, with no motion at all ---------- */
+/* Reduced motion keeps feedback and drops travel (Apple): nothing slides, scales, spins or loops,
+   finished states show at once, and a change of state (a press, a control appearing) cross-fades
+   briefly instead of moving. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-property: opacity, color, background-color, border-color, box-shadow !important; transition-duration: 0.2s !important; transition-delay: 0s !important; transition-timing-function: var(--spring-soft) !important; scroll-behavior: auto !important; }
+  .js .rv, .js .label { opacity: 1; transform: none; }
+  .js [data-split] { visibility: visible; }
+  .dc .ch { opacity: 1; }
+}
+/* ?motion=reduce (QA) adds .rm to <html> for the same result. */
+.rm *, .rm *::before, .rm *::after { animation: none !important; transition-property: opacity, color, background-color, border-color, box-shadow !important; transition-duration: 0.2s !important; transition-delay: 0s !important; transition-timing-function: var(--spring-soft) !important; }
+.rm .rv, .rm .label { opacity: 1 !important; transform: none !important; }
