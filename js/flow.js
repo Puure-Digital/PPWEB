@@ -16,6 +16,10 @@ const KINDS = {
 };
 
 const isLight = (el) => el.classList.contains('light');
+// Phones and tablets: a section there runs several screens, so holding its last screenful under
+// the next one reads as one section stuck on another. There the section before scrolls away as
+// normal, and the next only rises with its corners flattening as it lands.
+const ROLL = window.matchMedia('(max-width: 1023px)');
 
 export function initFlow() {
   if (RM) return;
@@ -82,7 +86,7 @@ export function initFlow() {
     }
     // The section below rises a screen; the one it covers moves back down by most of that, so it
     // holds nearly still under it, and settles back and dims as it goes.
-    if (!f.short) {
+    if (!f.short && !ROLL.matches) {
       const y = (k.hold * p * vh).toFixed(1) + 'px';
       const s = (1 - (1 - k.scale) * p).toFixed(4);
       f.kids.forEach((c, j) => { c.style.transformOrigin = '50% ' + f.origins[j]; c.style.translate = '0 ' + y; c.style.scale = s; });

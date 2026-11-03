@@ -32,8 +32,8 @@ export function initCalc() {
     last = spend;
     spendNow = spend;
     const annual = spend * 52 * RATE;
-    // While the thumb is held the figures keep up with it; a preset or a key press rolls them.
-    const o = { instant: first, dur: dragging ? 0.1 : 0.35, step: dragging ? 0 : 0.02 };
+    // While the thumb is held the figures follow it at once; a preset or a key press rolls them.
+    const o = { instant: first || dragging, dur: 0.35, step: 0.02 };
     first = false;
     setOd(weekly, spend, o);
     setOd(month, Math.round(annual / 12), o);
@@ -43,7 +43,11 @@ export function initCalc() {
     presets.forEach((b) => b.setAttribute('aria-pressed', String(Number(b.dataset.v) === spend)));
     // The pill slides to the chosen value; between values it fades where it is.
     const i = presets.findIndex((b) => Number(b.dataset.v) === spend);
-    if (i >= 0) group.style.setProperty('--i', i);
+    if (i >= 0) {
+      // Coming from a value between presets, the pill appears at the new one rather than sliding.
+      if (group.classList.contains('is-free')) { group.classList.add('is-snap'); group.style.setProperty('--i', i); void group.offsetWidth; group.classList.remove('is-snap'); }
+      else group.style.setProperty('--i', i);
+    }
     group.classList.toggle('is-free', i < 0);
     document.dispatchEvent(new CustomEvent('pp:spend', { detail: spend }));
     // The pilot call carries the chosen spend to the booking page, and the full calculator opens at it.
@@ -54,8 +58,11 @@ export function initCalc() {
   }
 
   range.addEventListener('input', () => update(nice(toSpend(Number(range.value)))));
-  range.addEventListener('pointerdown', () => { dragging = true; });
-  ['pointerup', 'pointercancel'].forEach((t) => window.addEventListener(t, () => { dragging = false; }));
+  // A finger that lands on the track and then scrolls the page puts the spend back as it was.
+  let before = null;
+  range.addEventListener('pointerdown', (e) => { dragging = true; before = e.pointerType === 'touch' ? range.value : null; });
+  range.addEventListener('pointercancel', () => { if (before !== null) { range.value = before; update(nice(toSpend(Number(before)))); } before = null; });
+  ['pointerup', 'pointercancel'].forEach((t) => window.addEventListener(t, () => { dragging = false; before = null; }));
   presets.forEach((b) => b.addEventListener('click', () => {
     const s = Number(b.dataset.v);
     range.value = toV(s);

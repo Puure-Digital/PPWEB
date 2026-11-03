@@ -26,6 +26,9 @@ export async function boot(steps) {
   // when late fonts reflow text, and ScrollTrigger's own on resize. (Its DOMContentLoaded and
   // load refreshes would land mid-setup now that setup yields.)
   ScrollTrigger.config({ ignoreMobileResize: true, autoRefreshEvents: 'visibilitychange,resize' });
+  // Every refresh measures the triggers in page order, however late a scene was built (a window
+  // crossing 1024 px rebuilds the desktop pins after everything else).
+  ScrollTrigger.addEventListener('refreshInit', () => ScrollTrigger.sort());
   registerEases();
 
   for (const step of steps) {

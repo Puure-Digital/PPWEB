@@ -16,6 +16,7 @@ export function initScroll() {
     // smooth scrolling never clamps to a stale end of page.
     ScrollTrigger.addEventListener('refresh', () => lenis.resize());
   }
+  land();
 
   document.addEventListener('click', (e) => {
     const a = e.target.closest('a[href^="#"]');
@@ -25,16 +26,64 @@ export function initScroll() {
     const target = document.querySelector(id);
     if (!target) return;
     e.preventDefault();
-    // Sections land flush (their own padding clears the nav); anything smaller, such as a form,
-    // keeps its scroll margin below the nav.
-    const margin = target.tagName === 'SECTION' ? 0 : parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
-    const y = id === '#top' ? 0 : target.getBoundingClientRect().top + window.scrollY - margin;
+    const y = id === '#top' ? 0 : spot(target);
     const duration = Math.min(1.4, 0.8 + Math.abs(y - window.scrollY) / 8000);
     if (lenis) lenis.scrollTo(y, { duration, easing: springSoft });
     else window.scrollTo({ top: y, behavior: RM ? 'auto' : 'smooth' });
     history.replaceState(null, '', id);
     if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
     setTimeout(() => target.focus({ preventScroll: true }), RM ? 0 : duration * 1000);
+  });
+}
+
+// Where a jump to an element lands: a section flush with the top (its own padding clears the
+// nav), anything smaller with its scroll margin below the nav. A pinned section is measured by
+// the space its pin holds.
+function spot(el) {
+  const box = el.closest('.pin-spacer') || el;
+  const margin = el.tagName === 'SECTION' ? 0 : parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+  return Math.max(0, box.getBoundingClientRect().top + window.scrollY - margin);
+}
+const jump = (y) => (lenis ? lenis.scrollTo(y, { immediate: true, force: true }) : window.scrollTo(0, y));
+
+// The browser goes to an address's #section, or back to where a reload left off, before the
+// pinned scenes above it have added their length, so it lands short. Once ScrollTrigger has
+// measured them the page lands again, and after each late refresh (load, fonts) until the reader
+// scrolls. And when the width changes (a phone turned, a window resized) the reader keeps their
+// place in the section they were in, not the same pixel offset.
+function land() {
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  const key = 'pp:y:' + location.pathname;
+  window.addEventListener('pagehide', () => { try { sessionStorage.setItem(key, String(Math.round(window.scrollY))); } catch { /* storage off */ } });
+  const how = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0] || {}).type;
+  const id = decodeURIComponent(location.hash.slice(1));
+  let goal = null;
+  if (id && id !== 'risk-check' && document.getElementById(id)) goal = document.getElementById(id);
+  else if (how === 'reload' || how === 'back_forward') {
+    try { const y = Number(sessionStorage.getItem(key)); if (y > 0) goal = y; } catch { /* storage off */ }
+  }
+  if (goal !== null) {
+    const done = () => { goal = null; ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach((t) => window.removeEventListener(t, done)); };
+    ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach((t) => window.addEventListener(t, done, { passive: true }));
+    setTimeout(done, 6000);
+  }
+  let width = window.innerWidth, place = null;
+  ScrollTrigger.addEventListener('refreshInit', () => {
+    if (goal !== null || window.innerWidth === width) return;
+    width = window.innerWidth;
+    const y = window.scrollY;
+    const box = [...document.querySelectorAll('main > section, main > .pin-spacer, body > .foot')].find((el) => {
+      const r = el.getBoundingClientRect();
+      return r.top <= 1 && r.bottom > 1;
+    });
+    if (box) place = { el: box.matches('.pin-spacer') ? box.firstElementChild : box, f: (y - (box.getBoundingClientRect().top + y)) / box.offsetHeight };
+  });
+  ScrollTrigger.addEventListener('refresh', () => {
+    if (goal !== null) { jump(typeof goal === 'number' ? goal : spot(goal)); return; }
+    if (!place) return;
+    const box = place.el.closest('.pin-spacer') || place.el;
+    jump(box.getBoundingClientRect().top + window.scrollY + place.f * box.offsetHeight);
+    place = null;
   });
 }
 

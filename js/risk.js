@@ -107,9 +107,11 @@ export function initRisk() {
 
   // One question at a time, or the result; focus goes to its heading, so a screen reader reads it.
   function show(k) {
+    // Back slides in from the left, forward from the right.
+    const rev = k < at;
     at = k;
     const done = k === n;
-    steps.forEach((s, j) => { s.hidden = j !== k; });
+    steps.forEach((s, j) => { s.hidden = j !== k; s.classList.toggle('is-back', rev); });
     res.hidden = !done;
     if (done) render();
     bar.style.setProperty('--p', ((k + 1) / (n + 1)).toFixed(3));
@@ -153,8 +155,12 @@ export function initRisk() {
     show(0);
   }
 
+  // Closing eases out (dimming the page back in) before the dialog goes; reduced motion just goes.
   function shut() {
-    if (dlg.open) dlg.close();
+    if (!dlg.open || dlg.classList.contains('is-closing')) return;
+    if (RM) { dlg.close(); return; }
+    dlg.classList.add('is-closing');
+    setTimeout(() => { dlg.classList.remove('is-closing'); if (dlg.open) dlg.close(); }, 200);
   }
   // However it closes (the button, Escape, a click outside, Back, or the browser closing it on its
   // own after Escape), the page comes back as it was.

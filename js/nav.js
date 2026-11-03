@@ -67,8 +67,10 @@ export function initNav() {
   if (mast) {
     const wide = window.matchMedia(DESKTOP);
     let past = null;
-    const tuck = () => nav.classList.toggle('is-tucked', wide.matches && !(past && past.isActive));
-    past = ScrollTrigger.create({ trigger: mast, start: 'bottom top', end: 'max', onToggle: tuck });
+    // Below the masthead, by scroll position, so the bar also stays at the very end of the page
+    // (where the trigger itself turns inactive).
+    const tuck = () => nav.classList.toggle('is-tucked', wide.matches && !(past && past.scroll() > past.start));
+    past = ScrollTrigger.create({ trigger: mast, start: 'bottom top', end: 'max', onToggle: tuck, onUpdate: tuck });
     wide.addEventListener('change', tuck);
     tuck();
   } else nav.classList.remove('is-tucked');

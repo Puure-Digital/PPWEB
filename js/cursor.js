@@ -6,8 +6,9 @@
 import { RM, FINE } from './util.js';
 import { follow } from './motion.js';
 
-const PRESS = 'a[href], button, [role="button"], summary, label.chip, input[type="range"], .qa__q';
-const QUIET = 'input:not([type="range"]), textarea, select, iframe, [contenteditable="true"], .bkf';
+const PRESS = 'a[href], button, [role="button"], summary, label.chip, .qa__q';
+// Sliders are quiet too: their thumb is the target, and a ring would trail it like a second one.
+const QUIET = 'input, textarea, select, iframe, [contenteditable="true"], [role="slider"], .bkf';
 const CARD = '.card, .hx-card, .leak, .zoom, .chart';
 
 export function initCursor() {

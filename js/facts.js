@@ -12,8 +12,11 @@ export function initFacts() {
   const band = qs('.facts');
   if (!band || RM) return;
   const row = window.matchMedia('(min-width: 641px)');
+  const cards = qsa('.facts__nums > li', band);
+  // Measured where they rest, not mid-rise, so each count starts as its card arrives.
+  ScrollTrigger.addEventListener('refreshInit', () => cards.forEach((c) => { c.style.transform = 'none'; }));
 
-  qsa('.facts__nums > li', band).forEach((card, i) => {
+  cards.forEach((card, i) => {
     const od = qs('.od', card);
     const target = od ? parseFloat(od.dataset.od) : 0;
     let counted = false;
@@ -28,7 +31,7 @@ export function initFacts() {
       const e = springSoft(p);
       card.style.opacity = e.toFixed(3);
       card.style.transform = `translate3d(0, ${((1 - e) * 56).toFixed(1)}px, 0) scale(${(0.94 + 0.06 * e).toFixed(4)})`;
-      if (p >= 0.6) count(true);
+      if (p >= 0.35) count(true);
       else if (p <= 0.05) count(false);
     };
     // Side by side the cards share one top edge, so each starts a little later than the one before.

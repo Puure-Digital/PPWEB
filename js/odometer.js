@@ -46,9 +46,17 @@ export function setOd(el, value, opts = {}) {
   const o = typeof opts === 'boolean' ? { instant: opts } : opts;
   const str = fmt(el, value);
   if (el._odShape !== str.replace(/\d/g, '0')) {
+    const was = el._odSr ? el._odSr.textContent.replace(/\D/g, '') : '';
     build(el, str);
-    // New strips need a computed start (0) before their target, or they would jump.
-    if (!o.instant && !RM) void el.offsetWidth;
+    // New strips start on the digits the figure showed before, matched from the right, so a
+    // figure that gains or loses a digit rolls on from where it was instead of from nought.
+    if (!o.instant && !RM) {
+      const strips = el.querySelectorAll('.od__s'), n = strips.length;
+      el.classList.add('od--now');
+      strips.forEach((s, i) => { const j = was.length - (n - i); s.style.setProperty('--d', j >= 0 ? was[j] : 0); });
+      void el.offsetWidth;
+      el.classList.remove('od--now');
+    }
   }
   el.style.setProperty('--od-delay', (o.delay || 0) + 's');
   el.style.setProperty('--od-dur', (o.dur || 0.9) + 's');

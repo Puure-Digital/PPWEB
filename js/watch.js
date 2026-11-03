@@ -10,6 +10,9 @@ import { springSoft, follow } from './motion.js';
 const mmss = (t) => Math.floor(t / 60) + ':' + String(Math.floor(t % 60)).padStart(2, '0');
 
 export function initWatch() {
+  // The transcript opens below the film and moves every scene under it: re-measure them.
+  const tx = document.querySelector('.watch__tx');
+  if (tx) tx.addEventListener('toggle', () => ScrollTrigger.refresh());
   const root = qs('#watch');
   if (!root) return;
   const video = qs('.watch__video', root), screen = qs('.watch__screen', root);

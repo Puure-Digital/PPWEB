@@ -60,7 +60,11 @@ function initCalculator() {
     const bs = qsa('button', group);
     const i = bs.findIndex((b) => Number(b.dataset.v) === v);
     bs.forEach((b, j) => b.setAttribute('aria-pressed', String(j === i)));
-    if (i >= 0) group.style.setProperty('--i', i);
+    if (i >= 0) {
+      // Coming from a value between presets, the pill appears at the new one rather than sliding.
+      if (group.classList.contains('is-free')) { group.classList.add('is-snap'); group.style.setProperty('--i', i); void group.offsetWidth; group.classList.remove('is-snap'); }
+      else group.style.setProperty('--i', i);
+    }
     group.classList.toggle('is-free', i < 0);
   }
 
@@ -69,7 +73,7 @@ function initCalculator() {
     const week = s.spend * rate, year = week * 52, hours = week / s.hourly;
     const held = heldBy90(s.spend / s.sites, rate);
     // While the thumb is held the figures keep up with it; anything else rolls them.
-    const o = { instant: first, dur: dragging ? 0.1 : 0.35, step: dragging ? 0 : 0.02 };
+    const o = { instant: first || dragging, dur: 0.35, step: 0.02 };
     setOd(out.spend, s.spend, o);
     setOd(out.year, Math.round(year), o);
     setOd(out.month, Math.round(year / 12), o);
@@ -136,8 +140,11 @@ function initCalculator() {
   }
 
   range.addEventListener('input', () => { s.spend = nice(toSpend(Number(range.value))); change(); });
-  range.addEventListener('pointerdown', () => { dragging = true; });
-  ['pointerup', 'pointercancel'].forEach((t) => window.addEventListener(t, () => { dragging = false; }));
+  // A finger that lands on the track and then scrolls the page puts the spend back as it was.
+  let before = null;
+  range.addEventListener('pointerdown', (e) => { dragging = true; before = e.pointerType === 'touch' ? range.value : null; });
+  range.addEventListener('pointercancel', () => { if (before !== null) { range.value = before; s.spend = nice(toSpend(Number(before))); change(); } before = null; });
+  ['pointerup', 'pointercancel'].forEach((t) => window.addEventListener(t, () => { dragging = false; before = null; }));
   qsa('button', spendGroup).forEach((b) => b.addEventListener('click', () => {
     s.spend = Number(b.dataset.v);
     range.value = toV(s.spend);

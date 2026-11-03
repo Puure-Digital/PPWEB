@@ -423,7 +423,9 @@ a:not(.btn):active, .qa__q:active, .stage__pause:active { opacity: 0.6; transiti
 @media (prefers-reduced-motion: no-preference) {
   @view-transition { navigation: auto; }
 }
-.nav { view-transition-name: site-nav; }
+/* The bar's contents are named for the cross-page transition, not the bar itself: a named element
+   is a backdrop root, so its frosted glass would blur nothing. */
+.nav__in { view-transition-name: site-nav; }
 ::view-transition-old(root), ::view-transition-new(root) { mix-blend-mode: normal; animation-duration: 0.85s; animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1); animation-fill-mode: both; }
 ::view-transition-old(root) { animation-name: vt-settle; }
 ::view-transition-new(root) { animation-name: vt-sheet; }
@@ -503,7 +505,8 @@ html[data-vt="back"]::view-transition-new(root) { animation-name: vt-rise; }
    ever animates. */
 .nav { position: fixed; inset: 0 0 auto; z-index: 100; height: var(--nav-h); color: #fff; transition: color 0.3s var(--spring-soft); }
 @media (min-width: 1024px) {
-  .nav { transition: transform 0.6s var(--spring-soft), visibility 0s, color 0.3s var(--spring-soft); }
+  /* It enters a beat after the hero's masthead has faded, so the two never show together. */
+  .nav { transition: transform 0.6s var(--spring-soft) 0.14s, visibility 0s, color 0.3s var(--spring-soft); }
   .nav.is-tucked:not(.menu-open) { transform: translateY(calc(-100% - 12px)); visibility: hidden; transition: transform 0.3s var(--spring-in), visibility 0s 0.3s, color 0.3s var(--spring-soft); }
 }
 .nav::before, .nav::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 0.3s var(--spring-soft); }
@@ -511,7 +514,7 @@ html[data-vt="back"]::view-transition-new(root) { animation-name: vt-rise; }
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) { .nav::before { background: #050706; -webkit-backdrop-filter: none; backdrop-filter: none; } }
 /* Phones: frosted glass re-blurs everything that scrolls under it on every frame, which costs
    frames on mid-range handsets. A near-opaque tint reads the same at this size. */
-@media (max-width: 1023px) { .nav::before { background: rgba(3, 5, 4, 0.95); -webkit-backdrop-filter: none; backdrop-filter: none; } }
+@media (max-width: 1023px) { .nav::before { background: rgba(3, 5, 4, 0.985); -webkit-backdrop-filter: none; backdrop-filter: none; } }
 .nav.is-solid::before { opacity: 1; }
 /* Over a light section (js/nav.js) the solid bar turns light: frosted canvas, ink type and the
    dark logo. The two materials cross-fade; with the phone menu open the bar stays dark. */
@@ -594,7 +597,7 @@ html[data-vt="back"]::view-transition-new(root) { animation-name: vt-rise; }
     -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
   }
   .nav.menu-open .nav__links ul { flex-direction: column; gap: 0; }
-  .nav.menu-open .nav__links a[data-nav] { padding: 13px 14px; border-radius: 12px; font-size: 1rem; }
+  .nav.menu-open .nav__links a[data-nav] { padding: 14px; border-radius: 12px; font-size: 1rem; }
   @media (hover: hover) { .nav.menu-open .nav__links a[data-nav]:hover { background: rgba(255, 255, 255, 0.05); } }
   .nav.menu-open .nav__ind { display: none; }
   .nav.menu-open .nav__menu-acts { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; padding-top: 8px; box-shadow: 0 -1px 0 var(--hair); }

@@ -206,8 +206,11 @@ function pilotChart() {
     fig.classList.remove('is-scrub');
     if (done) say(total, 'by day 90');
   }
-  plot.addEventListener('pointerdown', (e) => scrubAt(e.clientX));
-  plot.addEventListener('pointermove', (e) => scrubAt(e.clientX));
+  // Touch scrubs once the finger moves sideways, so a scroll that starts on the plot never flashes
+  // the crosshair.
+  let x0 = null;
+  plot.addEventListener('pointerdown', (e) => { if (e.pointerType === 'touch') x0 = e.clientX; else scrubAt(e.clientX); });
+  plot.addEventListener('pointermove', (e) => { if (e.pointerType === 'touch' && !scrubbing && (x0 === null || Math.abs(e.clientX - x0) < 8)) return; scrubAt(e.clientX); });
   plot.addEventListener('pointerleave', stop);
   plot.addEventListener('pointercancel', stop);
   plot.addEventListener('pointerup', (e) => { if (e.pointerType !== 'mouse') stop(); });

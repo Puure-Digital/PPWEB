@@ -24,7 +24,7 @@ export function initHow() {
   const scan = qs('#stage .sv--scan');
   const replay = () => {
     if (RM || !scan) return;
-    scan.classList.remove('is-run', 'is-hold', 'is-pass');
+    scan.classList.remove('is-run', 'is-hold', 'is-pass', 'is-idle');
     void scan.offsetWidth;
     scan.classList.add('is-run');
   };
@@ -109,7 +109,14 @@ export function initHow() {
       onToggle: (self) => { inView = self.isActive; run(); },
     });
     pause.addEventListener('click', toggle);
-    const hold = () => { if (!paused) toggle(); };
+    // A hold pauses the stepping; a hold let go early (or a scroll that began on the button) plays
+    // it again; a scan that passes leaves it paused on the result.
+    let byHold = false;
+    const hold = (e) => {
+      if (e.detail === 'start') { if (!paused) { toggle(); byHold = true; } }
+      else if (e.detail === 'cancel') { if (byHold && paused) toggle(); byHold = false; }
+      else byHold = false;
+    };
     stage.addEventListener('stage:hold', hold);
     return () => { clearInterval(timer); st.kill(); pause.removeEventListener('click', toggle); stage.removeEventListener('stage:hold', hold); };
   });
@@ -140,14 +147,15 @@ function hands(scan, stage, toScan) {
     scan.classList.remove('is-hold');
     void scan.offsetWidth;
     scan.classList.add('is-pass');
+    stage.dispatchEvent(new CustomEvent('stage:hold', { detail: 'pass' }));
     if (said) said.textContent = 'Scan passed: W-0412 verified at Terminal 2, ' + now + '. Invoice line approved.';
   };
   const start = () => {
     if (held) return;
     held = true;
     toScan();
-    stage.dispatchEvent(new CustomEvent('stage:hold'));
-    scan.classList.remove('is-run', 'is-pass');
+    stage.dispatchEvent(new CustomEvent('stage:hold', { detail: 'start' }));
+    scan.classList.remove('is-run', 'is-pass', 'is-idle');
     scan.classList.add('is-hold');
     btn.classList.add('is-holding');
     if (said) said.textContent = '';
@@ -158,7 +166,9 @@ function hands(scan, stage, toScan) {
     held = false;
     clearTimeout(timer);
     btn.classList.remove('is-holding');
-    scan.classList.remove('is-hold');
+    // Let go early, the terminal waits for a scan: never the finished, approved state.
+    scan.classList.replace('is-hold', 'is-idle');
+    stage.dispatchEvent(new CustomEvent('stage:hold', { detail: 'cancel' }));
   };
   btn.addEventListener('pointerdown', (e) => { if (e.button === 0) { btn.setPointerCapture(e.pointerId); start(); } });
   btn.addEventListener('pointerup', cancel);
