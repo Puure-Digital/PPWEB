@@ -1133,6 +1133,8 @@ button.hx-pill:focus-visible { border-radius: 999px; }
    always there and never over a reading; holding it brings the scan back. */
 @media (max-width: 1023px) {
   .stage__try { position: relative; left: auto; bottom: auto; margin: 0 clamp(18px, 2.4vw, 28px) clamp(16px, 2.2vw, 26px); opacity: 1; visibility: visible; transform: none; }
+  /* It keeps its place, so the pinned stage never changes height, but shows only with the scan. */
+  .stage:not(.is-scan) .stage__try { opacity: 0; visibility: hidden; }
 }
 @media (max-width: 359px) { .stage__bar > .mono { display: none; } }
 

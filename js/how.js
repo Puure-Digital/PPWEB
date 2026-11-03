@@ -1,5 +1,5 @@
 // How it works: the product stage follows the step being read (desktop),
-// or steps through on its own while in view (phone).
+// or holds on screen while the scroll takes it through the steps (phone).
 // Step dots are fixed bars placed and sized by transform (--x, --s), never by width.
 // The gate terminal turns in from side on as the stage scrolls up to it (--turn), and the reader
 // can run the face scan themselves: hold the button and it scans while held, then passes.
@@ -92,33 +92,22 @@ export function initHow() {
       steps.forEach((s) => { s.style.opacity = ''; s.style.removeProperty('--f'); });
     };
   });
-  // Phones: the stage steps through on its own while in view, and Pause stops it (WCAG 2.2.2:
-  // anything that moves by itself for more than five seconds needs a way to stop it).
+  // Phones: the stage holds on screen, clear of the bar, while the reader scrolls on, and takes them
+  // through the five steps in turn (each over 60% of a screen of scroll), as the steps do on desktop.
+  // Nothing moves by itself, so there is no Pause.
   mm.add('(max-width: 1023px)', () => {
     if (RM) return;
     const pause = qs('.stage__pause');
-    pause.textContent = 'Pause'; // each phone layout starts playing, so its label must say so
-    let timer = null, inView = false, paused = false;
-    const run = () => {
-      clearInterval(timer);
-      if (inView && !paused) timer = setInterval(() => show((cur + 1) % views.length), 3400);
-    };
-    const toggle = () => { paused = !paused; pause.textContent = paused ? 'Play' : 'Pause'; run(); };
+    if (pause) pause.style.display = 'none';
+    const bar = () => (qs('.nav') ? qs('.nav').offsetHeight : 64);
     const st = ScrollTrigger.create({
-      trigger: qs('#stage'), start: 'top 85%', end: 'bottom 15%',
-      onToggle: (self) => { inView = self.isActive; run(); },
+      trigger: stage, pin: true,
+      start: () => 'top ' + Math.round(Math.max(bar() + 8, (window.innerHeight - stage.offsetHeight) / 2)),
+      end: () => '+=' + Math.round(window.innerHeight * 0.6 * (views.length - 1)),
+      onUpdate: (self) => show(Math.min(views.length - 1, Math.floor(self.progress * views.length))),
+      onRefresh: (self) => show(Math.min(views.length - 1, Math.floor(self.progress * views.length))),
     });
-    pause.addEventListener('click', toggle);
-    // A hold pauses the stepping; a hold let go early (or a scroll that began on the button) plays
-    // it again; a scan that passes leaves it paused on the result.
-    let byHold = false;
-    const hold = (e) => {
-      if (e.detail === 'start') { if (!paused) { toggle(); byHold = true; } }
-      else if (e.detail === 'cancel') { if (byHold && paused) toggle(); byHold = false; }
-      else byHold = false;
-    };
-    stage.addEventListener('stage:hold', hold);
-    return () => { clearInterval(timer); st.kill(); pause.removeEventListener('click', toggle); stage.removeEventListener('stage:hold', hold); };
+    return () => { st.kill(); if (pause) pause.style.display = ''; };
   });
 }
 
