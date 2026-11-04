@@ -15,6 +15,7 @@ import { initReveals } from './reveal.js';
 import { initLive } from './engine.js';
 import { qs, qsa, gbp, clamp, copyText, confirmCopy } from './util.js';
 import { setOd } from './odometer.js';
+import { waLink } from './whatsapp.js';
 import { MIN, MAX, RATE, METHODS, DAYS, LIVE, heldBy90, toSpend, toV, nice } from './calc.js';
 
 const RATES = [1.7, 2.5, 5, 7.5];
@@ -47,7 +48,7 @@ function initCalculator() {
 
   const out = {};
   ['spend', 'year', 'month', 'week', 'day', 'site', 'hours', 'held'].forEach((k) => { out[k] = qs('#x-' + k); });
-  const eq = qs('#x-eq'), said = qs('#x-said'), barV = qs('#x-bar');
+  const eq = qs('#x-eq'), said = qs('#x-said'), barV = qs('#x-bar'), wa = qs('#x-wa');
   const spendGroup = qs('#x-presets'), rateGroup = qs('#x-rates');
   const sites = qs('#x-sites'), hourly = qs('#x-hourly');
   const field = { 'x-sites': 'sites', 'x-hourly': 'hourly' };
@@ -102,6 +103,8 @@ function initCalculator() {
     // The working, with the visitor's numbers in it.
     const pct = s.pct.toLocaleString('en-GB') + '%', per = s.sites === 1 ? '1 site' : s.sites.toLocaleString('en-GB') + ' sites';
     work('year').innerHTML = gbp(s.spend) + ' a week × ' + pct + ' × 52 weeks = <b>' + gbp(year) + '</b>';
+    // The WhatsApp button opens a chat with these figures already written, so the reply can be the one-pager.
+    if (wa) wa.href = waLink('Hi PayRoll Protect, please send me the one-pager. Calculator: about ' + gbp(s.spend) + ' a week across ' + per + ', ' + pct + ' unverified, about ' + gbp(year) + ' a year.');
     work('hours').innerHTML = gbp(week) + ' a week ÷ ' + gbp(s.hourly) + ' an hour = <b>' + Math.round(hours).toLocaleString('en-GB') + ' hours</b> a week';
     work('site').innerHTML = gbp(year) + ' ÷ ' + per + ' = <b>' + gbp(year / s.sites) + '</b> a year';
     work('held').innerHTML = gbp(s.spend) + ' a week ÷ ' + per + ' × ' + pct + ' × ' + (DAYS - LIVE) + ' days ÷ 7 = <b>' + gbp(held) + '</b>';

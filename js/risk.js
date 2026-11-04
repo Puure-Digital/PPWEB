@@ -8,7 +8,8 @@
 // A modal <dialog>, full screen on a phone, opened from any [data-risk-open] or by arriving at
 // #risk-check. Escape, the close button, a click outside it and the browser's Back all close it.
 import { qs, qsa, gbp, RM } from './util.js';
-import { RATE, heldBy90 } from './calc.js';
+import { RATE, METHODS, heldBy90 } from './calc.js';
+import { waLink } from './whatsapp.js';
 import { stopScroll } from './scroll.js';
 
 const UK = 0.017;
@@ -103,6 +104,9 @@ export function initRisk() {
     out('pilot').textContent = gbp(heldBy90(spend));
     out('book').href = 'book.html?' + new URLSearchParams({ spend, risk: r.level, open: r.open, method: a.method });
     out('calc').href = 'calculator.html?' + new URLSearchParams({ spend, sites: 1, hourly: 32, rate: RATE * 100, method: a.method });
+    // The WhatsApp button opens a chat with the result already written, so the reply can be the one-pager.
+    out('wa').href = waLink('Hi PayRoll Protect, please send me the one-pager. My risk check came out ' + word.toLowerCase() + ', ' + r.open + ' of 4 checks open, on about '
+      + gbp(spend) + ' a week of labour' + (METHODS[a.method] ? ' checked by ' + METHODS[a.method].toLowerCase() : '') + '.');
   }
 
   // One question at a time, or the result; focus goes to its heading, so a screen reader reads it.

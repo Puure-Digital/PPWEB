@@ -360,6 +360,14 @@ main { counter-reset: sec; }
   .btn { max-width: 100%; height: auto; min-height: var(--h); padding-block: 10px; white-space: normal; text-align: center; line-height: 1.3; }
 }
 .btn__arrow { flex: none; width: 14px; height: 14px; transition: transform var(--t-micro) var(--spring); }
+/* A leading glyph, as on the WhatsApp buttons. */
+.btn__wa { flex: none; width: 16px; height: 16px; margin-right: 9px; fill: currentColor; color: #25D366; }
+.btn--wa { white-space: nowrap; }
+/* Where the long label would wrap (a narrow card, a small phone), a shorter one. */
+.wa-sm, .cx__acts .btn--wa .wa-lg { display: none; }
+@media (max-width: 559px) { .cx__acts .btn--wa .wa-sm { display: inline; } }
+@media (min-width: 560px) { .cx__acts .btn--wa .wa-lg { display: inline; } }
+@media (max-width: 374px) { .btn--wa .wa-lg { display: none; } .btn--wa .wa-sm { display: inline; } }
 @media (hover: hover) { .btn:hover .btn__arrow { transform: translateX(3px); } }
 .mag { display: inline-flex; }
 
