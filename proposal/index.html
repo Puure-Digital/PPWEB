@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Proposal | PayRoll Protect</title>
+  <!-- A one-page proposal in the site's own style, for sending as a PDF (WhatsApp, email).
+       Fill it from the address: ?client=Armstrong+Build&workers=18&sites=seven+sites&price=297
+       Optional: rate (£/hour, default 20), date, logo (image address), photo (image address).
+       Or call window.fill({...}) with the same keys. tools/proposal.py renders it to a PDF. -->
+  <style>
+    @font-face { font-family: "Mona Sans"; src: url("../assets/fonts/mona-sans-latin.woff2") format("woff2"); font-weight: 300 600; font-stretch: 100% 125%; font-display: block; }
+    @font-face { font-family: "Unbounded"; src: url("../assets/fonts/unbounded-latin.woff2") format("woff2"); font-weight: 200 900; font-display: block; }
+    :root {
+      --gun: #010101; --ink: #fff; --ink-2: #B3B3B3; --ink-3: #8D928F; --ink-4: #5C615E;
+      --hair: rgba(255, 255, 255, 0.08); --hair-2: rgba(255, 255, 255, 0.14);
+      --mint: #2CDC7C; --lime: #0FD76A; --lime-soft: rgba(15, 215, 106, 0.14); --amber: #F4B840;
+      --glass: linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.015));
+      --line: inset 0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+      --font: "Mona Sans", ui-sans-serif, system-ui, sans-serif;
+      --display: "Unbounded", ui-sans-serif, system-ui, sans-serif;
+    }
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: #0B0E0C; }
+    body { font: 400 12.5px/1.5 var(--font); color: var(--ink); -webkit-font-smoothing: antialiased; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { position: relative; width: 210mm; height: 297mm; margin: 0 auto; padding: 40px 44px 34px; overflow: hidden; background: var(--gun); display: flex; flex-direction: column; gap: 18px; }
+    @media screen { .page { margin: 24px auto; box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.9); } }
+    /* The site's dark ground: a faint dot grid and a soft green glow. */
+    .page::before { content: ""; position: absolute; inset: 0; background: radial-gradient(rgba(255, 255, 255, 0.07) 0.6px, transparent 0.7px) 0 0 / 22px 22px; pointer-events: none; }
+    .page::after { content: ""; position: absolute; top: -180px; right: -160px; width: 560px; height: 520px; background: radial-gradient(closest-side, rgba(15, 215, 106, 0.2), rgba(15, 215, 106, 0)); pointer-events: none; }
+    .page > * { position: relative; z-index: 1; }
+    p { margin: 0; }
+    b { font-weight: 500; }
+    .k { font: 500 10px/1 var(--display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+
+    .top { display: flex; align-items: center; justify-content: space-between; }
+    .top .pp { display: block; width: 144px; height: 46px; }
+    .for { display: flex; align-items: center; gap: 14px; }
+    .plate { display: inline-flex; align-items: center; justify-content: center; min-width: 120px; height: 46px; padding: 8px 14px; border-radius: 10px; background: #fff; }
+    .plate img { display: block; max-height: 30px; max-width: 150px; }
+    .plate .name { font: 500 13px/1 var(--display); color: #111; white-space: nowrap; }
+    .plate.has-logo .name, .plate:not(.has-logo) img { display: none; }
+
+    .hero { padding-top: 6px; }
+    .label { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+    .label i { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 3px var(--lime-soft); }
+    h1 { margin: 0 0 12px; font: 340 36px/1.12 var(--display); letter-spacing: -0.025em; }
+    h1 span { display: block; }
+    h1 .l1 { background: linear-gradient(90deg, #2CDC7C 0%, #fff 52%, #BDBDBD 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    h1 .l2 { font-size: 28px; font-weight: 360; color: #fff; }
+    .lead { max-width: 600px; font-size: 14.5px; line-height: 1.45; color: var(--ink-2); }
+
+    /* The figures, as the home page's strip: the per-worker figure leads. */
+    .figs { display: grid; grid-template-columns: 1.25fr 1fr 1.2fr; border-radius: 16px; background: var(--glass); box-shadow: var(--line); }
+    .fig { padding: 18px 22px 16px; border-left: 1px solid var(--hair); }
+    .fig:first-child { border-left: 0; }
+    .fig strong { display: block; margin-bottom: 6px; font: 400 28px/1 var(--display); letter-spacing: -0.02em; color: #fff; }
+    .fig strong small { font-size: 16px; letter-spacing: 0; color: var(--ink-2); }
+    .fig--key strong { font-size: 34px; color: var(--mint); }
+    .fig > span { display: block; font-size: 11.5px; line-height: 1.35; color: var(--ink-3); }
+    .fig--key > span { color: var(--ink-2); }
+
+    .photo { margin: 0; height: 150px; border-radius: 16px; overflow: hidden; box-shadow: var(--line); }
+    .photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+    h2 { margin: 0 0 6px; font: 400 16.5px/1.25 var(--display); letter-spacing: -0.015em; }
+    .cost p, .measure p { max-width: 640px; color: var(--ink-2); }
+
+    .cmp { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .col { padding: 14px 18px 6px; border-radius: 14px; background: var(--glass); box-shadow: var(--line); }
+    .col--new { box-shadow: inset 0 0 0 1px rgba(44, 220, 124, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.07); }
+    .col--new .k { color: var(--mint); }
+    .col ul { margin: 10px 0 0; padding: 0; list-style: none; }
+    .col li { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0 8px; border-top: 1px solid var(--hair); font-size: 11.5px; line-height: 1.4; color: var(--ink-2); }
+    .col li i { flex: none; width: 14px; height: 14px; margin-top: 1px; border-radius: 50%; }
+    .col--old li i { box-shadow: inset 0 0 0 1px var(--hair-2); position: relative; }
+    .col--old li i::after { content: ""; position: absolute; left: 4px; right: 4px; top: 6px; height: 1.5px; background: var(--amber); }
+    .col--new li { color: #fff; }
+    .col--new li i { background: var(--lime-soft); color: var(--mint); display: grid; place-items: center; }
+    .col--new li svg { width: 9px; height: 9px; }
+
+    .cta { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 20px 16px 22px; border-radius: 16px; background: var(--glass); box-shadow: var(--line); }
+    .cta .h { margin-top: 6px; font: 400 15px/1.3 var(--display); letter-spacing: -0.01em; }
+    .btn { flex: none; display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 18px 0 20px; border-radius: 22px; background: var(--lime); color: #04120A; font: 500 13px/1 var(--display); letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; }
+    .btn svg { width: 14px; height: 14px; }
+    .contacts { display: flex; gap: 18px; font-size: 11.5px; color: var(--ink-2); }
+    .contacts span { color: var(--ink-4); }
+
+    .fine { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--hair); font-size: 9.5px; line-height: 1.45; color: var(--ink-4); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="top">
+      <img class="pp" src="../assets/brand/logo-light.png" width="144" height="46" alt="PayRoll Protect">
+      <div class="for">
+        <span class="k">Prepared for</span>
+        <span class="plate" data-plate><img data-f="logo" alt=""><span class="name" data-f="client">Your company</span></span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <p class="label"><i></i><span class="k">Proposal · <span data-f="date">Today</span></span></p>
+      <h1><span class="l1" data-f="line1">Less chasing.</span><span class="l2" data-f="line2">Clearer attendance. Better control.</span></h1>
+      <p class="lead">A practical upgrade from low-cost timesheets for <b data-f="workers">40</b> workers across <b data-f="sites">your sites</b>.</p>
+    </section>
+
+    <section class="figs">
+      <div class="fig fig--key"><strong>£<span data-f="perworker">0</span></strong><span>per worker, per month</span></div>
+      <div class="fig"><strong>£<span data-f="price">0</span><small> /month</small></strong><span>covers every site, all <span data-f="workers">40</span> workers</span></div>
+      <div class="fig"><strong><span data-f="hours">0</span><small> hours</small></strong><span>of admin a month pays for it, at £<span data-f="rate">20</span> an hour</span></div>
+    </section>
+
+    <figure class="photo"><img data-f="photo" src="../assets/img/terminal-verified-1000.webp" alt=""></figure>
+
+    <section class="cost">
+      <h2>The real cost is the work around the timesheet.</h2>
+      <p>Your directors spend time chasing site management for weekly updates. They know people leave early, but cannot identify who across all <span data-f="sites">your sites</span>. A low subscription price does not capture that administration or uncertainty.</p>
+    </section>
+
+    <section class="cmp">
+      <div class="col col--old">
+        <p class="k">Manual timesheets</p>
+        <ul>
+          <li><i></i>Chase managers for weekly updates</li>
+          <li><i></i>Reconstruct attendance after the event</li>
+          <li><i></i>Early departures are difficult to identify</li>
+          <li><i></i>Check submitted hours with limited evidence</li>
+        </ul>
+      </div>
+      <div class="col col--new">
+        <p class="k">With PayRoll Protect</p>
+        <ul>
+          <li><i><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Capture sign-in and sign-out at the terminal</li>
+          <li><i><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Review attendance by worker and site</li>
+          <li><i><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Compare departures with agreed hours</li>
+          <li><i><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Review discrepancies before approving hours</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="measure">
+      <h2>Make the value measurable.</h2>
+      <p>Use a full payroll cycle to compare time spent chasing updates, time spent checking hours, and attendance discrepancies resolved. Authorised early finishes and travel between sites remain management decisions.</p>
+    </section>
+
+    <section class="cta">
+      <div>
+        <p class="k">Next step</p>
+        <p class="h">Arrange a demonstration for <span data-f="client">your company</span></p>
+        <p class="contacts" style="margin-top:8px"><a href="tel:+448000247456" style="color:inherit;text-decoration:none">08000 247 456</a><span>·</span>hello@payrollprotect.co.uk<span>·</span>payrollprotect.co.uk</p>
+      </div>
+      <a class="btn" href="https://payrollprotect.co.uk/book.html">Book a call<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </section>
+
+    <footer class="fine">Prepared <span data-f="date">today</span>. £<span data-f="price">0</span> a month covers all <span data-f="sites">your sites</span>. Hardware, installation, VAT and contract terms to be confirmed in the quotation. Example only: savings are not guaranteed. Attendance records support review, not automatic pay deductions.</footer>
+  </div>
+
+  <script>
+    (function () {
+      const money = (n) => n.toLocaleString('en-GB', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 });
+      const set = (key, text) => document.querySelectorAll('[data-f="' + key + '"]').forEach((el) => { el.textContent = text; });
+      function fill(d) {
+        const workers = Number(d.workers) || 0, price = Number(d.price) || 0, rate = Number(d.rate) || 20;
+        if (d.client) { set('client', d.client); document.title = 'PayRoll Protect for ' + d.client; }
+        if (d.workers) set('workers', String(workers));
+        if (d.sites) set('sites', d.sites);
+        if (d.line1) set('line1', d.line1);
+        if (d.line2) set('line2', d.line2);
+        set('date', d.date || new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }));
+        set('rate', money(rate));
+        if (price) {
+          set('price', money(price));
+          set('perworker', workers ? (price / workers).toFixed(2) : '–');
+          set('hours', money(Math.round(price / rate * 100) / 100));
+        }
+        const plate = document.querySelector('[data-plate]'), logo = document.querySelector('[data-f="logo"]');
+        if (d.logo) { logo.src = d.logo; plate.classList.add('has-logo'); }
+        if (d.photo) document.querySelector('[data-f="photo"]').src = d.photo;
+      }
+      window.fill = fill;
+      fill(Object.fromEntries(new URLSearchParams(location.search)));
+    })();
+  </script>
+</body>
+</html>
