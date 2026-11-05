@@ -192,14 +192,10 @@ function initStart() {
     if (!email.checkValidity()) { said.textContent = 'That email address doesn’t look right.'; email.focus(); return; }
     const btn = qs('button', mail);
     btn.disabled = true;
-    said.textContent = 'Sending…';
-    const week = s.spend * RATE;
-    sendLead({
-      email: email.value.trim(), company: s.company, workers: s.workers, sites: s.sites, spend: s.spend, method: METHODS[s.method],
-      exposure_year: Math.round(week * 52), price_month: Math.round(s.workers * PRICE_PER_WORKER),
-      invoice_hours: s.inv ? Math.round(s.inv.total * 10) / 10 : '', invoice_flags: s.inv ? s.inv.flags.length : '',
-      plan: root.dataset.plan, proposal: location.origin + qs('[data-sn="pdf"]', root).getAttribute('href'), source: 'start',
-    }).then((ok) => {
+    said.textContent = 'Making your one-pager…';
+    // The Worker works every figure out again from the plan's address, so only that and the email go.
+    const hp = qs('[name="website"]', mail);
+    sendLead({ email: email.value.trim(), website: hp ? hp.value : '', ...Object.fromEntries(new URLSearchParams(query())) }).then((ok) => {
       btn.disabled = false;
       said.textContent = ok ? 'Sent. Your plan is on its way to ' + email.value.trim() + '.' : 'That didn’t send. Call us, or use WhatsApp above.';
     });

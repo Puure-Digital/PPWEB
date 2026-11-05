@@ -2317,3 +2317,6 @@ html.rk-on { overflow: hidden; }
 .sn__links a { text-decoration: none; }
 .sn__foot { display: flex; justify-content: space-between; gap: 12px; margin-top: 28px; }
 .sn__foot [data-sn="next"] { margin-left: auto; }
+
+/* Start now: the field only a bot fills in */
+.sn__hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
