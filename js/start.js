@@ -134,12 +134,19 @@ function initStart() {
     qs('.btn__arrow', next).hidden = false;
     next.firstChild.textContent = at === STEPS.length - 2 ? 'See my plan' : at === 1 ? 'Check an invoice' : 'Next';
     render();
-    const url = location.pathname + '?' + query() + '#' + STEPS[at];
-    if (push) history.pushState({ at }, '', url); else history.replaceState({ at }, '', url);
+    remember(push);
     const top = root.getBoundingClientRect().top + window.scrollY;
     if (window.scrollY > top + 8) (window.ppLenis ? window.ppLenis.scrollTo(top, { duration: RM ? 0 : 0.6 }) : window.scrollTo({ top, behavior: RM ? 'auto' : 'smooth' }));
     qs('h1', steps[at]).focus({ preventScroll: true });
     if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+  }
+  // The address carries the figures and the step. Safari allows a hundred history writes in half a
+  // minute, so a slider's every tick must not write one, and a refused write must not stop a step.
+  let syncT = 0;
+  function remember(push) {
+    clearTimeout(syncT);
+    const url = location.pathname + '?' + query() + '#' + STEPS[at];
+    try { if (push) history.pushState({ at }, '', url); else history.replaceState({ at }, '', url); } catch { /* over Safari's limit: the next write will catch up */ }
   }
   const first = STEPS.indexOf(location.hash.slice(1));
   show(first >= 0 ? first : 0, false);
@@ -148,7 +155,7 @@ function initStart() {
   back.addEventListener('click', () => show(at - 1, true));
 
   // The inputs: each change redraws every figure and rewrites the address.
-  const sync = () => { history.replaceState({ at }, '', location.pathname + '?' + query() + '#' + STEPS[at]); };
+  const sync = () => { clearTimeout(syncT); syncT = setTimeout(() => remember(false), 250); };
   workers.addEventListener('input', () => { s.workers = Number(workers.value); render(); sync(); });
   sites.addEventListener('input', () => { s.sites = Number(sites.value); render(); sync(); });
   spend.addEventListener('input', () => { s.spend = nice(toSpend(Number(spend.value))); render(); sync(); });

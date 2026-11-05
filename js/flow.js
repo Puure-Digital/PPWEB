@@ -61,8 +61,10 @@ export function initFlow() {
     // colour of the section it covers.
     f.base = getComputedStyle(f.a).backgroundColor;
     // A section shorter than the screen is in full view as the next one comes, so it just carries
-    // on; a taller one settles back about the middle of what is on screen, its last screenful.
-    f.short = f.a.offsetHeight < vh * 0.9;
+    // on; a taller one settles back about the middle of what is on screen, its last screenful. A
+    // section with controls at its foot (data-flow="plain") carries on too: held under the sheet,
+    // its last button would slide under the footer before it could be pressed.
+    f.short = f.a.offsetHeight < vh * 0.9 || f.a.dataset.flow === 'plain';
     const mid = f.a.offsetHeight - vh / 2;
     f.origins = f.kids.map((c) => clamp(mid - c.offsetTop, 0, c.offsetHeight) + 'px');
   };
