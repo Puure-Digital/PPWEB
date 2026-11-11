@@ -40,15 +40,16 @@
    flight into the logo. */
 .pl__mark {
   position: absolute; z-index: 1;
-  left: calc(50% - var(--mark-h) * 734 / 900 / 2); top: calc(46% - var(--mark-h) / 2);
-  width: calc(var(--mark-h) * 734 / 900); height: var(--mark-h);
+  left: calc(50% - var(--mark-h) * 475 / 568 / 2); top: calc(46% - var(--mark-h) / 2);
+  width: calc(var(--mark-h) * 475 / 568); height: var(--mark-h);
   overflow: visible;
   transform-origin: 0 0;
 }
-.pl__ln { fill: none; stroke: #fff; stroke-width: 92; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: 1 1; stroke-dashoffset: 1; }
-/* Verified: the drawn shield settles once, a breath, before it goes. */
-.pl__mark image { transform-box: fill-box; transform-origin: 50% 50%; }
-.pl--done .pl__mark image { animation: pl-settle 0.42s var(--spring-soft); }
+.pl__ln { fill: none; stroke: var(--lime); stroke-width: 47; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: 1 1; stroke-dashoffset: 1; }
+/* Drawn, the exact mark takes over; verified, it settles once, a breath, before it goes. */
+.pl__art { opacity: 0; transform-box: fill-box; transform-origin: 50% 50%; }
+.pl--done .pl__draw { opacity: 0; }
+.pl--done .pl__art { opacity: 1; animation: pl-settle 0.42s var(--spring-soft); }
 @keyframes pl-settle { 45% { transform: scale(1.035); } }
 .pl__count {
   position: absolute; left: var(--gutter); bottom: calc(var(--gutter) + 4px); margin: 0;
@@ -148,7 +149,7 @@
 .hx-mast.is-revealed { transition: opacity 0.3s var(--spring-soft) 0.28s; }
 .nav:not(.is-tucked) ~ main .hx-mast.is-revealed { opacity: 0; pointer-events: none; transition: opacity 0.16s var(--spring-soft); }
 .hx-brand { justify-self: start; display: block; }
-.hx-brand img { display: block; width: max(104px, calc(150 * var(--u))); height: auto; }
+.hx-brand img { display: block; width: max(150px, calc(195 * var(--u))); height: auto; }
 .hx-nav { display: flex; gap: calc(44 * var(--u)); }
 .hx-nav a { font: 400 max(12px, calc(15 * var(--u)))/1.2 var(--mono); white-space: nowrap; text-decoration: none; color: var(--mint-link); transition: color var(--t-micro) var(--spring-soft); }
 .hx-nav a:focus-visible { color: #fff; }
@@ -2011,7 +2012,7 @@ button.hx-pill:focus-visible { border-radius: 999px; }
 .foot__grid { display: grid; gap: 44px; padding-block: 52px; border-top: 1px solid var(--hair-dark); }
 /* Brand beside the site map only once the three columns fit beside it (below that it sits on top). */
 @media (min-width: 980px) { .foot__grid { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 48px; } }
-.foot__brand img { display: block; width: 150px; height: auto; margin-bottom: 18px; }
+.foot__brand img { display: block; width: 220px; height: auto; margin-bottom: 18px; }
 .foot__brand p { margin: 0; max-width: 30ch; color: var(--on-dark-3); }
 .foot__cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 24px; }
 /* The contact column is never narrower than the email and its copy button, so the row never spills past the edge. */
@@ -2064,7 +2065,7 @@ button.hx-pill:focus-visible { border-radius: 999px; }
 /* The shield runs off the foot of the page by about a third of its height; Verified sits above it. */
 .foot__mark { --h: clamp(240px, 32vw, 420px); position: relative; display: grid; justify-items: center; gap: 28px; padding: clamp(48px, 7vw, 96px) var(--gutter) 0; overflow: hidden; -webkit-user-select: none; user-select: none; pointer-events: none; }
 .foot__seal { --m: 80px; position: relative; display: block; margin-bottom: calc(var(--h) * -0.3); }
-.foot__icon { display: block; height: var(--h); width: auto; aspect-ratio: 734 / 900; }
+.foot__icon { display: block; height: var(--h); width: auto; aspect-ratio: 475 / 568; }
 .foot__scan { position: absolute; inset: calc(var(--m) * -0.5) calc(var(--m) * -1); pointer-events: none; opacity: 0; }
 .foot__scan::before { content: ""; position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; border-radius: 1px; background: linear-gradient(180deg, rgba(15, 215, 106, 0), var(--lime) 18%, var(--lime) 82%, rgba(15, 215, 106, 0)); box-shadow: 0 0 18px rgba(15, 215, 106, 0.6); }
 .foot__scan::after { content: ""; position: absolute; right: 100%; top: 0; bottom: 0; width: 120px; background: linear-gradient(90deg, rgba(15, 215, 106, 0), rgba(15, 215, 106, 0.14)); -webkit-mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent); mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent); }
@@ -2310,6 +2311,9 @@ html.rk-on { overflow: hidden; }
 .sn__company input { height: 44px; padding: 0 14px; border: 0; border-radius: 12px; background: rgba(255, 255, 255, 0.04); box-shadow: inset 0 0 0 1px var(--hair-2); color: #fff; font: 400 1rem/1 var(--font); }
 .sn__company input::placeholder { color: var(--ink-4); }
 .sn__company input:focus { outline: none; box-shadow: inset 0 0 0 1.5px var(--lime); }
+.sn__mail { display: grid; gap: 14px; }
+.sn__pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 559px) { .sn__pair { grid-template-columns: 1fr; } }
 .sn__mailrow { display: flex; gap: 8px; }
 .sn__mailrow input { flex: 1 1 auto; min-width: 0; }
 .sn__said { min-height: 1.4em; margin: 0; font-size: 0.875rem; color: var(--ink-2); }

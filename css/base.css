@@ -551,7 +551,7 @@ html[data-vt="back"]::view-transition-new(root) { animation-name: vt-rise; }
 }
 .nav:not(.is-solid) .nav__in { --drop: max(0px, calc(56 * var(--hp) - var(--nav-h) / 2)); }
 .logo { display: inline-grid; align-items: center; padding-block: 1px; margin-block: -1px; }
-.logo img { grid-area: 1 / 1; width: max(112px, calc(134 * var(--hp))); height: auto; transition: opacity 0.3s var(--spring-soft); }
+.logo img { grid-area: 1 / 1; width: max(160px, calc(180 * var(--hp))); height: auto; transition: opacity 0.3s var(--spring-soft); }
 .logo__dark { opacity: 0; }
 .nav.is-solid.is-light:not(.menu-open) .logo__light { opacity: 0; }
 .nav.is-solid.is-light:not(.menu-open) .logo__dark { opacity: 1; }
@@ -592,6 +592,7 @@ html[data-vt="back"]::view-transition-new(root) { animation-name: vt-rise; }
    the pill): the burger, and the menu as a glass panel under the bar. Escape, a tap outside or a
    link closes it (js/nav.js). */
 @media (max-width: 767px) {
+  .logo img { width: 140px; }
   .nav__links { display: none; }
   .nav__end .btn--deep { display: none; }
   .nav__burger { display: inline-flex; }

@@ -52,7 +52,6 @@
 
   <link rel="preload" href="assets/fonts/mona-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/brand/mark-540.webp" as="image" type="image/webp">
   <link rel="preload" href="assets/img/hero-still-815.webp" as="image" type="image/webp" media="(min-width: 768px)" fetchpriority="low">
   <link rel="preload" href="assets/img/hero-still-600.webp" as="image" type="image/webp" media="(max-width: 767px)" fetchpriority="low">
   <script type="importmap">
@@ -92,7 +91,7 @@
       "./js/sat.js": "./js/sat.js?v=fd45992a",
       "./js/scroll.js": "./js/scroll.js?v=e6609c10",
       "./js/scrubs.js": "./js/scrubs.js?v=c6ed5f1e",
-      "./js/start.js": "./js/start.js?v=ed48ad45",
+      "./js/start.js": "./js/start.js?v=dbd78e99",
       "./js/util.js": "./js/util.js?v=bf53687b",
       "./js/watch.js": "./js/watch.js?v=9dadd350",
       "./js/whatsapp.js": "./js/whatsapp.js?v=c8860d65"
@@ -129,8 +128,8 @@
   <link rel="modulepreload" href="./js/util.js?v=bf53687b">
   <link rel="modulepreload" href="./js/watch.js?v=9dadd350">
   <link rel="modulepreload" href="./js/whatsapp.js?v=c8860d65">
-  <link rel="stylesheet" href="css/base.css?v=e9b5c64d">
-  <link rel="stylesheet" href="css/sections.css?v=3fb1de40">
+  <link rel="stylesheet" href="css/base.css?v=6735b09f">
+  <link rel="stylesheet" href="css/sections.css?v=23ed93d8">
   <script>
     // The hero's load reveal (css/sections.css) starts once its fonts are in, so nothing fades up in
     // a stand-in face; never later than 800 ms. Under the preloader it starts as the preloader lifts
@@ -273,21 +272,20 @@
       <p class="pl__step"><span class="pl__spark">✦</span><span class="pl__t">Checking the terminal</span></p>
       <i class="pl__bar"></i>
     </div>
-    <svg class="pl__mark" viewBox="0 0 734 900" focusable="false">
-      <defs>
-        <mask id="pl-draw" maskUnits="userSpaceOnUse" x="-60" y="-60" width="854" height="1020">
-          <path class="pl__ln pl__ln--a" pathLength="1" d="M329.6 834.7 L341.0 831.0 L351.6 847.3 L371.0 853.3 L381.0 853.3 L405.0 845.9 L463.9 807.6 L506.1 777.6 L560.4 734.1 L601.6 695.6 L627.3 667.0 L647.6 640.7 L667.6 609.0 L678.4 586.1 L687.9 561.9 L696.1 529.0 L701.0 469.0 L701.0 177.0 L697.9 167.9 L691.0 164.1 L602.4 145.6 L542.1 125.9 L479.6 100.4 L441.0 81.6 L395.0 55.9 L373.0 50.1 L365.0 49.9 L337.0 57.0 L301.0 77.6 L257.0 99.6 L211.0 119.0 L123.6 147.6 L41.0 164.4 L35.0 167.9 L33.0 175.0 L33.0 267.0 L37.3 274.1 L417.0 275.0 L439.0 277.0 L473.0 283.0 L499.0 295.6 L511.0 304.1 L525.6 318.7 L539.9 344.1 L545.6 367.0 L549.0 391.0 L543.6 425.0 L537.3 443.0 L527.6 459.9 L521.6 467.6 L509.0 478.4 L492.4 489.0 L461.0 498.1 L437.0 501.0 L387.0 501.0 L327.9 509.9 L309.9 517.9 L301.0 523.9 L287.0 537.0 L278.4 548.1 L268.4 573.0 L261.0 615.0 L261.0 743.0 L255.9 761.0 L282.4 823.0 L291.0 837.0 L293.0 883.0"/>
-          <path class="pl__ln pl__ln--b" pathLength="1" d="M26.8 351.5 L33.0 391.0 L33.0 491.0 L36.4 523.0 L40.1 543.9 L47.6 567.0 L55.3 587.0 L67.0 609.0 L85.3 636.7 L108.4 665.6 L128.4 685.6 L171.0 721.9 L201.6 743.3 L247.0 755.3 L253.9 759.6 L285.3 829.0 L291.0 837.0 L324.7 868.4"/>
-        </mask>
-      </defs>
-      <image href="assets/brand/mark-540.webp" width="734" height="900" mask="url(#pl-draw)"/>
+    <svg class="pl__mark" viewBox="0 0 475 568" focusable="false">
+      <defs><clipPath id="pl-stem"><rect x="-60" y="-60" width="232.5" height="700"/></clipPath></defs>
+      <g class="pl__draw">
+        <path class="pl__ln pl__ln--a" pathLength="1" d="M236.6 537.4 C257.4 525.4 451.5 419 451.5 305 L451.5 113 Q341 94 237.5 27.5 Q134 94 23.5 113 L23.5 221 M20 198.5 L276.5 198.5 A49 49 0 0 1 276.5 296.5 L201 296.5 A52 52 0 0 0 149 348.5 L149 500"/>
+        <path class="pl__ln pl__ln--b" pathLength="1" d="M23.5 284 L23.5 310 C23.5 432 169.2 506 190 518" clip-path="url(#pl-stem)"/>
+      </g>
+      <g class="pl__art"><defs><clipPath id="pl-art"><rect x="-60" y="-60" width="232.5" height="700"/></clipPath></defs><g fill="none" stroke="#0FD76A" stroke-width="47" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" ><path d="M23.5 221 L23.5 113 Q134 94 237.5 27.5 Q341 94 451.5 113 L451.5 305 C451.5 419 257.4 525.4 236.6 537.4"/><path d="M20 198.5 L276.5 198.5 A49 49 0 0 1 276.5 296.5 L201 296.5 A52 52 0 0 0 149 348.5 L149 500"/><path d="M23.5 284 L23.5 310 C23.5 432 169.2 506 190 518" clip-path="url(#pl-art)"/></g><path fill="#0FD76A"  d="M225 517 L208 547 L235 567 L248 558 Z"/></g>
     </svg>
   </div>
   <script>
-    // The PayRoll Protect shield draws itself as the page loads: the artwork itself, revealed along
-    // its own line (nothing recoloured or redrawn). One line runs from the shield's foot up its
-    // right side, over the top, down the left and into the P; a second runs round the lower left at
-    // the same pace; they meet at the stem's foot. The drawing follows what the first screen needs
+    // The PayRoll Protect shield draws itself as the page loads, along its own lines and in its own
+    // green. One line runs from the shield's foot up its right side, over the top, down the left and
+    // into the P; a second runs round the lower left at the same pace; they meet at the stem's foot.
+    // Drawn, the exact mark takes its place (the notch and the tips are too small to draw). The drawing follows what the first screen needs
     // (the document and its fonts; nothing heavier, so it never holds back the page's first paint),
     // never finishes before 0.8 s so it reads, and never holds the page past 2 s. Verified, the
     // shield flies into its place in the logo while the curtain lifts and the hero comes up; the
@@ -300,8 +298,8 @@
       var n = pl.querySelector('.pl__n'), t = pl.querySelector('.pl__t'), mark = pl.querySelector('.pl__mark');
       var la = pl.querySelector('.pl__ln--a'), lb = pl.querySelector('.pl__ln--b');
       var STEPS = ['Checking the terminal', 'Matching the invoice', 'Releasing the pay run', 'Verified'];
-      // The second line runs while the first goes from half way (down the left side) to 71.6%.
-      var B0 = 0.5, B1 = 0.716;
+      // The second line runs while the first goes from half way (down the left side) to 75%.
+      var B0 = 0.5, B1 = 0.75;
       var done = function () { ready++; };
       if (document.readyState !== 'loading') done(); else document.addEventListener('DOMContentLoaded', done, { once: true });
       try { Promise.all([document.fonts.load('300 1em Unbounded'), document.fonts.load('400 1em "Mona Sans"')]).then(done, done); } catch (e) { done(); }
@@ -325,18 +323,17 @@
         if (s !== step) { step = s; t.textContent = STEPS[s]; t.classList.remove('is-in'); void t.offsetWidth; t.classList.add('is-in'); }
         if (shown < 1) requestAnimationFrame(frame); else lift();
       }
-      // The shield's place in the wordmark image (432 by 138 px): from x 323.4 to 427, y 5 to 132.
+      // The shield's place in the logo (5620 by 1000): the left 837, full height.
       function fly() {
         var logo = document.querySelector(matchMedia('(min-width: 1024px)').matches ? '.hx-brand img' : '#nav .logo__light');
         var a = mark.getBoundingClientRect(), b = logo && logo.getBoundingClientRect();
         if (!b || !b.width || !a.width) return false;
-        var s = b.width * 0.2397 / a.width;
-        mark.style.transform = 'translate(' + (b.left + b.width * 0.7486 - a.left).toFixed(1) + 'px,' + (b.top + b.height * 0.0362 - a.top).toFixed(1) + 'px) scale(' + s.toFixed(4) + ')';
+        var s = b.width * 0.1488 / a.width;
+        mark.style.transform = 'translate(' + (b.left - a.left).toFixed(1) + 'px,' + (b.top - a.top).toFixed(1) + 'px) scale(' + s.toFixed(4) + ')';
         return true;
       }
       function lift() {
-        // The drawing is complete: the artwork shows exactly as it is.
-        mark.querySelector('image').removeAttribute('mask');
+        // The drawing is complete: the exact mark shows (css: .pl--done).
         pl.classList.add('pl--done');
         setTimeout(function () {
           root.classList.add('is-ready');
@@ -373,8 +370,8 @@
     <div class="nav__progress" aria-hidden="true"></div>
     <div class="nav__in">
       <a class="logo" href="#top" aria-label="PayRoll Protect home">
-        <img class="logo__light" src="assets/brand/logo-light.png" width="144" height="46" alt="PayRoll Protect">
-        <img class="logo__dark" src="assets/brand/logo-dark.png" width="144" height="46" alt="" decoding="async">
+        <img class="logo__light" src="assets/brand/logo-light.svg" width="220" height="39" alt="PayRoll Protect">
+        <img class="logo__dark" src="assets/brand/logo-dark.svg" width="220" height="39" alt="" decoding="async">
       </a>
       <nav class="nav__links" id="nav-links" aria-label="Primary">
         <ul>
@@ -410,7 +407,7 @@
       <div class="hx-grid">
         <div class="hx-content">
           <div class="hx-mast" data-reveal style="--rv-delay: 70ms; --rv-dur: 615ms">
-            <a class="hx-brand" href="#top" aria-label="PayRoll Protect home"><img src="assets/brand/logo-light.png" width="144" height="46" alt="PayRoll Protect"></a>
+            <a class="hx-brand" href="#top" aria-label="PayRoll Protect home"><img src="assets/brand/logo-light.svg" width="220" height="39" alt="PayRoll Protect"></a>
             <nav class="hx-nav" aria-label="Sections">
               <a href="#numbers">The numbers</a>
               <a href="#how">How it works</a>
@@ -1148,7 +1145,7 @@
       </div>
       <div class="foot__grid">
         <div class="foot__brand">
-          <img src="assets/brand/logo-light.png" width="150" height="48" alt="PayRoll Protect" loading="lazy">
+          <img src="assets/brand/logo-light.svg" width="220" height="39" alt="PayRoll Protect" loading="lazy">
           <p>Construction payroll verification. Every labour claim checked against the terminal record before payroll runs.</p>
         </div>
         <nav class="foot__cols" aria-label="Footer">
@@ -1195,7 +1192,7 @@
     </div>
     <div class="foot__mark" aria-hidden="true">
       <span class="foot__seal">
-        <img class="foot__icon" src="assets/brand/mark-900.webp" width="734" height="900" loading="lazy" alt="">
+        <img class="foot__icon" src="assets/brand/mark.svg" width="475" height="568" loading="lazy" alt="">
         <i class="foot__scan"></i>
       </span>
       <span class="foot__tag"><svg class="tick"><use href="#i-tick"/></svg>Verified</span>

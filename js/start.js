@@ -190,12 +190,14 @@ function initStart() {
   mail.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!email.checkValidity()) { said.textContent = 'That email address doesn’t look right.'; email.focus(); return; }
+    const phone = qs('#sn-phone', mail), name = qs('#sn-name', mail);
+    if (phone.value.trim() && phone.value.replace(/\D/g, '').length < 10) { said.textContent = 'That mobile number doesn’t look right.'; phone.focus(); return; }
     const btn = qs('button', mail);
     btn.disabled = true;
     said.textContent = 'Making your one-pager…';
-    // The Worker works every figure out again from the plan's address, so only that and the email go.
+    // The Worker works every figure out again from the plan's address, so only that and the contact details go.
     const hp = qs('[name="website"]', mail);
-    sendLead({ email: email.value.trim(), website: hp ? hp.value : '', ...Object.fromEntries(new URLSearchParams(query())) }).then((ok) => {
+    sendLead({ name: name.value.trim(), phone: phone.value.trim(), email: email.value.trim(), website: hp ? hp.value : '', ...Object.fromEntries(new URLSearchParams(query())) }).then((ok) => {
       btn.disabled = false;
       said.textContent = ok ? 'Sent. Your plan is on its way to ' + email.value.trim() + '.' : 'That didn’t send. Call us, or use WhatsApp above.';
     });

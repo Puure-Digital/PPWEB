@@ -51,7 +51,7 @@
       "/js/sat.js": "/js/sat.js?v=fd45992a",
       "/js/scroll.js": "/js/scroll.js?v=e6609c10",
       "/js/scrubs.js": "/js/scrubs.js?v=c6ed5f1e",
-      "/js/start.js": "/js/start.js?v=ed48ad45",
+      "/js/start.js": "/js/start.js?v=dbd78e99",
       "/js/util.js": "/js/util.js?v=bf53687b",
       "/js/watch.js": "/js/watch.js?v=9dadd350",
       "/js/whatsapp.js": "/js/whatsapp.js?v=c8860d65"
@@ -73,8 +73,8 @@
   <link rel="modulepreload" href="/js/scroll.js?v=e6609c10">
   <link rel="modulepreload" href="/js/util.js?v=bf53687b">
   <link rel="modulepreload" href="/js/whatsapp.js?v=c8860d65">
-  <link rel="stylesheet" href="/css/base.css?v=e9b5c64d">
-  <link rel="stylesheet" href="/css/sections.css?v=3fb1de40">
+  <link rel="stylesheet" href="/css/base.css?v=6735b09f">
+  <link rel="stylesheet" href="/css/sections.css?v=23ed93d8">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -90,8 +90,8 @@
     <div class="nav__progress" aria-hidden="true"></div>
     <div class="nav__in">
       <a class="logo" href="/" aria-label="PayRoll Protect home">
-        <img class="logo__light" src="/assets/brand/logo-light.png" width="144" height="46" alt="PayRoll Protect">
-        <img class="logo__dark" src="/assets/brand/logo-dark.png" width="144" height="46" alt="" decoding="async">
+        <img class="logo__light" src="/assets/brand/logo-light.svg" width="220" height="39" alt="PayRoll Protect">
+        <img class="logo__dark" src="/assets/brand/logo-dark.svg" width="220" height="39" alt="" decoding="async">
       </a>
       <nav class="nav__links" id="nav-links" aria-label="Primary">
         <ul>
@@ -235,6 +235,10 @@
             <div class="sn__keep">
               <label class="sn__company"><span class="cx__k">Your company, for the one-pager</span><input id="sn-company" type="text" maxlength="60" autocomplete="organization" placeholder="Armstrong Build"></label>
               <form class="sn__mail" data-sn="mail" novalidate>
+                <div class="sn__pair">
+                  <label class="sn__company"><span class="cx__k">Your name</span><input id="sn-name" type="text" maxlength="80" autocomplete="name" placeholder="Sam Armstrong"></label>
+                  <label class="sn__company"><span class="cx__k">Mobile</span><input id="sn-phone" type="tel" inputmode="tel" maxlength="20" autocomplete="tel" placeholder="07700 900123"></label>
+                </div>
                 <label class="sn__company"><span class="cx__k">Send this plan to my inbox</span><span class="sn__mailrow"><input id="sn-email" type="email" inputmode="email" autocomplete="email" placeholder="you@company.co.uk" required><button class="btn btn--ghost btn--sm" type="submit">Send</button></span></label>
                 <input class="sn__hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
                 <p class="sn__said" data-sn="said" role="status"></p>
@@ -267,7 +271,7 @@
       </div>
       <div class="foot__grid">
         <div class="foot__brand">
-          <img src="/assets/brand/logo-light.png" width="150" height="48" alt="PayRoll Protect" loading="lazy">
+          <img src="/assets/brand/logo-light.svg" width="220" height="39" alt="PayRoll Protect" loading="lazy">
           <p>Construction payroll verification. Every labour claim checked against the terminal record before payroll runs.</p>
         </div>
         <nav class="foot__cols" aria-label="Footer">
@@ -314,7 +318,7 @@
     </div>
     <div class="foot__mark" aria-hidden="true">
       <span class="foot__seal">
-        <img class="foot__icon" src="/assets/brand/mark-900.webp" width="734" height="900" loading="lazy" alt="">
+        <img class="foot__icon" src="/assets/brand/mark.svg" width="475" height="568" loading="lazy" alt="">
         <i class="foot__scan"></i>
       </span>
       <span class="foot__tag"><svg class="tick"><use href="#i-tick"/></svg>Verified</span>
@@ -324,6 +328,6 @@
   <script src="/assets/vendor/gsap.min.js?v=9396f256" defer></script>
   <script src="/assets/vendor/ScrollTrigger.min.js?v=05ca5ad8" defer></script>
   <script src="/assets/vendor/lenis.min.js?v=daec1872" defer></script>
-  <script type="module" src="/js/start.js?v=ed48ad45"></script>
+  <script type="module" src="/js/start.js?v=dbd78e99"></script>
 </body>
 </html>
