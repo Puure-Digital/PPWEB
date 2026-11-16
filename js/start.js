@@ -21,6 +21,8 @@ const UK = 0.017;
 // The price: one rate per worker per month (the Armstrong Build proposal: £297 for 18 workers).
 export const PRICE_PER_WORKER = 16.5;
 const STEPS = ['sites', 'exposure', 'invoice', 'get', 'price', 'plan'];
+// The page's own title (what search shows); only the plan step swaps it.
+const TITLE = document.title;
 const SAMPLE = 'W-0412  38.5\nW-0877  48\nW-1034  45\nW-1120  50\nW-1188  50\nW-1203  50\nW-1310  62\nW-1377  40\nW-1402  50\nW-1455  50\nW-1490  44\nW-1502  50';
 
 const sitesWord = (n) => (n === 1 ? '1 site' : n + ' sites');
@@ -119,7 +121,7 @@ function initStart() {
     out('book').forEach((a) => { a.href = '/book.html?' + new URLSearchParams({ spend: s.spend, sites: s.sites, method: s.method, workers: s.workers }); });
     out('pdf').forEach((a) => { a.href = '/proposal/?' + new URLSearchParams({ client: s.company || 'Your company', workers: s.workers, sites: sitesWord(s.sites), price: Math.round(month), rate: s.rate }); });
     root.dataset.plan = planUrl;
-    document.title = (STEPS[at] === 'plan' ? 'Your plan' : 'Start now') + ' | PayRoll Protect';
+    document.title = STEPS[at] === 'plan' ? 'Your plan | PayRoll Protect' : TITLE;
   }
 
   // One step on screen at a time; the heading takes focus so a screen reader reads it.
