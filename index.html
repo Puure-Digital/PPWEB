@@ -52,8 +52,8 @@
 
   <link rel="preload" href="assets/fonts/mona-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/img/hero-still-815.webp" as="image" type="image/webp" media="(min-width: 768px)" fetchpriority="low">
-  <link rel="preload" href="assets/img/hero-still-600.webp" as="image" type="image/webp" media="(max-width: 767px)" fetchpriority="low">
+  <link rel="preload" href="assets/img/hero-still-815.webp" as="image" type="image/webp" media="(min-width: 768px)" fetchpriority="high">
+  <link rel="preload" href="assets/img/hero-still-600.webp" as="image" type="image/webp" media="(max-width: 767px)" fetchpriority="high">
   <script type="importmap">
   {
     "imports": {
@@ -451,9 +451,12 @@
         </div>
 
         <div class="hx-side">
-          <div class="hx-glow" data-reveal style="--rv-delay: 90ms; --rv-dur: 970ms" aria-hidden="true">
+          <div class="hx-glow" aria-hidden="true">
             <i class="hx-scan"></i>
             <video class="hx-video" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback data-poster="assets/img/hero-still-815.webp" data-poster-m="assets/img/hero-still-600.webp"><source src="assets/video/hero-540.mp4" type="video/mp4" media="(max-width: 767px)"><source src="assets/video/hero-720.mp4" type="video/mp4"></video>
+            <!-- The still is the largest paint on a phone: set it now, not after GSAP and js/hero.js load,
+                 and no fade-in on this panel (measured 16 Nov 2026: LCP 3.4 s to 2.4 s on slow 4G). -->
+            <script>(function (v) { v.setAttribute('poster', matchMedia('(max-width: 767px)').matches ? v.dataset.posterM : v.dataset.poster); })(document.currentScript.parentNode.querySelector(".hx-video"));</script>
           </div>
 
           <!-- One invoice line and the week's pay run, as the page tells them further down (example
