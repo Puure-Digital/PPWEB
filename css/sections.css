@@ -1735,6 +1735,46 @@ button.hx-pill:focus-visible { border-radius: 999px; }
 .nf__copy .lead { margin: 0 auto 32px; }
 .nf__actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px; }
 
+/* ============================== THANK-YOU PAGE ============================== */
+/* thanks.html: one screen. The thanks beside what happens next (the pilot timeline from book.html),
+   the step just done ticked and the next one pulsing. */
+.thx { position: relative; display: flex; align-items: center; min-height: 100vh; min-height: 100svh; padding: calc(var(--nav-h) + clamp(28px, 4vw, 56px)) 0 clamp(36px, 4vw, 56px); }
+.thx > .wrap { width: 100%; }
+.thx__grid { display: grid; gap: clamp(40px, 5vw, 80px); align-items: start; }
+@media (min-width: 1024px) { .thx__grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); } }
+.thx__title { margin: 0 0 0.45em; font-size: clamp(1.875rem, 0.95rem + 2.9vw, 3.5rem); letter-spacing: var(--tr-head); line-height: 1.1; }
+.thx__copy .lead { max-width: 34rem; margin: 0 0 32px; }
+.thx__copy .lead a { color: inherit; text-underline-offset: 3px; }
+.thx__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+@media (max-width: 599px) { .thx__actions > *, .thx__actions .btn { width: 100%; justify-content: center; } }
+
+.thx__next { padding: clamp(22px, 2.2vw, 32px); border: 1px solid var(--glass-line); box-shadow: var(--glass-hi), var(--shadow-1); }
+.thx__top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 12px; margin-bottom: 18px; }
+.thx__top .tag { flex: none; white-space: nowrap; }
+.thx__k { margin: 0; font-family: var(--head); font-size: 1rem; font-weight: var(--w-title); letter-spacing: -0.01em; color: var(--ink); }
+.thx__list { list-style: none; margin: 0; padding: 0; }
+.thx__s { position: relative; padding: 0 0 16px 34px; }
+.thx__s:last-child { padding-bottom: 0; }
+/* The rail: from each dot down to the next. */
+.thx__s:not(:last-child)::before { content: ""; position: absolute; left: 6px; top: 18px; bottom: 2px; width: 1px; background: var(--hair-2); }
+.thx__s.is-done::before { background: linear-gradient(var(--lime), var(--hair-2)); }
+.thx__dot { position: absolute; left: 0; top: 3px; width: 13px; height: 13px; border-radius: 50%; background: var(--card-solid); box-shadow: inset 0 0 0 1px var(--ink-4); }
+.thx__s.is-done .thx__dot { background: var(--lime); box-shadow: 0 0 0 4px var(--lime-soft); }
+.thx__s.is-done .thx__dot::before { content: ""; position: absolute; left: 4.5px; top: 2px; width: 3px; height: 6px; border: solid var(--canvas); border-width: 0 1.6px 1.6px 0; transform: rotate(45deg); }
+.thx__s.is-now .thx__dot { box-shadow: inset 0 0 0 1.5px var(--lime); }
+.thx__s.is-now .thx__dot::before { content: ""; position: absolute; inset: 3.5px; border-radius: 50%; background: var(--lime); }
+.thx__s.is-now .thx__dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 1px solid var(--lime); opacity: 0; animation: ring 3s var(--spring-soft) 0.6s infinite; }
+.thx__day { display: block; margin-bottom: 2px; font-size: 0.75rem; color: var(--ink-3); }
+.thx__s.is-done .thx__day, .thx__s.is-now .thx__day { color: var(--lime-ink); }
+.thx__s strong { display: block; margin-bottom: 2px; font-family: var(--head); font-size: 1rem; font-weight: var(--w-title); letter-spacing: -0.01em; }
+.thx__s p { margin: 0; max-width: 38ch; font-size: 0.875rem; color: var(--ink-2); }
+/* The rest of the timeline depends on a pilot going ahead: a dashed rail and a quiet line. */
+.thx__if { position: relative; padding: 0 0 14px 34px; font-family: var(--mono); font-size: 0.75rem; color: var(--ink-3); }
+.thx__if::before { content: ""; position: absolute; left: 6px; top: -2px; bottom: 2px; border-left: 1px dashed var(--hair-2); }
+/* On a phone the steps that wait on a pilot keep their day and name only. */
+@media (max-width: 599px) { .thx__if ~ .thx__s p { display: none; } .thx__if ~ .thx__s { padding-bottom: 12px; } .thx__if ~ .thx__s:last-child { padding-bottom: 0; } }
+@media (prefers-reduced-motion: reduce) { .thx__s.is-now .thx__dot::after { animation: none; } }
+
 /* ============================== BOOKING PAGE ============================== */
 /* book.html (js/booking.js). A dark stage: the request (the client's GoHighLevel form) beside an
    estimate of the pilot it books. Then what happens next, and questions.
