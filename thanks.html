@@ -52,7 +52,7 @@
       "/js/sat.js": "/js/sat.js?v=fd45992a",
       "/js/scroll.js": "/js/scroll.js?v=e6609c10",
       "/js/scrubs.js": "/js/scrubs.js?v=c6ed5f1e",
-      "/js/start.js": "/js/start.js?v=656ae7ce",
+      "/js/start.js": "/js/start.js?v=86578930",
       "/js/thanks.js": "/js/thanks.js?v=8d0e5dd2",
       "/js/util.js": "/js/util.js?v=bf53687b",
       "/js/watch.js": "/js/watch.js?v=9dadd350",
@@ -114,14 +114,12 @@
 
   <main id="main">
     <!-- ============================== THANK YOU ==============================
-         Where both lead forms land. ?f=call: the GHL call request (book.html, calculator.html; its
-         redirect is set in the GHL form builder). ?f=plan: "Send this plan to my inbox" (js/start.js),
-         which keeps the address and plan link in sessionStorage, never in the URL; its version is the
-         template below. The steps are the
-         pilot timeline on book.html; keep them in step. -->
+         Where both lead forms land: the GHL call request (book.html, calculator.html; its redirect,
+         https://payrollprotect.co.uk/thanks.html, is set in the GHL form builder) and "Send this plan
+         to my inbox" (js/start.js). The steps are the pilot timeline on book.html; keep them in step. -->
     <section class="beams thx gx" id="top" data-live>
       <div class="wrap">
-        <div class="thx__grid" data-f="call">
+        <div class="thx__grid">
           <div class="thx__copy">
             <p class="label"><span class="label__spark" aria-hidden="true">✦</span>Request sent</p>
             <h1 class="thx__title" data-split><span class="hl-1">Thank You.</span> <span class="hl-2">We’ll Be in Touch.</span></h1>
@@ -143,41 +141,6 @@
             </ol>
           </div>
         </div>
-        <template id="thx-plan">
-        <div class="thx__grid" data-f="plan">
-          <div class="thx__copy">
-            <p class="label"><span class="label__spark" aria-hidden="true">✦</span>Plan sent</p>
-            <h1 class="thx__title" data-split><span class="hl-1">Thank You.</span> <span class="hl-2">Your Plan Is on Its Way.</span></h1>
-            <p class="lead rv">Your one-pager is on its way to <strong data-sent>your inbox</strong>. If it isn’t there in a few minutes, check your junk folder or call <a href="tel:+448000247456">08000&nbsp;247&nbsp;456</a>.</p>
-            <div class="thx__actions rv">
-              <a class="btn btn--primary btn--lg" href="/book.html" data-magnetic>Book a 90-day pilot<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-              <a class="btn btn--ghost btn--lg" href="/start.html" data-plan>Back to your plan</a>
-            </div>
-          </div>
-          <div class="thx__next card rv">
-            <div class="thx__top"><p class="thx__k">What happens next</p><span class="tag tag--lime">90-day pilot</span></div>
-            <ol class="thx__list">
-            <li class="thx__s is-done"><span class="thx__dot" aria-hidden="true"></span><span class="thx__day mono">Now</span><strong>Plan Sent</strong><p>The one-pager for your sites, as a PDF.</p></li>
-            <li class="thx__s is-now"><span class="thx__dot" aria-hidden="true"></span><span class="thx__day mono">When you’re ready</span><strong>Book a 90-Day Pilot</strong><p>We get in touch within 1 business day to choose a pilot site and plan the start with you.</p></li>
-            <li class="thx__if" aria-hidden="true">If you start the pilot</li>
-            <li class="thx__s"><span class="thx__dot" aria-hidden="true"></span><span class="thx__day mono">Day 0</span><strong>Hardware Arrives</strong><p>Pre-configured and ready to mount at site entry.</p></li>
-            <li class="thx__s"><span class="thx__dot" aria-hidden="true"></span><span class="thx__day mono">Day 14</span><strong>Live on Site</strong><p>Most sites are live within two weeks.</p></li>
-            <li class="thx__s thx__s--end"><span class="thx__dot" aria-hidden="true"></span><span class="thx__day mono">Day 90</span><strong>Decide on the Evidence</strong><p>Keep it if the numbers make the case. No commitment.</p></li>
-            </ol>
-          </div>
-        </div>
-        </template>
-        <script>(function () {
-          // ?f=plan: swap in the plan version before anything paints.
-          if (new URLSearchParams(location.search).get('f') !== 'plan') return;
-          var w = document.currentScript.parentNode, plan = document.getElementById('thx-plan').content.firstElementChild;
-          w.replaceChild(plan, w.querySelector('[data-f="call"]'));
-          try {
-            var to = sessionStorage.getItem('pp-sent-to'), back = sessionStorage.getItem('pp-sent-plan');
-            if (to) plan.querySelector('[data-sent]').textContent = to;
-            if (back && /^https:\/\/(www\.)?payrollprotect\.co\.uk\/|^\//.test(back)) plan.querySelector('[data-plan]').href = back;
-          } catch (e) {}
-        })();</script>
       </div>
     </section>
   </main>

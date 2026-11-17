@@ -201,12 +201,7 @@ function initStart() {
     const hp = qs('[name="website"]', mail);
     sendLead({ name: name.value.trim(), phone: phone.value.trim(), email: email.value.trim(), website: hp ? hp.value : '', ...Object.fromEntries(new URLSearchParams(query())) }).then((ok) => {
       btn.disabled = false;
-      if (ok) {
-        // thanks.html shows the address and links back to this plan; both stay out of the URL.
-        try { sessionStorage.setItem('pp-sent-to', email.value.trim()); sessionStorage.setItem('pp-sent-plan', root.dataset.plan || ''); } catch (err) {}
-        location.assign('thanks.html?f=plan');
-        return;
-      }
+      if (ok) { location.assign('thanks.html'); return; }
       said.textContent = 'That didn’t send. Call us, or use WhatsApp above.';
     });
   });
