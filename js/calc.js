@@ -52,9 +52,9 @@ export function initCalc() {
     document.dispatchEvent(new CustomEvent('pp:spend', { detail: spend }));
     // The pilot call carries the chosen spend to the booking page, and the full calculator opens at it.
     const cta = document.querySelector('.numbers__cta a');
-    if (cta) cta.href = 'book.html?spend=' + spend;
+    if (cta) cta.href = '/book?spend=' + spend;
     const full = document.querySelector('[data-calc-full]');
-    if (full) full.href = 'calculator.html?spend=' + spend;
+    if (full) full.href = '/calculator?spend=' + spend;
   }
 
   range.addEventListener('input', () => update(nice(toSpend(Number(range.value)))));

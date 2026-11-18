@@ -102,8 +102,8 @@ export function initRisk() {
     out('uk').textContent = gbp(uk);
     out('uk-y').textContent = 'a week · ' + gbp(uk * 52) + ' a year';
     out('pilot').textContent = gbp(heldBy90(spend));
-    out('book').href = 'book.html?' + new URLSearchParams({ spend, risk: r.level, open: r.open, method: a.method });
-    out('calc').href = 'calculator.html?' + new URLSearchParams({ spend, sites: 1, hourly: 32, rate: RATE * 100, method: a.method });
+    out('book').href = '/book?' + new URLSearchParams({ spend, risk: r.level, open: r.open, method: a.method });
+    out('calc').href = '/calculator?' + new URLSearchParams({ spend, sites: 1, hourly: 32, rate: RATE * 100, method: a.method });
     // The WhatsApp button opens a chat with the result already written, so the reply can be the one-pager.
     out('wa').href = waLink('Hi PayRoll Protect, please send me the one-pager. My risk check came out ' + word.toLowerCase() + ', ' + r.open + ' of 4 checks open, on about '
       + gbp(spend) + ' a week of labour' + (METHODS[a.method] ? ' checked by ' + METHODS[a.method].toLowerCase() : '') + '. '

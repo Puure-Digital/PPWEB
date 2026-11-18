@@ -118,7 +118,7 @@ function initStart() {
     // The ways on from the plan, each carrying the figures.
     const planUrl = location.origin + location.pathname + '?' + query() + '#plan';
     out('wa').forEach((a) => { a.href = waLink('Hi PayRoll Protect, please send me the one-pager. My plan: ' + s.workers + ' workers across ' + sitesWord(s.sites) + ', about ' + gbp(s.spend) + ' a week checked by ' + METHODS[s.method].toLowerCase() + '. Exposure about ' + gbp(week * 52) + ' a year at your 5% average; price ' + gbp(month) + ' a month. ' + planUrl); });
-    out('book').forEach((a) => { a.href = '/book.html?' + new URLSearchParams({ spend: s.spend, sites: s.sites, method: s.method, workers: s.workers }); });
+    out('book').forEach((a) => { a.href = '/book?' + new URLSearchParams({ spend: s.spend, sites: s.sites, method: s.method, workers: s.workers }); });
     out('pdf').forEach((a) => { a.href = '/proposal/?' + new URLSearchParams({ client: s.company || 'Your company', workers: s.workers, sites: sitesWord(s.sites), price: Math.round(month), rate: s.rate }); });
     root.dataset.plan = planUrl;
     document.title = STEPS[at] === 'plan' ? 'Your plan | PayRoll Protect' : TITLE;
@@ -201,7 +201,7 @@ function initStart() {
     const hp = qs('[name="website"]', mail);
     sendLead({ name: name.value.trim(), phone: phone.value.trim(), email: email.value.trim(), website: hp ? hp.value : '', ...Object.fromEntries(new URLSearchParams(query())) }).then((ok) => {
       btn.disabled = false;
-      if (ok) { location.assign('thanks.html'); return; }
+      if (ok) { location.assign('/thanks'); return; }
       said.textContent = 'That didn’t send. Call us, or use WhatsApp above.';
     });
   });
