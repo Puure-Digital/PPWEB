@@ -35,14 +35,14 @@
   <meta property="og:title" content="PayRoll Protect | Don’t Approve What You Can’t Prove.">
   <meta property="og:description" content="Biometric site attendance matched line by line against subcontractor labour invoices. Our average site saves £9,000 a week.">
   <meta property="og:url" content="https://payrollprotect.co.uk/">
-  <meta property="og:image" content="https://payrollprotect.co.uk/assets/img/og-gate.jpg">
+  <meta property="og:image" content="https://payrollprotect.co.uk/assets/img/og-terminal.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="A PayRoll Protect terminal at a construction site entrance at dusk, showing a green tick.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="PayRoll Protect | Don’t Approve What You Can’t Prove.">
   <meta name="twitter:description" content="Biometric site attendance matched line by line against subcontractor labour invoices. Our average site saves £9,000 a week.">
-  <meta name="twitter:image" content="https://payrollprotect.co.uk/assets/img/og-gate.jpg">
+  <meta name="twitter:image" content="https://payrollprotect.co.uk/assets/img/og-terminal.jpg">
 
   <meta property="og:locale" content="en_GB">
   <meta name="twitter:image:alt" content="A PayRoll Protect terminal at a construction site entrance at dusk, showing a green tick.">
@@ -132,7 +132,7 @@
   <link rel="modulepreload" href="./js/watch.js?v=9dadd350">
   <link rel="modulepreload" href="./js/whatsapp.js?v=e4ddbb48">
   <link rel="stylesheet" href="css/base.css?v=6735b09f">
-  <link rel="stylesheet" href="css/sections.css?v=6e7bf7ae">
+  <link rel="stylesheet" href="css/sections.css?v=df93d789">
   <script>
     // The hero's load reveal (css/sections.css) starts once its fonts are in, so nothing fades up in
     // a stand-in face; never later than 800 ms. Under the preloader it starts as the preloader lifts
@@ -525,6 +525,12 @@
           <li><strong><span class="od" data-od="14" data-static>14</span> days</strong><span>Typical time to go live</span></li>
         </ul>
         <p class="facts__src"><sup>1</sup> Average across PayRoll Protect sites: £180,000 of labour a week, 40 workers. <sup>2</sup> An estimate: £82bn of UK construction payroll at a 1.7% fraud rate. Sources include ONS, CIPP and HMRC.</p>
+        <!-- A way in by role: each card goes to the part of this page that answers that person first. -->
+        <nav class="roles" aria-label="Start with your role">
+          <a class="role" href="#numbers"><span class="role__k">Finance directors</span><strong class="role__t">What unverified labour costs you a year</strong><svg class="role__a" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="role" href="#match"><span class="role__k">Quantity surveyors</span><strong class="role__t">Every invoice line, matched to the terminal</strong><svg class="role__a" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="role" href="#pilot"><span class="role__k">Commercial directors</span><strong class="role__t">A 90-day pilot, decided on the evidence</strong><svg class="role__a" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </nav>
       </div>
     </section>
 
@@ -750,6 +756,64 @@
           </article>
         </div>
       </div>
+      </div>
+    </section>
+
+    <!-- ============================== COMPARE: WHAT A SIGN-IN PROVES ============================== -->
+    <!-- What each way of recording attendance proves, by the same rules as the risk check (js/risk.js,
+         WHO and WHEN): a register proves nothing, an app or a card proves the phone or the card, not the
+         person, and biometric clocking proves the person. The method names are the risk check's own.
+         Only PayRoll Protect also checks every invoice line against the record before payroll runs. -->
+    <section class="section cmp light" id="compare" aria-labelledby="cmp-h">
+      <div class="wrap">
+        <div class="head">
+          <p class="label"><span class="label__spark" aria-hidden="true">✦</span>Compared</p>
+          <h2 id="cmp-h" data-split><span class="hl-1">A Sign-In Isn’t</span> <span class="hl-2">a Check.</span></h2>
+          <p class="lead rv">Most sites already record attendance. What matters is what that record proves, and whether anyone holds the invoice up against it before payroll runs.</p>
+        </div>
+        <div class="cmp__box rv">
+          <table class="cmp__t">
+            <caption class="sr">What each way of recording attendance covers</caption>
+            <thead>
+              <tr><td></td><th scope="col">Paper register</th><th scope="col">Sign-in app</th><th scope="col">Access cards</th><th scope="col">Biometric clocking</th><th scope="col" class="cmp__us">PayRoll Protect</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Proves who was on site<small>Ghost workers</small></th>
+                <td data-m="Paper register"><svg class="st st--n" aria-hidden="true"><use href="#i-x"/></svg><span>No<small>Anyone can sign</small></span></td>
+                <td data-m="Sign-in app"><svg class="st st--p" aria-hidden="true"><use href="#i-part"/></svg><span>Partly<small>A phone, not a person</small></span></td>
+                <td data-m="Access cards"><svg class="st st--p" aria-hidden="true"><use href="#i-part"/></svg><span>Partly<small>A card, not a person</small></span></td>
+                <td data-m="Biometric clocking"><svg class="st st--y" aria-hidden="true"><use href="#i-tick"/></svg><span>Yes</span></td>
+                <td data-m="PayRoll Protect" class="cmp__us"><svg class="st st--y" aria-hidden="true"><use href="#i-tick"/></svg><span>Yes</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Can’t be done for someone else<small>Proxy clocking</small></th>
+                <td data-m="Paper register"><svg class="st st--n" aria-hidden="true"><use href="#i-x"/></svg><span>No</span></td>
+                <td data-m="Sign-in app"><svg class="st st--n" aria-hidden="true"><use href="#i-x"/></svg><span>No<small>Phones get handed over</small></span></td>
+                <td data-m="Access cards"><svg class="st st--n" aria-hidden="true"><use href="#i-x"/></svg><span>No<small>Cards get lent</small></span></td>
+                <td data-m="Biometric clocking"><svg class="st st--y" aria-hidden="true"><use href="#i-tick"/></svg><span>Yes</span></td>
+                <td data-m="PayRoll Protect" class="cmp__us"><svg class="st st--y" aria-hidden="true"><use href="#i-tick"/></svg><span>Yes</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Records real in and out times<small>Inflated hours</small></th>
+                <td data-m="Paper register"><svg class="st st--n" aria-hidden="true"><use href="#i-x"/></svg><span>No<small>Written by hand</small></span></td>
+                <td data-m="Sign-in app"><svg class="st st--p" aria-hidden="true"><use href="#i-part"/></svg><span>Partly<small>The phone’s time</small></span></td>
+                <td data-m="Access cards"><svg class="st st--y" aria-hidden="true"><use href="#i-tick"/></svg><span>Yes</span></td>
+                <td data-m="Biometric clocking"><svg class="st st--y" aria-hidden="true"><use href="#i-tick"/></svg><span>Yes</span></td>
+                <td data-m="PayRoll Protect" class="cmp__us"><svg class="st st--y" aria-hidden="true"><use href="#i-tick"/></svg><span>Yes</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Checks every invoice line before payroll<small>Paid before it’s checked</small></th>
+                <td data-m="Paper register"><svg class="st st--n" aria-hidden="true"><use href="#i-x"/></svg><span>No</span></td>
+                <td data-m="Sign-in app"><svg class="st st--n" aria-hidden="true"><use href="#i-x"/></svg><span>No</span></td>
+                <td data-m="Access cards"><svg class="st st--n" aria-hidden="true"><use href="#i-x"/></svg><span>No</span></td>
+                <td data-m="Biometric clocking"><svg class="st st--n" aria-hidden="true"><use href="#i-x"/></svg><span>No</span></td>
+                <td data-m="PayRoll Protect" class="cmp__us"><svg class="st st--y" aria-hidden="true"><use href="#i-tick"/></svg><span>Yes<small>Every line, every week</small></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="cmp__note rv">Any record can be checked against invoices by hand, when someone finds the time. PayRoll Protect does it on every line, every week, before payroll runs.</p>
       </div>
     </section>
 
