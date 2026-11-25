@@ -8,15 +8,16 @@
 /* The PayRoll Protect shield drawing itself (index.html), on a first arrival only. On the canvas
    lit from above, over the faint grid, the mark is revealed along its own line as the page loads
    (the artwork as it is: nothing recoloured, outlined or lit), while the count and the step read
-   along the foot over a thin emerald line. Verified, the shield settles, then flies into its place
-   in the logo as the curtain lifts from the top and the hero comes up under it. Clip, transform
-   and opacity only; it hides itself at 5 s whatever happens. */
+   along the foot over a thin emerald line. Verified, the shield settles, glides into its place in
+   the logo and the name opens out from behind it (the logo reveal, docs/media/logo-reveal); then
+   the whole logo flies into the header logo as the curtain lifts from the top and the hero comes up
+   under it. Clip, transform and opacity only; it hides itself at 5 s whatever happens. */
 .pl { display: none; }
 .pl-on { overflow: hidden; scrollbar-gutter: stable; }
 .pl-on .pl {
   --p: 0;
   --lift: cubic-bezier(0.76, 0, 0.24, 1);
-  --mark-h: clamp(150px, 26vmin, 236px);
+  --lock-w: min(86vw, 1100px);
   position: fixed; inset: 0; z-index: 1000;
   display: block;
   color: #fff;
@@ -36,12 +37,13 @@
   -webkit-mask-image: radial-gradient(ellipse 34% 40% at 50% 50%, #000 15%, transparent 100%);
   mask-image: radial-gradient(ellipse 34% 40% at 50% 50%, #000 15%, transparent 100%);
 }
-/* The shield, a little above the middle. Placed by position, so its transform is free for the
-   flight into the logo. */
+/* The logo, a little above the middle, at the full lockup's size (5620 by 1000): the shield draws
+   at its centre, then glides into place as the name opens out (js in index.html). Placed by
+   position, so its transform is free for the flight into the header logo. */
 .pl__mark {
   position: absolute; z-index: 1;
-  left: calc(50% - var(--mark-h) * 475 / 568 / 2); top: calc(46% - var(--mark-h) / 2);
-  width: calc(var(--mark-h) * 475 / 568); height: var(--mark-h);
+  left: calc(50% - var(--lock-w) / 2); top: calc(46% - var(--lock-w) / 5.62 / 2);
+  width: var(--lock-w); height: calc(var(--lock-w) / 5.62);
   overflow: visible;
   transform-origin: 0 0;
 }
@@ -64,8 +66,8 @@
 @keyframes pl-step { from { opacity: 0; transform: translateY(6px); } }
 .pl__bar { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: linear-gradient(90deg, var(--em-1), var(--em-2)); box-shadow: 0 0 10px var(--lime-glow); transform: scaleX(var(--p)); transform-origin: left center; }
 .pl--done .pl__step { color: var(--mint); }
-/* The lift: the curtain draws down from the top, what was on it sinks, and the shield flies up
-   into the logo (js in index.html) and hands over to it. The page can be used from the start. */
+/* The lift: the curtain draws down from the top, what was on it sinks, and the logo flies up
+   into the header logo (js in index.html) and hands over to it. The page can be used from the start. */
 .pl--out { pointer-events: none; }
 .pl-on .pl--out .pl__bg { clip-path: inset(100% 0 0 0); transition: clip-path 0.9s var(--lift); }
 .pl--out .pl__count, .pl--out .pl__step { opacity: 0.25; transform: translateY(12vh); transition: transform 0.9s var(--lift), opacity 0.9s var(--lift); }
