@@ -1252,63 +1252,6 @@ button.hx-pill:focus-visible { border-radius: 999px; }
 @media (max-width: 479px) { .calc__out { grid-template-columns: minmax(0, 1fr); } }
 .calc__day { margin: 0; font-size: 0.75rem; color: var(--on-dark-3); }
 
-/* ============================== FILM: TO ORBIT ============================== */
-/* A mid-page film (js/film.js), built like the hero: frames scrubbed by scroll in a pinned
-   section. The camera rises from the gate terminal's green tick to the dusk sky; a gauge on the
-   right climbs from the gate to orbit; as the sky opens a train of satellites drifts across and
-   one takes a line of light from the gate. */
-.film { position: relative; height: 100vh; height: 100svh; min-height: 560px; overflow: hidden; background: var(--gun); color: #fff; }
-.film__stage { position: absolute; inset: 0; }
-.film__canvas, .film__poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.film__poster { opacity: 0; }
-.film.is-static .film__poster, .no-js .film__poster { opacity: 1; }
-.film.is-static .film__canvas, .no-js .film__canvas { display: none; }
-/* The foot of the frame fades into the band's own dark, so the film runs on into Installation. */
-.film__shade { position: absolute; inset: 0; pointer-events: none; background:
-  linear-gradient(180deg, rgba(1, 1, 1, 0) 78%, var(--gun) 100%),
-  linear-gradient(90deg, rgba(1, 3, 2, 0.74) 0%, rgba(1, 3, 2, 0.38) 38%, rgba(1, 3, 2, 0) 66%),
-  linear-gradient(180deg, rgba(1, 3, 2, 0.5) 0%, rgba(1, 3, 2, 0) 24%, rgba(1, 3, 2, 0) 70%, rgba(1, 3, 2, 0.62) 100%); }
-
-/* The sky overlay: positions are set per frame in CSS pixels by script. */
-.film__sky { position: absolute; inset: 0; pointer-events: none; opacity: 0; }
-.film__sat { position: absolute; left: 0; top: 0; width: 4px; height: 4px; margin: -2px 0 0 -2px; border-radius: 50%; background: #fff; box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.65); }
-.film__sat.is-lead { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: var(--lime); box-shadow: 0 0 0 5px rgba(15, 215, 106, 0.18), 0 0 16px 3px rgba(15, 215, 106, 0.75); }
-.film.is-live .film__sat:not(.is-lead) { animation: glint 3.4s var(--harmonic) infinite alternate; }
-.film.is-live .film__sat:nth-child(3n) { animation-delay: -1.1s; }
-.film.is-live .film__sat:nth-child(3n + 1) { animation-delay: -2.3s; }
-@keyframes glint { from { opacity: 1; } to { opacity: 0.45; } }
-.film__beam { position: absolute; left: 0; top: 0; width: 0; height: 2px; margin-top: -1px; border-radius: 1px; transform-origin: 0 50%; background: linear-gradient(90deg, rgba(15, 215, 106, 0.1), var(--lime)); box-shadow: 0 0 14px rgba(15, 215, 106, 0.6); opacity: 0; }
-
-/* The gauge: from the gate to orbit. The marker is a full-height layer moved by yPercent. */
-.film__gauge { position: absolute; right: calc(var(--gutter) + 72px); top: 50%; z-index: 2; display: grid; justify-items: end; gap: 22px; height: 46vh; transform: translateY(-50%); }
-.film__rail { position: relative; width: 1px; height: 100%; background: rgba(255, 255, 255, 0.24); }
-.film__tick { position: absolute; right: 12px; bottom: calc(var(--y) * 100%); transform: translateY(50%); font-size: var(--fs-micro); line-height: 1; white-space: nowrap; color: var(--on-dark-3); }
-.film__tick::after { content: ""; position: absolute; right: -16px; top: 50%; width: 8px; height: 1px; background: rgba(255, 255, 255, 0.4); }
-.film__marker { position: absolute; inset: 0; }
-/* At orbit the marker's own reading takes over from the scale's top label, so it is never said twice. */
-.film__tick--top { transition: opacity 0.3s var(--spring-soft); }
-.film__gauge.is-top .film__tick--top { opacity: 0; }
-.film__marker::before { content: ""; position: absolute; left: -4px; bottom: -4px; width: 9px; height: 9px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 4px rgba(15, 215, 106, 0.18), 0 0 14px rgba(15, 215, 106, 0.7); }
-.film__marker span { position: absolute; left: 16px; bottom: -6px; font-size: 0.75rem; line-height: 1; white-space: nowrap; font-variant-numeric: tabular-nums; color: #fff; }
-.film__link { font-family: var(--mono); margin: 0; text-align: right; font-size: var(--fs-micro); line-height: 1; color: var(--on-dark-3); }
-.film__link strong { display: block; margin-top: 8px; font-size: 0.8125rem; font-weight: 500; color: #fff; }
-.film__link strong.is-ok { color: var(--lime); }
-
-/* Captions: stacked in one place; they take turns. White like every headline, and unnumbered, so
-   the page keeps one numbering (its sections) and green stays for verified results. */
-.film__content { position: absolute; inset: 0; z-index: 2; display: grid; align-content: center; pointer-events: none; }
-.film__line { font-family: var(--head); grid-area: 1 / 1; max-width: 760px; margin: 0; padding-right: 120px; font-size: clamp(1.625rem, 0.9rem + 3.2vw, 3.125rem); font-weight: var(--w-display); font-stretch: var(--wide); letter-spacing: var(--tr-display); line-height: 1.05; color: #fff; opacity: 0; visibility: hidden; }
-/* Held still (reduced motion, no script), the caption reads whole: both lines, one under the other. */
-.film.is-static .film__line, .no-js .film__line { grid-area: auto; opacity: 1; visibility: visible; }
-@media (max-width: 767px) {
-  .film__gauge { height: 34vh; right: 22px; }
-  .film__tick { display: none; }
-  .film__marker span { left: auto; right: 16px; }
-  .film__line { padding-right: 64px; }
-  .film__content { align-content: end; padding-bottom: 15svh; }
-  .film__shade { background: linear-gradient(180deg, rgba(1, 1, 1, 0) 80%, var(--gun) 100%), linear-gradient(180deg, rgba(1, 3, 2, 0.6) 0%, rgba(1, 3, 2, 0.3) 40%, rgba(1, 3, 2, 0.3) 60%, rgba(1, 3, 2, 0.75) 100%); }
-}
-
 /* ============================== 07 INSTALLATION ============================== */
 /* The gate goes online by satellite (js/sat.js). A light instrument holds a line drawing of the
    site: gate and terminal, cabin and Starlink dish, the orbit above. Lime marks a live link and a
@@ -1402,9 +1345,9 @@ button.hx-pill:focus-visible { border-radius: 999px; }
 .sat__brand span { font: 500 var(--fs-micro)/1 var(--mono); color: var(--on-dark-3); }
 .sat__brand img { display: block; width: 128px; height: auto; }
 
-/* On the home page the section is an orbital stage on a dark band, edge to edge, carrying on
-   from the film above it: a night sky, the curve of the earth below with a faint green
-   atmosphere, and the instrument drawn in light on glass. */
+/* On the home page the section is an orbital stage on a dark band, edge to edge: a night sky,
+   the curve of the earth below with a faint green atmosphere, and the instrument drawn in light
+   on glass. */
 .sat-sec { position: relative; isolation: isolate; color: var(--on-dark); }
 .sat__stage { position: absolute; inset: 0; z-index: -1; overflow: hidden; background: var(--gun); }
 /* Stars (js/sat.js): a fixed, irregular field of points, fading toward the earth. */

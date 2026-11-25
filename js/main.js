@@ -14,7 +14,6 @@ import { mountOdometers } from './odometer.js';
 import { initCalc } from './calc.js';
 import { initCharts } from './charts.js';
 import { initScrubs } from './scrubs.js';
-import { initFilms } from './film.js';
 import { initGlobe } from './globe.js';
 import { initPilot } from './pilot.js';
 import { initFaq } from './faq.js';
@@ -26,4 +25,4 @@ import { initFlow } from './flow.js';
 import { initReveals } from './reveal.js';
 import { initLive } from './engine.js';
 
-boot([initFx, initCursor, initScroll, initFlow, initHero, initFacts, initWatch, initGap, initMatch, initLeaks, initHow, mountOdometers, initCalc, initCharts, initScrubs, initFilms, initGlobe, initPilot, initFaq, initRisk, initFoot, initNav, initReveals, initLive]);
+boot([initFx, initCursor, initScroll, initFlow, initHero, initFacts, initWatch, initGap, initMatch, initLeaks, initHow, mountOdometers, initCalc, initCharts, initScrubs, initGlobe, initPilot, initFaq, initRisk, initFoot, initNav, initReveals, initLive]);
