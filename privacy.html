@@ -141,7 +141,7 @@
       </ul>
 
       <h2 id="cookies">Cookies</h2>
-      <p>This website sets no cookies of its own. Its fonts and scripts are served from this website, so viewing it sends no data to third parties, except on the booking page: its form loads from GoHighLevel (LeadConnector), which may set its own cookies.</p>
+      <p>This website sets no cookies of its own. Its fonts and scripts are served from this website, with one exception: every page counts visits with Metricool, which receives the page’s address, the size of your browser window, the page you came from and, as with any web request, your IP address. Metricool sets no cookies. The booking and calculator pages also load their form from GoHighLevel (LeadConnector), which may set its own cookies.</p>
 
       <h2>Your Rights</h2>
       <p>You can ask for a copy of the personal data we hold about you, or ask us to correct or delete it, by emailing <a href="mailto:hello@payrollprotect.co.uk">hello@payrollprotect.co.uk</a>.</p>
@@ -218,5 +218,9 @@
   <script src="/assets/vendor/ScrollTrigger.min.js?v=05ca5ad8" defer></script>
   <script src="/assets/vendor/lenis.min.js?v=daec1872" defer></script>
   <script type="module" src="/js/privacy.js?v=8d4d23b5"></script>
+  <!-- Visit counting: Metricool (metricool.com). Its loader adds one small script from tracker.metricool.com,
+       which sends the page address, window size and referring page as a pixel request; it sets no cookies.
+       Described on privacy.html#cookies. -->
+  <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"cd165a1a385b2bbf169b0b89d128390c"})});</script>
 </body>
 </html>
