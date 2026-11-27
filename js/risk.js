@@ -41,7 +41,7 @@ export function assess(a) {
     : 'Spot checks miss the weeks nobody looks.']);
 
   s = a.method === 'bio' ? 0 : 2;
-  rows.push(['Proxy clocking', s, s === 0 ? 'A face can’t be lent.'
+  rows.push(['Proxy clocking', s, s === 0 ? 'Facial structure can’t be lent.'
     : { card: 'Cards get lent.', app: 'Phones get handed over.', paper: 'Anyone can sign for anyone.', none: 'Nothing stops one person clocking in another.' }[a.method]
       + (several ? ' More than one way in makes it easier still.' : '')]);
 
